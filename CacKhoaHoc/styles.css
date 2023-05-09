@@ -1,0 +1,351 @@
+body {
+    background: #f9f9f9 none repeat scroll 0 0;
+    color: #505050;
+    font-family: "Roboto", Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.baobocitemphandau {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 1024px;
+    height: 100%;
+}
+
+#phandau {
+    width: 100%;
+    height: 49px;
+    position: relative;
+    background-color: #2a70b8;
+}
+
+/* css cho phan menu */
+.menucackhoahoc {
+    display: inline-block;
+    float: left;
+    position: relative;
+    padding: 8px 0;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.menucackhoahoc .vungkichhoatmenu {
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 7px 5px 6px;
+}
+
+.vungkichhoatmenu i {
+    margin-right: 8px;
+}
+
+.motabieutuong {
+    padding-right: 5px;
+    font-family: "Roboto", Tahoma, sans-serif;
+    color: #fff;
+}
+
+/* ket thuc css cho phan menu*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------*/
+/* css cho textbox tim kiem */
+
+
+#timkiem {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 260px;
+}
+
+#timkiem .nuttimkiem {
+    position: absolute;
+    top: 0;
+    height: 33px;
+    left: 97%;
+    background-color: white;
+    color: #000;
+    border: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+#timkiem i{
+    font-size: 16px;
+}
+#timkiem .input {
+    outline: none;
+    height: 33px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+/* ket thuc css cho textbox */
+.anhiconlogo {
+    display: block;
+    height: 100%;
+    left: 50%;
+    margin-left: -22px;
+    position: absolute;
+    text-indent: -9999em;
+    top: 0;
+    width: 49px;
+}
+
+/* css cho menu danh sách khóa học */
+#noi-dung-trang{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.wrapper{
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 1024px;
+}
+.clearfix{
+    display: block;
+}
+/* css cho khối các khóa học */
+#block-courses{
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    background-color: #ffffff;
+    width: 238px;
+    height: auto;
+    margin: 0px auto;
+    position: relative;
+}
+.block{
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    width: 240px;
+    float: left;
+    
+}
+/* css cho danh sách chung các khóa học */
+#menu-courses{
+    padding-inline-start: 0px;
+
+    margin: 0;
+    padding: 0;
+}
+/* css cho tiêu đề các khóa học */
+.course-list-title{
+    position: relative;
+    background: #e0e0e0;
+    color: #5c5c5c;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 6px 6px 6px 40px;
+    margin: 0px;
+}
+/* css cho các lớp học */
+.menu-courses{
+    padding-inline-start: 0px;
+    list-style: none;
+}
+.menu-courses li{
+    position: relative;
+}
+.menu-courses li a{
+    background-color: #f9f9f9;
+    color: #5c5c5c;
+    text-decoration: none;
+    display: block;
+    padding: 6px 6px 6px 40px;
+}
+.menu-courses li:hover a{
+    background-color: #2a70b8;
+    color: #fefefe;
+}
+/* css cho các môn học */
+.menu-courses ul.sub-menu-courses{
+    position: absolute;
+    display: none;
+    width: 238px;
+    list-style: none;
+    left:200px;
+    top: 0;
+}
+.menu-courses li:hover ul.sub-menu-courses{
+    display: block;
+}
+.menu-courses ul.sub-menu-courses li a{
+    padding: 6px 6px 6px 40px;
+    color: #fefefe;
+    border: 0px solid #ebebeb;
+}
+.menu-courses ul.sub-menu-courses li:hover a{
+    background-color: #337ab7;
+}
+.menu-courses ul.sub-menu-courses li:last-child a{
+    border: none;
+}
+/* kết thức css cho danh sách các khóa học */
+
+/* css cho nội dung các khóa học */
+
+.with-sidebar-first .content-wr{
+    margin-left: -240px;
+}
+.content-wr{
+    float: left;
+    width: 100%;
+}
+span, h1,h2,h3,h4,h5,h6,p,a,div,strong,ol,ul,li,table,td,th,input,select,textarea{
+    box-sizing: border-box;
+    outline: none;
+}
+.with-sidebar-first .content-wr > .content{
+    margin-left: 262px;
+}
+.content-wr > .content{
+    position: relative;
+}
+.content{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+/* css mô tả khóa học */
+#content .page-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    margin-top: -30px;
+}
+.course-group-name{
+    font-size: 14px;
+    font-weight: 500;
+}
+.course-group-name > span{
+    background: #2a70b8;
+    color: #fff;
+    display: inline-block;
+    line-height: 29px;
+    min-width: 180px;
+    padding: 0 15px;
+}
+.course-group-des{
+    font-size: 13px;
+    margin: 15px 0;
+}
+/* css cho các khóa học cụ thể */
+/* .home-icon{
+    background: rgba(0, 0, 0, 0) url(../images/home-2-icon.png) no-repeat scroll center center;
+    display: inline-block;
+    height: 1.25em;
+    margin-right: 10px;
+    text-indent: -999em;
+    width: 24px;
+} */
+.home-icon{
+    display: inline-block;
+    height: 24px;
+    margin-right: 10px;
+    text-indent: -999em;
+    width: 24px;
+    vertical-align: -3px;
+}
+.course-grid.grid3{
+    margin: 0 -10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.clearfix{
+    min-width: 0;
+}
+.grid3 .course-grid-item{
+    clear: both;
+    margin: 0 10px 20px;
+    width: 240px;
+}
+.course-grid-item{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ececec;
+    float: left;
+    min-height: 299px;
+    position: relative;
+}
+.grid3 .course-grid-image{
+    height: auto;
+}
+.course-grid-image{
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+}
+a{
+    color: #2a70b8;
+    text-decoration: none;
+    outline: none;
+}
+a img{
+    border: none;
+}
+img{
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+img{
+    vertical-align: middle;
+}
+img{
+    border: 0;
+}
+.course-grid-info{
+    padding: 8px;
+    position: relative;
+}
+.course-grid-name{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.course-grid-fee{
+    color: #8d8979;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+
+.course-closing-date,.course-grid-teacher{
+    color: #8d8989;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+.course-action{
+    text-align: right;
+}
+.course-view-more{
+    background: #2a70b8 none repeat scroll 0 0;
+}
+.course-view-more{
+    color: #fefefe;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 20px;
+}
+/* css mô tả khóa học bổ sung */
+
+/* kết thúc */
