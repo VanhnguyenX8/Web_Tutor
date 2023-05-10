@@ -10,7 +10,7 @@ public class DBconnect {
 	 try {
 		 DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 		 con = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/sanpham", "root",
-					"Vietanh.237");
+					"pass_cua_ban");
 		 System.out.print("Ket noi thanh cong voi csdl");
 	 }catch (Exception e) {
 			// TODO Auto-generated catch block
