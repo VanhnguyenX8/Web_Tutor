@@ -82,7 +82,7 @@
                 <li class="has_submenu">Luyện thi đại học
                     <div class="container_menu_child">
                         <ul class="menu_khoa_hoc_child">
-                            <li>Toán</li>
+                            <li><a href = "">Toán</a></li>
                             <li>Ngữ văn</li>
                             <li>Tiếng Anh</li>
                             <li>Vật lý</li>
@@ -199,11 +199,11 @@
     <table class="table_thpt" style="margin-top: 20px;" border="0">
         <tr>
             <th colspan="2">
-                <div><img class="images_thpt" src="../assets/images/img_thpt/1.banner.png" alt=""></div>
+                <div><img class="images_thpt" src="https://hocmai.vn/media/images/home/desktop/522-x-324.jpg" alt=""></div>
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -215,7 +215,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -225,7 +225,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -239,7 +239,7 @@
 
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -249,7 +249,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -259,7 +259,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -269,7 +269,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -279,7 +279,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -296,11 +296,11 @@
     <table class="table_thpt" style="margin-top: 20px;" border="0">
         <tr>
             <th colspan="2">
-                <div><img class="images_thpt" src="../assets/images/img_thpt/1.banner.png" alt=""></div>
+                <div><img class="images_thpt" src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt=""></div>
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -312,7 +312,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -322,7 +322,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -336,7 +336,7 @@
 
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -346,7 +346,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -356,7 +356,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -366,7 +366,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -376,7 +376,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -393,7 +393,7 @@
     <table class="table_thpt" style="margin-top: 20px;" border="0">
         <tr>
             <th colspan="2">
-                <div><img class="images_thpt" src="../assets/images/img_thpt/1.banner.png" alt=""></div>
+                <div><img class="images_thpt" src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt=""></div>
             </th>
             <th>
                 <div class="table_thpt_item">
@@ -409,7 +409,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -419,7 +419,7 @@
             </th>
             <th>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -433,7 +433,7 @@
 
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -443,7 +443,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -453,7 +453,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -463,7 +463,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
@@ -473,7 +473,7 @@
             </td>
             <td>
                 <div class="table_thpt_item">
-                    <img src="../assets/images/img_thpt/1.1.png" alt="">
+                    <img src="https://hocmai.vn/course/images/hoc-tot-vat-li-12-nguyen-thanh-nam-1614056395.jpg" alt="">
                     <p> Giáo Viên: Nguyễn Việt ANh</p>
                     <p1>154 Bài giảng</p1>
                     <p1>5820 câu hỏi</p1>
