@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <input type="checkbox" id="menu-toggle">
     <div class="khoiben">
         <div class="brand">
@@ -28,66 +29,37 @@
                 </div>
             </div>
             <ul>
-                <li>
-                    <a href="" class="activate">
-                        <span class="las la-home-scale"></span>
+                <li class="dashboard">
+                    <a href="" class="a-dash-board activate">
+                        <span class="las la-home"></span>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="">
-                        <span class="las la-home"></span>
-                        <span>Finance</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="las la-chart-pie"></span>
-                        <span>Analytics</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="las la-calendar"></span>
-                        <span>Calendar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
+                <li class="gia-su">
+                    <a class="a-gia-su">
                         <span class="las la-users"></span>
-                        <span>Contacts</span>
+                        <span>Gia Sư</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <span class="las la-shopping-cart"></span>
-                        <span>Ecommerce</span>
+                <li class="hoc-sinh">
+                    <a class="a-hoc-sinh">
+                        <span class="las la-users"></span>
+                        <span>Học Sinh</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <span class="las la-envelope"></span>
-                        <span>Mailbox</span>
+                <li class="lop-hoc">
+                    <a class="a-lop-hoc">
+                        <span class="las la-school"></span>
+                        <span>Lớp Học</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <span class="las la-check-circle"></span>
-                        <span>Tasks</span>
+                <li class="thanh-toan">
+                    <a class="a-thanh-toan">
+                        <span class="las la-money-bill-wave"></span>
+                        <span>Thanh Toán</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
-                        <span class="las la-lock"></span>
-                        <span>Authentication</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="las la-file-invoice-dollar"></span>
-                        <span>Pricing</span>
-                    </a>
-                </li> -->
+
             </ul>
         </div>
     </div>
@@ -114,67 +86,49 @@
                         <span class="las la-users"></span>
                     </div>
                     <div class="thongtin-the">
-                        <h2 class="total-branch">0</h2>
-                        <small>Chi nhánh</small>
+                        <h2>3,281</h2>
+                        <small>Học Sinh </small>
                     </div>
-                    <!-- <div class="anh-the">
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                    </div> -->
                 </div>
                 <div class="the">
-                    <div class="icon-the comments">
-                        <span class="las la-comment"></span>
+                    <div class="icon-the follow">
+                        <span class="las la-users"></span>
                     </div>
                     <div class="thongtin-the">
-                        <h2>661</h2>
-                        <small>Điện thoại được bán bởi Lê Tuấn Anh trong ngày 20/01/2023</small>
+                        <h2>3,281</h2>
+                        <small>Gia Sư</small>
                     </div>
-                    <!-- <div class="anh-the">
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                    </div> -->
+                </div>
+                <div class="the">
+                    <div class="icon-the follow">
+                        <span class="las la-chalkboard-teacher"></span>
+                    </div>
+                    <div class=" thongtin-the">
+                        <h2>661</h2>
+                        <small>Lớp Học</small>
+                    </div>
                 </div>
                 <div class="the">
                     <div class="icon-the likes">
-                        <span class="las la-heart"></span>
+                        <span class="las la-coins"></span>
                     </div>
                     <div class="thongtin-the">
                         <h2>19,855</h2>
-                        <small>Số nhân viên thuộc chi nhánh Hà Nội tham gia bán hàng vào ngày 20/01/2023</small>
+                        <small>Tổng doanh thu</small>
                     </div>
-                    <!-- <div class="anh-the">
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                        <div style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
-                    </div> -->
                 </div>
             </div>
-            <div class="chart-grid">
-                <div class="chart-follow">
-                    <div class="chart-head">
-                        <h3>Total phone sales</h3>
-                        <span class="las la-cog"></span>
-                    </div>
-                    <div id="myfirstchart" style="height: 350px;"></div>
+            <div class="bieu-do">
+                <div class="chart-1" style="height: 600px;width: 100%; background-color: aqua;">
+                    <canvas id="myChart" style="width: 60%;background-color: aliceblue;"></canvas>
+                    <canvas id="pie" style="width: 60%;"></canvas>
                 </div>
-                <div class="chart-sales">
-                    <div class="chart-head">
-                        <h3>Supplier</h3>
-                        <span class="las la-ellipsis-h"></span>
-                    </div>
-                    <div id="donut-example" style="height: 350px;"></div>
+                <div class="chart-2" style="height: 600px;width: 100%;">
+                    <canvas id="myChart2"></canvas>
                 </div>
 
             </div>
+
         </main>
     </div>
     <label class="close-mobile-menu" for="menu-toggle"></label>
@@ -183,6 +137,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="/src/main/webapp/js/dashboard.js"></script>
+
 </body>
 
 </html>

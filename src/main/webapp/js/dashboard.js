@@ -1,54 +1,102 @@
+const dashBoard = document.querySelector('.dashboard')
+const giaSu = document.querySelector('.gia-su')
+const hocSinh = document.querySelector('.hoc-sinh')
+const lopHoc = document.querySelector('.lop-hoc')
+const thanhToan = document.querySelector('.thanh-toan')
 
-let jsonData;
-let r = 3;
-function fetchData() {
-    fetch('http://localhost:3000/branch')
-        .then(response => response.json())
-        .then(data => {
-            jsonData = data; // lưu giá trị của file JSON vào biến
-            console.log(jsonData);
-            countBranches(jsonData);
-            Morris.Donut({
-                element: 'donut-example',
-                data: [
-                    { label: "SamSung", value: jsonData },
-                    { label: "Apple", value: 30 },
-                    { label: "Xiaomi", value: 20 }
-                ],
-                labelColor: '#fff',
-                colors: ['orange', '#0072f2', '#fde9ea']
-            });
-            Morris.Line({
-                // ID of the element in which to draw the chart.
-                element: 'myfirstchart',
-                lineColors: ['orange'],
-                // Chart data records -- each entry in this array corresponds to a point on
-                // the chart.
-                data: [
-                    { year: '20-1-2008', value: jsonData },
-                    { year: '20-1-2009', value: 10 },
-                    { year: '20-1-2010', value: 5 },
-                    { year: '20-1-2011', value: 5 },
-                    { year: '20-1-2012', value: 30 },
-                    { year: '20-1-2014', value: 40 }
-                ],
-                // The name of the data record attribute that contains x-values.
-                xkey: 'year',
-                // A list of names of data record attributes that contain y-values.
-                ykeys: ['value'],
-                // Labels for the ykeys -- will be displayed when you hover over the
-                // chart.
-                labels: ['Value']
-            });
+dashBoard.addEventListener('click', () => {
+})
+giaSu.addEventListener('click', () => {
+    const aGiaSu = document.querySelector('.a-gia-su')
+    aGiaSu.classList.add("activate")
+    document.querySelector('.a-dash-board').classList.remove("activate")
+    document.querySelector('.a-hoc-sinh').classList.remove("activate")
+    document.querySelector('.a-lop-hoc').classList.remove("activate")
+    document.querySelector('.a-thanh-toan').classList.remove("activate")
+})
+hocSinh.addEventListener('click', () => {
+    document.querySelector('.a-hoc-sinh').classList.add("activate")
+    document.querySelector('.a-dash-board').classList.remove("activate")
+    document.querySelector('.a-gia-su').classList.remove("activate")
+    document.querySelector('.a-lop-hoc').classList.remove("activate")
+    document.querySelector('.a-thanh-toan').classList.remove("activate")
+})
+lopHoc.addEventListener('click', () => {
+    document.querySelector('.a-lop-hoc').classList.add("activate")
+    document.querySelector('.a-dash-board').classList.remove("activate")
+    document.querySelector('.a-hoc-sinh').classList.remove("activate")
+    document.querySelector('.a-gia-su').classList.remove("activate")
+    document.querySelector('.a-thanh-toan').classList.remove("activate")
+})
+thanhToan.addEventListener('click', () => {
+    document.querySelector('.a-thanh-toan').classList.add("activate")
+    document.querySelector('.a-dash-board').classList.remove("activate")
+    document.querySelector('.a-hoc-sinh').classList.remove("activate")
+    document.querySelector('.a-lop-hoc').classList.remove("activate")
+    document.querySelector('.a-gia-su').classList.remove("activate")
+})
+const ctx = document.getElementById('myChart');
 
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-function countBranches(result) {
-    $('.total-branch').text(result)
-}
-fetchData()
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'Lợi Nhuận',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1,
+            backgroundColor: '#FCFFB2'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
 
+            }
+        }, maintainAspectRatio: false, responsive: true,
+    }
+});
+const ctx2 = document.getElementById('myChart2');
 
+new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'Số lượng lớp',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }, maintainAspectRatio: false, responsive: true,
+    }
+});
+const data = {
+    labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+    ],
+    datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4, maintainAspectRatio: false, responsive: true,
+    }]
+};
+const config = {
+    type: 'pie',
+    data: data,
+};
+const pie = document.getElementById('pie');
+new Chart(pie, config)
