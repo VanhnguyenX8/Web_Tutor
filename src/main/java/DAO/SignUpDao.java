@@ -8,13 +8,13 @@ import Model.TaiKhoan;
 
 public class SignUpDao extends DBconnect {
 	public TaiKhoan checkAccount(String user) {
-		String query = "select * from taikhoan where [taikhoan]=?";
+		String query = "select * from accout where username = ? ";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, user);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				TaiKhoan a = new TaiKhoan(rs.getInt(1), rs.getString(2), rs.getString(3));
+				TaiKhoan a = new TaiKhoan(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBytes(4));
 				System.out.println(a);
 				return a;
 			}
@@ -25,12 +25,14 @@ public class SignUpDao extends DBconnect {
 		return null;
 	}
 
-	public void NewAccount(String name, String pass) {
-		String query = "insert into taikhoan value (2,?,?);";
+	public void NewAccount(String user, String pass, String position, byte[] salt) {
+		String query = "insert into accout(username, password, position, salt) values (?,?,?,?);";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, name);
+			ps.setString(1, user);
 			ps.setString(2, pass);
+			ps.setString(3, position);
+			ps.setBytes(4, salt);
 			ps.executeUpdate();
 			// k can dung result vi khi usertao tai khoan se k co du lieu tra ve
 			// can dung [executeUpdate()] de update lai du lieu

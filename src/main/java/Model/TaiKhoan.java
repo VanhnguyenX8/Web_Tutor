@@ -1,34 +1,38 @@
 package Model;
 
 public class TaiKhoan {
-	private int id;
-	private String taikhoan, matkhau;
-	public TaiKhoan(int id, String taikhoan, String matkhau) {
+	private String username, password, position;
+	private byte[] salt;
+	public TaiKhoan(String username, String password, String position, byte[] salt) {
 		super();
-		this.id = id;
-		this.taikhoan = taikhoan;
-		this.matkhau = matkhau;
+		this.username = username;
+		this.password = password;
+		this.position = position;
+		this.salt = salt;
 	}
-	public TaiKhoan() {
-		super();
+	public String getUsername() {
+		return username;
 	}
-	public int getId() {
-		return id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public String getPassword() {
+		return password;
 	}
-	public String getTaikhoan() {
-		return taikhoan;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public void setTaikhoan(String taikhoan) {
-		this.taikhoan = taikhoan;
+	public String getPosition() {
+		return position;
 	}
-	public String getMatkhau() {
-		return matkhau;
+	public void setPosition(String position) {
+		this.position = position;
 	}
-	public void setMatkhau(String matkhau) {
-		this.matkhau = matkhau;
+	public byte[] getSalt() {
+		return salt;
+	}
+	public void setSalt(byte[] salt) {
+		this.salt = salt;
 	}
 	
 }

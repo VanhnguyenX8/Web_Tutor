@@ -1,11 +1,17 @@
 package Controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import DAO.SignUpDao;
 import Model.TaiKhoan;
@@ -13,7 +19,7 @@ import Model.TaiKhoan;
 /**
  * Servlet implementation class SignUp
  */
-@WebServlet("/SignUpServlet")
+@WebServlet(urlPatterns = {"/SignUpServlet"})
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,27 +31,85 @@ public class SignUpServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+ // Phương thức để mã hóa mật khẩu
+    private String hashPassword(String password, byte[] salt) throws NoSuchAlgorithmException {
+        String hashedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] bytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            hashedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return hashedPassword;
+    }
+
+    private byte[] generateSalt() throws NoSuchAlgorithmException {
+	    SecureRandom random = SecureRandom.getInstanceStrong();
+	    byte[] salt = new byte[16];
+	    random.nextBytes(salt);
+	    return salt;
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
+		String user = request.getParameter("username");
+		String pass = request.getParameter("password");
+		String repass = request.getParameter("repass");
+		String position = request.getParameter("position");
 		try {
-			String user = request.getParameter("username");
-			String pass = request.getParameter("password");
-			String repass = request.getParameter("renamepass");
-			 if(!pass.equals(repass)) {
-				 response.sendRedirect("login.jsp");
-			 }else {
-				 SignUpDao sign = new SignUpDao();
-				 TaiKhoan a = sign.checkAccount(user);
-				 if(a != null) {
-					 response.sendRedirect("login.jsp");
-				 } else {
-					 sign.NewAccount(user, pass);
-					 response.sendRedirect("access.jsp");
-				 }
-			 }
+			//tạp salt mới
+			byte[] salt = generateSalt();
+			//mã hóa mật khẩu
+			String hashedPassword = hashPassword(pass, salt);
+			boolean isGiasu = false;
+	        boolean isHocsinh = false;
+	        if (position != null) {
+	            if (position != null && position.equals("giasu") && !position.isEmpty()) {
+	                isGiasu = true;
+	            } else {
+	                isHocsinh = true;
+	            }
+	        }
+			if(!pass.equals(repass)) {
+				String jspPath = "/signup.jsp";
+				request.setAttribute("mess", "pass không trùng khớp");
+				RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+				rs.forward(request,response);
+			}else {
+				SignUpDao sign = new SignUpDao();
+				TaiKhoan a = sign.checkAccount(user);
+				if(a != null) {
+					//duoc sign up
+					String jspPath = "/signup.jsp";
+					request.setAttribute("mess", "Tài khoản đã tồn tại");
+					RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+					rs.forward(request,response);
+				} else {
+					// day ve trang login
+					if(isGiasu) {
+						String role = "giasu";
+						sign.NewAccount(user, hashedPassword, role, salt);
+						String jspPath = "/login.jsp";
+						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						rs.forward(request,response);
+					}else if(isHocsinh) {
+						String role = "hocsinh";
+						sign.NewAccount(user, hashedPassword, role, salt);
+						String jspPath = "/login.jsp";
+						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						rs.forward(request,response);
+					}
+				}
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.err.print(e);
