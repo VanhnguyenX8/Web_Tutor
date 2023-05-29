@@ -48,10 +48,10 @@ pageEncoding="UTF-8"%>
                     <div class="avatar"></div>
                     <div class="thongtin">
                     <%
-    					String tutorName = (String) request.getAttribute("tutorName");
+    					String Name = (String) request.getAttribute("Name");
                     	String email = (String) request.getAttribute("email");
 					%>
-                      <p class="ten"><%= tutorName %></p>
+                      <p class="ten"><%= Name %></p>
                       <p class="email"><%= email %></p>
                     </div>
                   </li>
