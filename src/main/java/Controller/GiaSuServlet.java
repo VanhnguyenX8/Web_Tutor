@@ -34,7 +34,7 @@ public class GiaSuServlet extends HttpServlet {
         // ...
 
         // Cập nhật thông tin gia sư trong cơ sở dữ liệu
-        UserGS giaSu = UserDAO.getGiaSuByUsername(username);
+        UserGS giaSu = UserDAO.getGiaSuByUsername();
         // viết thêm 
         giaSu.setTenGS(updatedName);
         giaSu.setEmail(updatedEmail);
