@@ -12,26 +12,46 @@ h2 {
     color: #868787;
     font-family: sans-serif;
 }
-
-.login input {
-    width: 400px;
-    height: 40px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    padding-left: 20px;
+.login input{
+  width: 420px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 20px;
 }
-
-.dang_nhap {
-    width: 400px;
-    height: 40px;
-    margin-bottom: 10px;
-    border-radius: 100px;
-    border: none;
-    background-color: #03a9f4;
-    color: white;
+.login #username {
+  width: 420px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 20px;
 }
-
+.login #password {
+  width: 420px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 20px;
+}
+.dangnhap {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 20px;
+}
+.dangki {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding-left: 20px;
+}
 .login button:hover {
     font-size: 15px;
 }
