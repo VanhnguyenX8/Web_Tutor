@@ -1,102 +1,269 @@
-const dashBoard = document.querySelector('.dashboard')
-const giaSu = document.querySelector('.gia-su')
-const hocSinh = document.querySelector('.hoc-sinh')
-const lopHoc = document.querySelector('.lop-hoc')
-const thanhToan = document.querySelector('.thanh-toan')
-
-dashBoard.addEventListener('click', () => {
-})
-giaSu.addEventListener('click', () => {
-    const aGiaSu = document.querySelector('.a-gia-su')
-    aGiaSu.classList.add("activate")
-    document.querySelector('.a-dash-board').classList.remove("activate")
-    document.querySelector('.a-hoc-sinh').classList.remove("activate")
-    document.querySelector('.a-lop-hoc').classList.remove("activate")
-    document.querySelector('.a-thanh-toan').classList.remove("activate")
-})
-hocSinh.addEventListener('click', () => {
-    document.querySelector('.a-hoc-sinh').classList.add("activate")
-    document.querySelector('.a-dash-board').classList.remove("activate")
-    document.querySelector('.a-gia-su').classList.remove("activate")
-    document.querySelector('.a-lop-hoc').classList.remove("activate")
-    document.querySelector('.a-thanh-toan').classList.remove("activate")
-})
-lopHoc.addEventListener('click', () => {
-    document.querySelector('.a-lop-hoc').classList.add("activate")
-    document.querySelector('.a-dash-board').classList.remove("activate")
-    document.querySelector('.a-hoc-sinh').classList.remove("activate")
-    document.querySelector('.a-gia-su').classList.remove("activate")
-    document.querySelector('.a-thanh-toan').classList.remove("activate")
-})
-thanhToan.addEventListener('click', () => {
-    document.querySelector('.a-thanh-toan').classList.add("activate")
-    document.querySelector('.a-dash-board').classList.remove("activate")
-    document.querySelector('.a-hoc-sinh').classList.remove("activate")
-    document.querySelector('.a-lop-hoc').classList.remove("activate")
-    document.querySelector('.a-gia-su').classList.remove("activate")
-})
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: 'Lợi Nhuận',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1,
-            backgroundColor: '#FCFFB2'
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-
-            }
-        }, maintainAspectRatio: false, responsive: true,
-    }
-});
-const ctx2 = document.getElementById('myChart2');
-
-new Chart(ctx2, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: 'Số lượng lớp',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }, maintainAspectRatio: false, responsive: true,
-    }
-});
-const data = {
-    labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-    ],
-    datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
-        backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4, maintainAspectRatio: false, responsive: true,
-    }]
+var requestOptionsGet = {
+    method: 'GET',
+    headers: {"Content-Type": "application/json"},
+    redirect: 'follow'
 };
-const config = {
-    type: 'pie',
-    data: data,
+
+
+var requestOptions = {
+    method: 'GET',
+    headers: {"Content-Type": "application/json"},
+    redirect: 'follow'
 };
-const pie = document.getElementById('pie');
-new Chart(pie, config)
+
+fetch("http://localhost:8080/DashBoardWeb_war_exploded/home?action=k", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        const countHocSinh = document.querySelector("#so-luong-hoc-sinh").innerText = result['soLuongHocSinh'];
+        const countGiaSu = document.getElementById("so-luong-gia-su");
+        const countLopHoc = document.getElementById("so-luong-lop-hoc");
+        const doanhThu = document.getElementById("doanh-thu");
+        // countHocSinh.innerText = ;
+        countGiaSu.innerText = result["soLuongGiaSu"];
+        countLopHoc.innerText = result['soLuongLopHoc'];
+        doanhThu.innerText = result['tongDoanhThu'];
+    })
+    .catch(error => console.log('error', error));
+var currentChart;
+fetch("http://localhost:8080/DashBoardWeb_war_exploded/home?action=loinhuan", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        const selectElement = document.getElementById("year");
+        var years = Object.keys(result[0]);
+        years.forEach((year) => {
+            const option = document.createElement("option");
+            option.textContent = year;
+            selectElement.appendChild(option);
+        });
+        const minYear= years[0]
+        var profitByYear = Object.values(result[0][minYear]);
+        var labels =Object.keys(result[0][2021]);
+        var labelUpdate = [];
+        labels.forEach((e)=>{
+            labelUpdate.push("Tháng "+e);
+        })
+
+        // Biểu đồ lợi nhuận
+        var ctx = document.getElementById('profitChart').getContext('2d');
+        currentChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labelUpdate,
+                datasets: [{
+                    label: 'Lợi nhuận',
+                    data: profitByYear,
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            },
+            options: {}
+        });
+    })
+    .catch(error => console.log('error', error));
+
+fetch("http://localhost:8080/DashBoardWeb_war_exploded/home?action=tyle", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        const data = {
+            labels: [
+                'Chi trả cho gia sư',
+                'Lợi nhuận'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [result['phanTram'], 100 - result['phanTram']],
+
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                hoverOffset: 2, maintainAspectRatio: false, responsive: true,
+            }]
+        };
+        const config = {
+            type: 'pie',
+            data: data,
+        };
+        console.log(data)
+        const pie = document.getElementById('pie');
+        new Chart(pie, config)
+    })
+    .catch(error => console.log('error', error));
+
+
+
+function drawChart1() {
+    console.log("after",currentChart)
+// Hàm cập nhật biểu đồ dựa trên năm đã chọn
+    fetch("http://localhost:8080/DashBoardWeb_war_exploded/home?action=loinhuan", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log("re",result)
+            const selectElement = document.getElementById("year");
+            var selectedYear = document.getElementById('year')
+            var year = selectedYear.options[selectedYear.selectedIndex].text;
+
+            var profitByYear = Object.values(result[0][year]);
+
+            var labels =Object.keys(result[0][year]);
+            var labelUpdate = [];
+            labels.forEach((e)=>{
+                labelUpdate.push("Tháng "+e);
+            })
+            console.log("la",labelUpdate)
+            // Hủy biểu đồ hiện tại nếu tồn tại
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            // Biểu đồ lợi nhuận
+            var ctx = document.getElementById('profitChart').getContext('2d');
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labelUpdate,
+                    datasets: [{
+                        label: 'Lợi nhuận',
+                        data: profitByYear,
+                        borderColor: 'blue',
+                        fill: false
+                    }]
+                },
+                options: {}
+            });
+        })
+        .catch(error => console.log('error', error));
+
+
+}
+
+var myChart2
+
+fetch(`http://localhost:8080/DashBoardWeb_war_exploded/home?action=dangkilophoc&startDate=2023-05-30&endDate=2023-07-21`, requestOptionsGet)
+    .then(response => response.json())
+    .then(result => {
+        const dates = [];
+        const hocSinhDangKi = [];
+        const soLopMo = [];
+        result.forEach(item => {
+            for (const date in item) {
+                dates.push(date);
+                hocSinhDangKi.push(item[date].hocSinhDangKi);
+                soLopMo.push(item[date].soLopMo);
+            }
+        });
+        if (myChart2) {
+            myChart2.destroy();
+        }
+        const ctx2 = document.getElementById("myChart2")
+        myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Số học sinh đăng ký',
+                        data: hocSinhDangKi,
+                        borderColor: 'rgb(75, 192, 192)',
+                        fill: false
+                    },
+                    {
+                        label: 'Số lớp được mở',
+                        data: soLopMo,
+                        borderColor: 'rgb(255, 99, 132)',
+                        fill: false
+                    }
+                ], maintainAspectRatio: false, responsive: true,
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Ngày tháng năm'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Số lượng'
+                        }
+                    }
+                }
+            }
+        });
+    })
+    .catch(error => console.log('error', error));
+
+
+function filterDate() {
+    var startDate = document.getElementById("startDate").value;
+    var endDate = document.getElementById("endDate").value;
+
+    fetch(`http://localhost:8080/DashBoardWeb_war_exploded/home?action=dangkilophoc&startDate=${startDate}&endDate=${endDate}`, requestOptionsGet)
+        .then(response => response.json())
+        .then(result => {
+            const dates = [];
+            const hocSinhDangKi = [];
+            const soLopMo = [];
+            result.forEach(item => {
+                for (const date in item) {
+                    dates.push(date);
+                    hocSinhDangKi.push(item[date].hocSinhDangKi);
+                    soLopMo.push(item[date].soLopMo);
+                }
+            });
+            if (myChart2) {
+                myChart2.destroy();
+            }
+            const ctx2 = document.getElementById("myChart2")
+            myChart2 = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Số học sinh đăng ký',
+                            data: hocSinhDangKi,
+                            borderColor: 'rgb(75, 192, 192)',
+                            fill: false
+                        },
+                        {
+                            label: 'Số lớp được mở',
+                            data: soLopMo,
+                            borderColor: 'rgb(255, 99, 132)',
+                            fill: false
+                        }
+                    ], maintainAspectRatio: false, responsive: true,
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Ngày tháng năm'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Số lượng'
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.log('error', error));
+
+
+}
+
+
