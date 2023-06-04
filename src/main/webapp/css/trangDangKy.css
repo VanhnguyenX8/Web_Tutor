@@ -1,30 +1,40 @@
 #main{
 	display: block;
 	padding-bottom: 30px;
-    padding-top: 30px;
-    margin: 30px 10%;
-    position: relative;
+	padding-top: 30px;
+	margin: 30px 10%;
+	position: relative;
 }
 
 .nhomNut {
-  display: flex;
+	display: flex;
+}
+
+.nhomNut ul{
+	display: none;
+	list-style-type: none; 
+}
+
+.nhomNut ul.active{
+	display: block;
+	width: 200px;
 }
 
 .nutBacHoc {
-  background-color: #eaeaea;
-  border: none;
-  color: #111;
-  padding: 15px 30px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
+	background-color: #eaeaea;
+	border: none;
+	color: #111;
+	padding: 15px 30px;
+	cursor: pointer;
+	font-size: 16px;
+	border-radius: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 
 .nutBacHoc.active {
-  background-color: #009bff;
-  color: #fff;
+	background-color: #009bff;
+	color: #fff;
 }
 
 .trai {
@@ -49,18 +59,18 @@
 }
 
 .nutLop {
-	width: 80px;
-	height: 40px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
+	min-width: 80px;
+	min-height: 40px;
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	margin-left: 20px;
 }
 
 .nutLop.active {
-  background-color: #f44336;
+	background-color: #f44336;
 }
 
 .nhan{
@@ -70,26 +80,22 @@
 }
 
 .nhan ul {
-  list-style-type: none; 
-  display: flex; 
+	list-style-type: none; 
+	display: flex; 
 }
 
 .nhan li {
-  font-style: italic; 
-  font-size: 24px;
+	font-style: italic; 
+	font-size: 24px;
 }
 
 .nhan li:nth-child(1) {
 	margin-left: 5%;
-  margin-right: 20%; 
+	margin-right: 20%; 
 }
 
 .nhan li:nth-child(2) {
-  margin-right: 30%; 
-}
-
-.nhomNut ul{
-	list-style-type: none; 
+	margin-right: 30%; 
 }
 
 .nutMon {
@@ -105,7 +111,19 @@
 }
     
 .nutMon.active {
-  background-color: #3498db;
+	background-color: #3498db;
+}
+
+.lopHoc{
+	min-width: 480px;
+}
+
+.lopHoc ul{
+	display: none;
+}
+
+.lopHoc ul.active{
+	display: block;
 }
 
 .lopHoc li{
@@ -150,8 +168,13 @@
 .lopHocDaChon{
 	width: 400px;
     padding: 20px;
-    border: 2px solid;
+    /*border: 2px solid;*/
     margin-left: 100px;
+}
+
+.lopHocDaChon ul{
+	display: block;
+	padding-inline-start: 0px
 }
 
 .lopHocDaChon li{
@@ -207,7 +230,7 @@
 }
 
 .lopHocDaChon .xoa {
-  clear: both;
+	clear: both;
 }
 
 #dangKy{
@@ -216,6 +239,7 @@
 	width: 100%;
 	margin-top: 20px;
 	font-size: 20px;
+	cursor: pointer;
 }
 
 #chuaChonLopHoc{
@@ -223,8 +247,8 @@
 }
 
 .voHieu {
-  pointer-events: none;
-  opacity: 0.5;
+	pointer-events: none;
+	opacity: 0.5;
 }
 
 #thongBao{
@@ -232,22 +256,22 @@
 }
 
 #thongBao {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  min-width: 500px;
-  border: 1px solid;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	min-width: 500px;
+	border: 1px solid;
 }
 
 
 #thongBaoHeader{
 	padding: 5px 0px;
-  color: white;
-  text-align: center;
-  background-color: #3498db;
+	color: white;
+	text-align: center;
+	background-color: #3498db;
 }
 
 
@@ -262,13 +286,17 @@
     list-style-type: none;
 }
 
+#khongRong #thongBaoMain ul{
+	padding-inline-start: 0px;
+}
+
 .tien {
-  float: right;
+	float: right;
 }
 
 .tien .hocPhi, .soDu, .thieu {
-   display: flex;
-  	align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 
@@ -290,59 +318,38 @@
 #thongBaoFooter {
 	clear: both;
 	border-top: 1px solid rgba(0, 0, 0, 0.5);
-  text-align: right;
+	text-align: right;
 }
 
 #thongBaoFooter .dongThongBao {
-  background-color: #888;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 10px;
+	background-color: #888;
+	color: #000;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 10px;
 }
 
 #thongBaoFooter #napThemTien {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 10px;
+	background-color: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 10px;
 }
 
 #thongBaoFooter #xacNhanDangKy {
-  background-color: orange;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-
-
-
-
-
-.class-content {
-  display: none;
-}
-
-.class-content.active {
-  display: block;
-}
-
-.course-content {
-  display: none;
-}
-
-.course-content.active {
-  display: block;
+	background-color: orange;
+	color: #000;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 10px;
 }
