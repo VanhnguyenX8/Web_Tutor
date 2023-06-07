@@ -6,7 +6,7 @@ import java.util.*;
 import Model.LopHoc;
 import Model.TaiKhoan;
 
-public class LopHocDAO extends DBconnect{
+public class LopHocDKDAO extends DBconnect{
 	public ArrayList<LopHoc> getLopHoc(int index) {
 		String sql;
 		if(index == 0) {

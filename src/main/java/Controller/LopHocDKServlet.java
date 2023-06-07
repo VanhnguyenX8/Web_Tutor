@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import DAO.LopHocDAO;
+import DAO.LopHocDKDAO;
 import Model.LopHoc;
 
 /**
@@ -20,13 +20,13 @@ import Model.LopHoc;
  */
 //@WebServlet("/LopHocServlet")
 @WebServlet(name = "LopHocServlet", urlPatterns = {"/TieuHoc", "/THCS", "/THPT"})
-public class LopHocServlet extends HttpServlet {
+public class LopHocDKServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LopHocServlet() {
+    public LopHocDKServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,13 +39,13 @@ public class LopHocServlet extends HttpServlet {
 		ArrayList<LopHoc> lopHoc;
  		
 		if(path.equals("/TieuHoc")) {
-			lopHoc = new LopHocDAO().getLopHoc(0);
+			lopHoc = new LopHocDKDAO().getLopHoc(0);
 		}
 		else if(path.equals("/THCS")) {
-			lopHoc = new LopHocDAO().getLopHoc(1);
+			lopHoc = new LopHocDKDAO().getLopHoc(1);
 		}
 		else {
-			lopHoc = new LopHocDAO().getLopHoc(2);
+			lopHoc = new LopHocDKDAO().getLopHoc(2);
 		}
 		String json = getLopHocJson(lopHoc);
 		
