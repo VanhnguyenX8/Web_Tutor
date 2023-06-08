@@ -11,19 +11,15 @@
 	<div id="header"></div>
 	<div id="main">
 		<div class="nhomNut">
-		  	<button class="nutBacHoc">Tiểu học</button>
-		 	<button class="nutBacHoc">THCS</button>
+		  	<button class="nutBacHoc" onclick="redirectToPage('dangKyTieuHoc.jsp')">Tiểu học</button>
+		 	<button class="nutBacHoc" onclick="redirectToPage('dangKyTHCS.jsp')">THCS</button>
 		  	<button class="nutBacHoc">THPT</button>
 		  	
 		</div>
 		<div class="trai">
 			<h3 id="bacHoc">Trung học phổ thông</h3>
 			<div class="nhomNut">
-				<button class="nutLop">Lớp 1</button>
-				<button class="nutLop">Lớp 2</button>
-			  	<button class="nutLop">Lớp 3</button>
-			  	<button class="nutLop">Lớp 4</button>
-			  	<button class="nutLop">Lớp 5</button>
+				
 			</div>
 		</div>
 		<div class="nhan">
@@ -35,23 +31,11 @@
 		</div>
 		<div class="nhomNut">
 			<ul>
-				<li><button class="nutMon">Toán</button></li>
-				<li><button class="nutMon">Tiếng Việt</button></li>
+				
 			</ul>
 			<div class="lopHoc">
 				<ul>
-					<li>
-						<div class="tenLop">Toán 1</div>
-						<div class="giaoVien">Giáo Viên: Nguyễn Văn A</div>
-						<div class="hocPhi">100000đ</div>
-						<div><button class="chon">Chọn</button></div>
-					</li>
-					<li>
-						<div class="tenLop">Tiếng Việt 1</div>
-						<div class="giaoVien">Giáo Viên: Nguyễn Văn B</div>
-						<div class="hocPhi">200000đ</div>
-						<div><button class="chon">Chọn</button></div>
-					</li>
+					
 				</ul>
 			</div>
 			<div class="lopHocDaChon">
