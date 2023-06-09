@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\Web_gia_su\Web_Tutor\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3837618257.index
+3814997867.index
+4123887919.index
+3334439484.index
+238046239.index
+2979001711.index
