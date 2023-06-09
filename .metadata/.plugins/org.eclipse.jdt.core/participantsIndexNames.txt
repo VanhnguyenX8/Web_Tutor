@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-D:\Web_gia_su\Web_Tutor\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3799638916.index
-\Web_Tutor\src\main\java
-D:\Web_gia_su\Web_Tutor\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1511580846.index
-\Web_Tutor\src\main\java
