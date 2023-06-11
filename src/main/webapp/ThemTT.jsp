@@ -3,21 +3,21 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Cập nhập thông tin</title>
  <link rel="stylesheet" type="text/css" href="css/themthongtin.css" />
 </head>
 <body>
 	<div class="container">
         <h2>Cập nhật thông tin cá nhân</h2>
-        <form action="AddInfo" method="post">
+        <form action="AddInfo" method="post" >
             <div class="form-group">
                 <label for="name">Tên học sinh:</label>
                 <input type="text" id="name" name="name" required>
             </div>
              <div class="form-group">
-                <label for="ngaySinh">Năm Sinh:</label>ngaySinh
-				<input type="date" id="ngaySinh" name="">
+                <label for="ngaySinh">Năm Sinh:</label>
+				<input type="date" id="ngaySinh" name="ngaySinh">
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại:</label>

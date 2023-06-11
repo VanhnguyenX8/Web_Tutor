@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
     <title>Thêm thông tin gia sư</title>
     <style>
         /* CSS cho trang addGiaSu.jsp */

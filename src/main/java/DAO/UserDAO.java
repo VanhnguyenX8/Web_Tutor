@@ -12,23 +12,25 @@ import java.util.List;
 
 import Model.UserGS;
 
-public class UserDAO extends DBconnect {
+public class UserDAO {
     TaiKhoanDao taikhoanDao = new TaiKhoanDao();
     MonHocDAO monHocDAO = new MonHocDAO();
+    public DBconnect db = new DBconnect();
+	Connection con = db.DBconnect();
 	public String getNameFromDatabase(String username) throws SQLException{
 	    PreparedStatement statement = null;
 	    ResultSet resultSet = null;
 	    String Name = null;
 	    try {
 	        // Chuẩn bị câu truy vấn
-	        String query = "SELECT tenGS FROM giasu WHERE username = ?";
+	        String query = "SELECT ten_gia_su FROM giasu WHERE username = ?";
 	        statement = con.prepareStatement(query);
 	        statement.setString(1, username);
 	        // Thực thi câu truy vấn
 	        resultSet = statement.executeQuery();
 	        // Xử lý kết quả truy vấn
 	        if (resultSet.next()) {
-	            Name = resultSet.getString("tenGS");
+	            Name = resultSet.getString("ten_gia_su");
 	        }
 	        return Name;
 	    } catch (SQLException e) {
@@ -60,37 +62,22 @@ public class UserDAO extends DBconnect {
 	    }
 	    return null;
 	}
-	// Thêm GS
-    public void insert(UserGS giaSu) throws SQLException {
-        String query = "INSERT INTO giasu (tenGS, gioitinh, diachi, sdt, email, stk, idMH, username, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement statement = con.prepareStatement(query);
-        statement.setString(1, giaSu.getTenGS());
-        statement.setString(2, giaSu.getGioitinh());
-        statement.setString(3, giaSu.getDiachi());
-        statement.setString(4, giaSu.getSdt());
-        statement.setString(5, giaSu.getEmail());
-        statement.setString(6, giaSu.getStk());
-        statement.setString(7, giaSu.getMonHoc().getIdMH());
-        statement.setString(8, giaSu.getAccount().getUsername());
-        statement.setString(9, giaSu.getImg());
-        statement.executeUpdate();
-    }
     //thêm thông tin mới sau đăng kí
     public void saveGiaSu(UserGS giaSu) {
         try {
             String sql = "update giasu "
-            		+ "set tenGS = ?, gioitinh = ?, namsinh = ?, sdt = ?, email = ?, diachi = ?,  stk = ? "
+            		+ "set ten_gia_su = ?, gioi_tinh = ?, nam_sinh = ?, sdt = ?, email = ?, dia_chi = ?,  so_tai_khoan = ? "
             		+ "where username = ?;";
             PreparedStatement statement = con.prepareStatement(sql);
             statement = con.prepareStatement(sql);
-            statement.setString(1, giaSu.getTenGS());
-            statement.setString(2, giaSu.getGioitinh());
-            statement.setDate(3, giaSu.getNgaySinh());
+            statement.setString(1, giaSu.getTen_gia_su());
+            statement.setString(2, giaSu.getGioi_tinh());
+            statement.setDate(3, giaSu.getNam_sinh());
             statement.setString(4, giaSu.getSdt());
             statement.setString(5, giaSu.getEmail());
-            statement.setString(6, giaSu.getDiachi());
-            statement.setString(7, giaSu.getStk());
-            statement.setString(8, giaSu.getAccount().getUsername());
+            statement.setString(6, giaSu.getDia_chi());
+            statement.setString(7, giaSu.getSotaikhoan());
+            statement.setString(8, giaSu.getUsername());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,111 +91,67 @@ public class UserDAO extends DBconnect {
         statement.setString(1, username);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
-            String tenGS = resultSet.getString("tenGS");
-            String gioiTinh = resultSet.getString("gioitinh");
-            Date ngaySinh = resultSet.getDate("namsinh");
-            String img = resultSet.getString("img");
-            String diaChi = resultSet.getString("diachi");
+        	String id = resultSet.getString("id");
+            String tenGS = resultSet.getString("ten_gia_su");
+            Date ngaySinh = resultSet.getDate("nam_sinh");
             String sdt = resultSet.getString("sdt");
             String email = resultSet.getString("email");
-            String stk = resultSet.getString("stk");
-            String idMH = resultSet.getString("idMH");
-            int idGS = resultSet.getInt("idGS");
-            return new UserGS(idGS, tenGS, gioiTinh, ngaySinh, img, diaChi, sdt, email, stk, monHocDAO.getById(idMH), taikhoanDao.getByUsername(username));
+            String stk = resultSet.getString("so_tai_khoan");
+            String gioiTinh = resultSet.getString("gioi_tinh");
+            String diaChi = resultSet.getString("dia_chi");
+            int chuathanhtoan = resultSet.getInt("chua_thanh_toan");
+            String img = resultSet.getString("hinh_anh");
+            int sodutaikhoan = resultSet.getInt("so_du_tai_khoan");
+            return new UserGS(id, tenGS, ngaySinh, sdt, email, stk, username, gioiTinh, diaChi, chuathanhtoan, img, sodutaikhoan);
         }
         return null;
     }
-  //Lấy tt GS theo idGS
-    public UserGS getById(int idGS) throws SQLException {
-        String query = "SELECT * FROM giasu WHERE idGS = ?";
-        PreparedStatement statement = con.prepareStatement(query);
-        statement.setInt(1, idGS);
-        ResultSet resultSet = statement.executeQuery();
-        if (resultSet.next()) {
-            String tenGS = resultSet.getString("tenGS");
-            String gioiTinh = resultSet.getString("gioitinh");
-            Date ngaySinh = resultSet.getDate("namsinh");
-            String img = resultSet.getString("img");
-            String diaChi = resultSet.getString("diachi");
-            String sdt = resultSet.getString("sdt");
-            String email = resultSet.getString("email");
-            String stk = resultSet.getString("stk");
-            String idMH = resultSet.getString("idMH");
-            String username = resultSet.getString("username");
-            return new UserGS(idGS, tenGS, gioiTinh, ngaySinh, img, diaChi, sdt, email, stk, monHocDAO.getById(idMH), taikhoanDao.getByUsername(username));
+    public UserGS getGiaSuByUsername(String username) throws SQLException {
+        String query = "SELECT * FROM giasu WHERE username = ?";
+
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            statement.setString(1, username);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return mapResultSetToGiaSu(resultSet);
+                }
+            }
         }
+
         return null;
     }
-    
-  //Lấy ds tất cả các GS
-    public List<UserGS> getAll() throws SQLException {
-        String query = "SELECT * FROM giasu";
-        PreparedStatement statement = con.prepareStatement(query);
-        ResultSet resultSet = statement.executeQuery();
-        List<UserGS> giaSus = new ArrayList<>();
-        while (resultSet.next()) {
-            int idGS = resultSet.getInt("idGS");
-            String tenGS = resultSet.getString("tenGS");
-            String gioiTinh = resultSet.getString("gioitinh");
-            Date ngaySinh = resultSet.getDate("namsinh");
-            String img = resultSet.getString("img");
-            String diaChi = resultSet.getString("diachi");
-            String sdt = resultSet.getString("sdt");
-            String email = resultSet.getString("email");
-            String stk = resultSet.getString("stk");
-            String idMH = resultSet.getString("idMH");
-            String username = resultSet.getString("username");
-            UserGS giaSu = new UserGS(idGS, tenGS, gioiTinh, ngaySinh, img, diaChi, sdt, email, stk, monHocDAO.getById(idMH), taikhoanDao.getByUsername(username));
-            giaSus.add(giaSu);
-        }
-        return giaSus;
-    }
-  //Lấy ds các GS theo lever, truy xuất tt từ bảng giasu và monhoc
-    public List<UserGS> getAllByLever(int lever) throws SQLException {
-        String query = "SELECT * FROM giasu join monhoc on giasu.idMH = monhoc.idMH where lever = ?";
-        PreparedStatement statement = con.prepareStatement(query);
-        statement.setInt(1, lever);
 
-        ResultSet resultSet = statement.executeQuery();
-        List<UserGS> giaSus = new ArrayList<>();
-        while (resultSet.next()) {
-            int idGS = resultSet.getInt("idGS");
-            String tenGS = resultSet.getString("tenGS");
-            String gioiTinh = resultSet.getString("gioitinh");
-            Date ngaySinh = resultSet.getDate("namsinh");
-            String img = resultSet.getString("img");
-            String diaChi = resultSet.getString("diachi");
-            String sdt = resultSet.getString("sdt");
-            String email = resultSet.getString("email");
-            String stk = resultSet.getString("stk");
-            String idMH = resultSet.getString("idMH");
-            String username = resultSet.getString("username");
-            UserGS giaSu = new UserGS(idGS, tenGS, gioiTinh, ngaySinh, img, diaChi, sdt, email, stk, monHocDAO.getById(idMH), taikhoanDao.getByUsername(username));
-            giaSus.add(giaSu);
+    public int countHocSinhByGiaSuUsername(String giaSuUsername) throws SQLException {
+        String query = "SELECT COUNT(*) FROM LopHoc lh LEFT JOIN HocSinh hs ON lh.id = hs.lop_hoc_id WHERE lh.username_gia_su = ? AND (hs.id IS NULL OR hs.id <> 0)";
+
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+            statement.setString(1, giaSuUsername);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+            }
         }
-        return giaSus;
+
+        return 0;
     }
 
-  //Cập nhật tt GS theo idGS
-    public void update(UserGS giaSu) throws SQLException {
-        String query = "UPDATE giasu SET tenGS = ?, gioitinh = ? , diachi = ?, sdt = ?, email = ?, stk = ?, idMH = ?, img = ? WHERE username = ?";
-        PreparedStatement statement = con.prepareStatement(query);
-        statement.setString(9, giaSu.getAccount().getUsername());
-        statement.setString(1, giaSu.getTenGS());
-        statement.setString(2, giaSu.getGioitinh());
-        statement.setString(3, giaSu.getDiachi());
-        statement.setString(4, giaSu.getSdt());
-        statement.setString(5, giaSu.getEmail());
-        statement.setString(6, giaSu.getStk());
-        statement.setString(7, giaSu.getMonHoc().getIdMH());
-        statement.setString(8, giaSu.getImg());
-        statement.executeUpdate();
+    private UserGS mapResultSetToGiaSu(ResultSet resultSet) throws SQLException {
+        String id = resultSet.getString("id");
+        String tenGiaSu = resultSet.getString("ten_gia_su");
+        Date namSinh = resultSet.getDate("nam_sinh");
+        String sdt = resultSet.getString("sdt");
+        String email = resultSet.getString("email");
+        String soTaiKhoan = resultSet.getString("so_tai_khoan");
+        String username = resultSet.getString("username");
+        String gioiTinh = resultSet.getString("gioi_tinh");
+        String diaChi = resultSet.getString("dia_chi");
+        int chuaThanhToan = resultSet.getInt("chua_thanh_toan");
+        String hinhAnh = resultSet.getString("hinh_anh");
+        int soDuTaiKhoan = resultSet.getInt("so_du_tai_khoan");
+
+        return new UserGS(id, tenGiaSu, namSinh, sdt, email, soTaiKhoan, username, gioiTinh, diaChi, chuaThanhToan, hinhAnh, soDuTaiKhoan);
     }
-  //xóa 1 gia su theo username
-  	 public void delete(String username) throws SQLException {
-  	 	String query = "DELETE FROM giasu WHERE username = ?";
-  	 	PreparedStatement statement = con.prepareStatement(query);
-  	    statement.setString(1, username);
-  	    statement.executeUpdate();
-  	 }
 }

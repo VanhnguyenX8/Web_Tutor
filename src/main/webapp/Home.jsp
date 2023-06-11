@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1" />
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
     <title>Trang chủ</title>
     <link rel="stylesheet" href="css/home.css">
@@ -32,10 +32,10 @@ pageEncoding="UTF-8"%>
                 <img class="anhiconlogo" src="logo." alt="">
           		<div class="thongtinnguoidung">
             		<button class="subdangnhap" type="submit">
-              			<a href="/Web_Tutor1/TaiKhoanServlet">Đăng Nhập</a>
+              			<a href="/Web_Tutor/TaiKhoanServlet">Đăng Nhập</a>
             		</button>
             		<button class="subdangki" type="submit">
-              			<a href="/Web_Tutor1/signup.jsp">Đăng Kí</a>
+              			<a href="/Web_Tutor/signup.jsp">Đăng Kí</a>
             		</button>
           		</div>
             </div>
@@ -181,33 +181,27 @@ pageEncoding="UTF-8"%>
 	                      width="400"
 	                      height="400"></div>
 	        </div>
-	        	<% List<UserGS> list3lv3 = (List<UserGS>) request.getAttribute("list3lv3");
-				   if (list3lv3 != null) {
-				       for (UserGS gs : list3lv3) { %>
-				           <div class="col 2 table_thpt_item" align="center">
-				               <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-				               <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-				               <p1><%= gs.getMonHoc().getTenMH() %></p1>
-				               <p1>Số lớp học: <%= gs.getCountLH() %></p1>
-				           </div>
-				    <% }
-				   } %>
+	        	 <c:forEach var="lh" items="${list3lv3}">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		    </div>
 	    <br>
     	<br>
 		<div class="row">
-		    <% List<UserGS> list4lv3 = (List<UserGS>) request.getAttribute("list4lv3");
-		       if (list4lv3 != null) {
-		           for (UserGS gs : list4lv3) { %>
-		               <% int count = 5; %>
-		               <div class="col 3 table_thpt_item" align="center">
-		                   <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-		                   <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-		                   <p><%= gs.getMonHoc().getTenMH() %></p>
-		                   <p>Số lớp học: <%= gs.getCountLH() %></p>
-		               </div>
-		       <% }
-		       } %>
+		    <c:forEach var="lh" items="${list4lv3}">
+            <c:set var="count" value="${5}" />
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		</div>
 	</div>
     <!-- Trung học cơ sở -->
@@ -224,33 +218,27 @@ pageEncoding="UTF-8"%>
 	                      width="400"
 	                      height="400"></div>
 	        </div>
-	        	<% List<UserGS> list3lv2 = (List<UserGS>) request.getAttribute("list3lv2");
-				   if (list3lv3 != null) {
-				       for (UserGS gs : list3lv3) { %>
-				           <div class="col 2 table_thpt_item" align="center">
-				               <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-				               <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-				               <p1><%= gs.getMonHoc().getTenMH() %></p1>
-				               <p1>Số lớp học: <%= gs.getCountLH() %></p1>
-				           </div>
-				    <% }
-				   } %>
+	        	 <c:forEach var="lh" items="${list3lv2}">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		    </div>
 	    <br>
     	<br>
 		<div class="row">
-		    <% List<UserGS> list4lv2 = (List<UserGS>) request.getAttribute("list4lv2");
-		       if (list4lv3 != null) {
-		           for (UserGS gs : list4lv3) { %>
-		               <% int count = 5; %>
-		               <div class="col 3 table_thpt_item" align="center">
-		                   <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-		                   <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-		                   <p><%= gs.getMonHoc().getTenMH() %></p>
-		                   <p>Số lớp học: <%= gs.getCountLH() %></p>
-		               </div>
-		       <% }
-		       } %>
+		    <c:forEach var="lh" items="${list4lv2}">
+            <c:set var="count" value="${5}" />
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		</div>
 	</div>
     <!-- tiểu học -->
@@ -267,33 +255,27 @@ pageEncoding="UTF-8"%>
 	                      width="400"
 	                      height="400"></div>
 	        </div>
-	        	<% List<UserGS> list3lv1 = (List<UserGS>) request.getAttribute("list3lv3");
-				   if (list3lv3 != null) {
-				       for (UserGS gs : list3lv3) { %>
-				           <div class="col 2 table_thpt_item" align="center">
-				               <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-				               <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-				               <p1><%= gs.getMonHoc().getTenMH() %></p1>
-				               <p1>Số lớp học: <%= gs.getCountLH() %></p1>
-				           </div>
-				    <% }
-				   } %>
+	        	<c:forEach var="lh" items="${list3lv1}">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		    </div>
 	    <br>
     	<br>
 		<div class="row">
-		    <% List<UserGS> list4lv1 = (List<UserGS>) request.getAttribute("list4lv3");
-		       if (list4lv3 != null) {
-		           for (UserGS gs : list4lv3) { %>
-		               <% int count = 5; %>
-		               <div class="col 3 table_thpt_item" align="center">
-		                   <img src="<%= gs.getImg() %>" alt="" width="200" height="200">
-		                   <p><a href="profileGS?id=<%= gs.getIdGS() %>">Giáo Viên: <%= gs.getTenGS() %></a></p>
-		                   <p><%= gs.getMonHoc().getTenMH() %></p>
-		                   <p>Số lớp học: <%= gs.getCountLH() %></p>
-		               </div>
-		       <% }
-		       } %>
+		    <c:forEach var="lh" items="${list4lv1}">
+            <c:set var="count" value="${5}" />
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
+                <p1>${lh.tenLopHoc}</p1>
+                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            </div>
+        </c:forEach>
 		</div>
 	</div>
     <div class="footer">

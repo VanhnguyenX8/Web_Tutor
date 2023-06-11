@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="ISO-8859-1" />
+    <meta charset="UTF-8">
     <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" type="text/css" href="css/signup.css" />
   </head>
@@ -14,7 +14,14 @@ pageEncoding="UTF-8"%>
     <div class="login">
       <h2>Người dùng đăng ký</h2>
       <form action="SignUpServlet" method="post">
-      	<div class="alert-danger" role="alert">${mess}</div>
+      	<%
+  			String mess = (String) request.getAttribute("mess");
+  			if (mess != null && !mess.isEmpty()) {
+		%>
+      	<div class="alert-danger" role="alert"><%= mess %></div>
+      	<%
+  			}
+		%>
         <label for="username">Tài Khoản:</label>
         <input type="text" id="username" placeholder="Tài Khoản" name="username" required /><br />
         <label for="password">Mật Khẩu:</label>

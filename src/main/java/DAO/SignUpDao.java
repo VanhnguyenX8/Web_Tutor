@@ -1,22 +1,35 @@
 package DAO;
 
+import java.net.ConnectException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import Model.TaiKhoan;
 
-public class SignUpDao extends DBconnect {
+public class SignUpDao {
+	public DBconnect db = new DBconnect();
+	Connection con = db.DBconnect();
 	public TaiKhoan checkAccount(String user) {
-		String query = "select * from accout where username = ? ";
+		String query = "select (username, password, role, encode) from account where username = ? ";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, user);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				TaiKhoan a = new TaiKhoan(rs.getString(1), rs.getString(2),rs.getString(3), rs.getBytes(4));
-				System.out.println(a);
-				return a;
+			if(con!=null) {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, user);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+	//				UUID id = UUID.fromString(rs.getString(1)); // Chuyển đổi chuỗi UUID thành UUID
+		            String username = rs.getString("username");
+		            String password = rs.getString("password");
+		            String position = rs.getString("role");
+		            byte[] encode = rs.getBytes("encode");
+		            
+		            TaiKhoan taiKhoan = new TaiKhoan(username, password, position, encode);
+		            System.out.println(taiKhoan);
+		            return taiKhoan;
+				}
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -26,16 +39,18 @@ public class SignUpDao extends DBconnect {
 	}
 
 	public void NewAccount(String user, String pass, String position, byte[] encode) {
-		String query = "insert into accout(username, password, position, encode) values (?,?,?,?);";
+		String query = "insert into account(username, password, role, encode) values (?,?,?,?);";
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, user);
-			ps.setString(2, pass);
-			ps.setString(3, position);
-			ps.setBytes(4, encode);
-			ps.executeUpdate();
-			// k can dung result vi khi usertao tai khoan se k co du lieu tra ve
-			// can dung [executeUpdate()] de update lai du lieu
+			if(con!=null) {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, user);
+				ps.setString(2, pass);
+				ps.setString(3, position);
+				ps.setBytes(4, encode);
+				ps.executeUpdate();
+				// k can dung result vi khi usertao tai khoan se k co du lieu tra ve
+				// can dung [executeUpdate()] de update lai du lieu
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +58,7 @@ public class SignUpDao extends DBconnect {
 	}
 	
 	public void NewInfoGS(String user) {
-		String query = "insert into giasu(username) values (?);";
+		String query = "insert into giasu (username) values (?);";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, user);

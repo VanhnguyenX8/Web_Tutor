@@ -61,21 +61,18 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String mess = request.getParameter("mess");
-        if (mess.equals("rePass")){
-            mess = "Nhập Lại Mật Khẩu Sai!";
-            request.setAttribute("mess", mess);
-        } else if (mess.equals("username")){
-            mess = "UserName đã có người sử dụng!";
-            request.setAttribute("mess", mess);
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/signup.jsp");
-        dispatcher.forward(request,response);
+//		String mess = request.getParameter("mess");
+//        if (mess.equals("rePass")){
+//            mess = "Nhập Lại Mật Khẩu Sai!";
+//            request.setAttribute("mess", mess);
+//        } else if (mess.equals("username")){
+//            mess = "UserName đã có người sử dụng!";
+//            request.setAttribute("mess", mess);
+//        }
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/signup.jsp");
+//        dispatcher.forward(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");

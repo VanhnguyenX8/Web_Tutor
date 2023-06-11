@@ -12,12 +12,8 @@ public class HocSinhService {
 
 
     public void insertHocSinh(UserHS hocSinh) {
-        try {
-            hocSinhDAO.insert(hocSinh);
-            System.out.println("Thêm học sinh thành công!");
-        } catch (SQLException e) {
-            System.out.println("Lỗi khi thêm học sinh: " + e.getMessage());
-        }
+        hocSinhDAO.saveHocSinh(hocSinh);
+		System.out.println("Thêm học sinh thành công!");
     }
 
     public UserHS getHocSinhByUsername(String usernameHS) {
@@ -33,32 +29,32 @@ public class HocSinhService {
         }
         return null;
     }
-
-    public List<UserHS> getAllHocSinhs() {
-        try {
-            List<UserHS> hocSinhs = hocSinhDAO.getAll();
-            return hocSinhs;
-        } catch (SQLException e) {
-            System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
-        }
-        return null;
-    }
-
-    public void updateHocSinh(UserHS hocSinh) {
-        try {
-            hocSinhDAO.update(hocSinh);
-            System.out.println("Cập nhật học sinh thành công!");
-        } catch (SQLException e) {
-            System.out.println("Lỗi khi cập nhật học sinh: " + e.getMessage());
-        }
-    }
-
-    public void deleteHocSinh(String username) {
-        try {
-            hocSinhDAO.delete(username);
-            System.out.println("Xóa học sinh thành công!");
-        } catch (SQLException e) {
-            System.out.println("Lỗi khi xóa học sinh: " + e.getMessage());
-        }
-    }
+//
+//    public List<UserHS> getAllHocSinhs() {
+//        try {
+//            List<UserHS> hocSinhs = hocSinhDAO.getAll();
+//            return hocSinhs;
+//        } catch (SQLException e) {
+//            System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
+//        }
+//        return null;
+//    }
+//
+//    public void updateHocSinh(UserHS hocSinh) {
+//        try {
+//            hocSinhDAO.update(hocSinh);
+//            System.out.println("Cập nhật học sinh thành công!");
+//        } catch (SQLException e) {
+//            System.out.println("Lỗi khi cập nhật học sinh: " + e.getMessage());
+//        }
+//    }
+//
+//    public void deleteHocSinh(String username) {
+//        try {
+//            hocSinhDAO.delete(username);
+//            System.out.println("Xóa học sinh thành công!");
+//        } catch (SQLException e) {
+//            System.out.println("Lỗi khi xóa học sinh: " + e.getMessage());
+//        }
+//    }
 }

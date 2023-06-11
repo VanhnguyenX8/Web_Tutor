@@ -74,6 +74,7 @@ public class TaiKhoanServlet extends HttpServlet {
 				//lấy password đã mã hóa từ csdl để kiểm tra
 				String password = acc.getPasswordFromDB(user);
 				String position = acc.getPositionFromDB(user);
+				//check tài khoản
 				TaiKhoan a = acc.checklogin(user, hashedPassword);
 				if (a == null) {
 				    String jspPath = "/login.jsp";
@@ -85,22 +86,21 @@ public class TaiKhoanServlet extends HttpServlet {
 				    session.setAttribute("acc", a);
 				    if (position.equals("admin")) {
 				        // Phân quyền cho admin
-//				    	response.sendRedirect("HomeServlet");
 //				        String jspPath = "/Dashboard.jsp";
-				    	response.sendRedirect("HomeServlet");
-//				        String jspPath = "/HomeServlet";
+				    	response.sendRedirect("Home");
+//				        String jspPath = "/Home";
 //				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 //				        rs.forward(request, response);
 				    } else if (position.equals("giasu")) {
 				        // Phân quyền cho gia sư
-				    	response.sendRedirect("HomeServlet");
-//				        String jspPath = "/HomeServlet";
+				    	response.sendRedirect("Home");
+//				        String jspPath = "/Home";
 //				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 //				        rs.forward(request, response);
 				    } else if (position.equals("hocsinh")) {
 				        // Phân quyền cho học sinh
-				    	response.sendRedirect("HomeServlet");
-//				        String jspPath = "/HomeServlet";
+				    	response.sendRedirect("Home");
+//				        String jspPath = "/Home";
 //				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 //				        rs.forward(request, response);
 				    }else {

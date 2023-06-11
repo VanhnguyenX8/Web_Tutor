@@ -15,13 +15,13 @@ import java.util.List;
 import DAO.UserDAO;
 import DAO.UserHSDAO;
 import Service.GiaSuService;
-import Service.LopHocService;
+//import Service.LopHocService;
 import Model.UserGS;
 
-@WebServlet (urlPatterns = {"/HomeServlet"})
+@WebServlet (urlPatterns = {"/Home"})
 public class HomeServlet extends HttpServlet {
 	GiaSuService giaSuService = new GiaSuService();
-    LopHocService lopHocService = new LopHocService();
+//    LopHocService lopHocService = new LopHocService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // Kiểm tra xem người dùng đã đăng nhập hay chưa
 	    HttpSession session = request.getSession();
@@ -40,7 +40,7 @@ public class HomeServlet extends HttpServlet {
 	        UserHSDAO userhs = new UserHSDAO();
 	        String Name = null;
 	        String email = null;
-	        String position = account.getPosition(); // Lấy vai trò của người dùng
+	        String position = account.getRole(); // Lấy vai trò của người dùng
 
 	        if (position.equals("giasu")) {
 	            // Xử lý thông tin gia sư
@@ -59,49 +59,49 @@ public class HomeServlet extends HttpServlet {
 	                e.printStackTrace();
 	            }
 	        }
-	        List<UserGS> list3lv3 = new ArrayList<>();
-	        List<UserGS> list4lv3 = new ArrayList<>();
-	        List<UserGS> giaSuslv3 = giaSuService.getGiaSusByLever(3);
-	        for (int i = 0; i < giaSuslv3.size(); i++) {
-	            giaSuslv3.get(i).countLH = lopHocService.countLopByGS(username);
-	            if (i < 3) {
-	                list3lv3.add(giaSuslv3.get(i));
-	            } else if (i < 7) {
-	                list4lv3.add(giaSuslv3.get(i));
-	            }
-	        }
-
-	        List<UserGS> list3lv2 = new ArrayList<>();
-	        List<UserGS> list4lv2 = new ArrayList<>();
-	        List<UserGS> giaSuslv2 = giaSuService.getGiaSusByLever(2);
-	        for (int i = 0; i < giaSuslv2.size(); i++) {
-	            giaSuslv2.get(i).countLH = lopHocService.countLopByGS(username);
-
-	            if (i < 3) {
-	                list3lv2.add(giaSuslv2.get(i));
-	            } else if (i < 7)
-	                list4lv2.add(giaSuslv2.get(i));
-	        }
-
-	        List<UserGS> list3lv1 = new ArrayList<>();
-	        List<UserGS> list4lv1 = new ArrayList<>();
-	        List<UserGS> giaSuslv1 = giaSuService.getGiaSusByLever(1);
-	        if (giaSuslv1 != null) {
-	            for (int i = 0; i < giaSuslv1.size(); i++) {
-	                giaSuslv1.get(i).countLH = lopHocService.countLopByGS(username);
-	
-		            if (i < 3) {
-		                list3lv1.add(giaSuslv1.get(i));
-		            } else if (i < 7)
-		                list4lv1.add(giaSuslv1.get(i));
-	            }
-	        }
-	        request.setAttribute("list3lv3", list3lv3);
-	        request.setAttribute("list4lv3", list4lv3);
-	        request.setAttribute("list3lv2", list3lv2);
-	        request.setAttribute("list4lv2", list4lv2);
-	        request.setAttribute("list3lv1", list3lv1);
-	        request.setAttribute("list4lv1", list4lv1);
+//	        List<UserGS> list3lv3 = new ArrayList<>();
+//	        List<UserGS> list4lv3 = new ArrayList<>();
+//	        List<UserGS> giaSuslv3 = giaSuService.getGiaSusByLever(3);
+//	        for (int i = 0; i < giaSuslv3.size(); i++) {
+//	            giaSuslv3.get(i).countLH = lopHocService.countLopByGS(username);
+//	            if (i < 3) {
+//	                list3lv3.add(giaSuslv3.get(i));
+//	            } else if (i < 7) {
+//	                list4lv3.add(giaSuslv3.get(i));
+//	            }
+//	        }
+//
+//	        List<UserGS> list3lv2 = new ArrayList<>();
+//	        List<UserGS> list4lv2 = new ArrayList<>();
+//	        List<UserGS> giaSuslv2 = giaSuService.getGiaSusByLever(2);
+//	        for (int i = 0; i < giaSuslv2.size(); i++) {
+//	            giaSuslv2.get(i).countLH = lopHocService.countLopByGS(username);
+//
+//	            if (i < 3) {
+//	                list3lv2.add(giaSuslv2.get(i));
+//	            } else if (i < 7)
+//	                list4lv2.add(giaSuslv2.get(i));
+//	        }
+//
+//	        List<UserGS> list3lv1 = new ArrayList<>();
+//	        List<UserGS> list4lv1 = new ArrayList<>();
+//	        List<UserGS> giaSuslv1 = giaSuService.getGiaSusByLever(1);
+//	        if (giaSuslv1 != null) {
+//	            for (int i = 0; i < giaSuslv1.size(); i++) {
+//	                giaSuslv1.get(i).countLH = lopHocService.countLopByGS(username);
+//	
+//		            if (i < 3) {
+//		                list3lv1.add(giaSuslv1.get(i));
+//		            } else if (i < 7)
+//		                list4lv1.add(giaSuslv1.get(i));
+//	            }
+//	        }
+//	        request.setAttribute("list3lv3", list3lv3);
+//	        request.setAttribute("list4lv3", list4lv3);
+//	        request.setAttribute("list3lv2", list3lv2);
+//	        request.setAttribute("list4lv2", list4lv2);
+//	        request.setAttribute("list3lv1", list3lv1);
+//	        request.setAttribute("list4lv1", list4lv1);
 	        request.setAttribute("Name", Name);
 	        request.setAttribute("email", email);
 	        request.setAttribute("position", position);
