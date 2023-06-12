@@ -54,15 +54,17 @@ public class LopHocService {
         }
         return null;
     }
+    
     public List<LopHoc> getLopHocByLever(int lever, boolean isAdmin) {
         try {
             List<LopHoc> lopHocs = lopHocDAO.getLopHocByLever(lever, isAdmin);
             return lopHocs;
         } catch (SQLException e) {
-            System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
+            System.out.println("Lỗi khi truy vấn danh sách lớp học: " + e.getMessage());
         }
         return null;
     }
+    
     public List<LopHoc> getLopHocByGSAndLever(String username,int lever) {
         try {
             List<LopHoc> lopHocs = lopHocDAO.getLopHocByGSAndLever(username,lever);

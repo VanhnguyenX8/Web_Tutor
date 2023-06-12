@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%>
         <input type="password" id="password" placeholder="Mật Khẩu" name="password" required /><br />
         <label for="repass">Nhập lại Mật Khẩu:</label>
         <input type="password" id="repass" placeholder="Nhập lại mật khẩu" name="repass" required /><br />
-        <input type="checkbox" id="giasu" name="position" value="giasu" />
+        <input type="checkbox" id="giasu" name="position" value="mod" />
         <label for="giasu">Gia Sư</label>
         <input type="checkbox" id="hocsinh" name="position" value="hocsinh" />
         <label for="hocsinh">Học sinh</label>

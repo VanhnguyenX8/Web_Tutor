@@ -5,20 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LopHoc {
-    private int id;
+    private String id;
     private String usernameHocSinh;
     private String usernameGiaSu;
     private String tenLopHoc;
     private String gioHoc;
     private Date ngayHoc;
     private int hocPhi;
-    private int lever;
-    private int accept;
     private int phiGiaSu;
     private String moTa;
     private String hinhAnh;
+    private int accept;
+    private int lever;
 
-    public LopHoc(int id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
                   int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
@@ -32,7 +32,7 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(int id, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
+    public LopHoc(String id, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
                   int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameGiaSu = usernameGiaSu;
@@ -58,7 +58,7 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(int id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh ,  int accept, int lever) {
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh ,  int accept, int lever) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
         this.usernameGiaSu = usernameGiaSu;
@@ -105,11 +105,11 @@ public class LopHoc {
         this.accept = accept;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

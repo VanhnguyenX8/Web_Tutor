@@ -16,7 +16,7 @@ public class LopHocDAO extends DBconnect{
 	public DBconnect db = new DBconnect();
 	Connection con = db.DBconnect();
     public void create(LopHoc lopHoc) throws SQLException {
-        String query = "INSERT INTO LopHoc (username_hoc_sinh, username_gia_su, ten_lop_hoc, gio_hoc, ngay_hoc, hoc_phi, phi_gia_su, mo_ta, hinh_anh,lever) " +
+        String query = "INSERT INTO lophoc (username_hoc_sinh, username_gia_su, ten_lop_hoc, gio_hoc, ngay_hoc, hoc_phi, phi_gia_su, mo_ta, hinh_anh,lever) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
         try (PreparedStatement statement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -32,17 +32,11 @@ public class LopHocDAO extends DBconnect{
             statement.setInt(10, lopHoc.getLever());
 
             statement.executeUpdate();
-
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                int generatedId = generatedKeys.getInt(1);
-                lopHoc.setId(generatedId);
-            }
         }
     }
 
     public void update(LopHoc lopHoc) throws SQLException {
-        String query = "UPDATE LopHoc SET  ten_lop_hoc = ?, gio_hoc = ?, " +
+        String query = "UPDATE lophoc SET  ten_lop_hoc = ?, gio_hoc = ?, " +
                 "ngay_hoc = ?, hoc_phi = ?, phi_gia_su = ?, mo_ta = ?, hinh_anh = ?, lever = ? WHERE id = ?";
 
         try (PreparedStatement statement = con.prepareStatement(query)) {
@@ -54,14 +48,14 @@ public class LopHocDAO extends DBconnect{
             statement.setString(6, lopHoc.getMoTa());
             statement.setString(7, lopHoc.getHinhAnh());
             statement.setInt(8, lopHoc.getLever());
-            statement.setInt(9, lopHoc.getId());
+            statement.setString(9, lopHoc.getId());
 
             statement.executeUpdate();
         }
     }
 
     public void delete(int lopHocId) throws SQLException {
-        String query = "DELETE FROM LopHoc WHERE id = ?";
+        String query = "DELETE FROM lophoc WHERE id = ?";
 
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setInt(1, lopHocId);
@@ -69,7 +63,7 @@ public class LopHocDAO extends DBconnect{
         }
     }
     public void acceptLopHoc(int accept, int lopHocId) throws SQLException {
-        String query = "UPDATE LopHoc SET  accept = ? WHERE id = ?";
+        String query = "UPDATE lophoc SET  accept = ? WHERE id = ?";
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setInt(1, accept);
             statement.setInt(2, lopHocId);
@@ -79,7 +73,7 @@ public class LopHocDAO extends DBconnect{
 
 
     public LopHoc getById(int lopHocId) throws SQLException {
-        String query = "SELECT * FROM LopHoc WHERE id = ?";
+        String query = "SELECT * FROM lophoc WHERE id = ?";
 
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setInt(1, lopHocId);
@@ -97,7 +91,7 @@ public class LopHocDAO extends DBconnect{
     public List<LopHoc> getAll() throws SQLException {
         List<LopHoc> lopHocs = new ArrayList<>();
 
-        String query = "SELECT * FROM LopHoc where accept = 1";
+        String query = "SELECT * FROM lophoc where accept = 1";
 
         try (PreparedStatement statement = con.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
@@ -113,7 +107,7 @@ public class LopHocDAO extends DBconnect{
     public List<LopHoc> getLopHocByGS(String usernameGS) throws SQLException {
         List<LopHoc> lopHocs = new ArrayList<>();
 
-        String query = "SELECT * FROM LopHoc where username_gia_su = ?";
+        String query = "SELECT * FROM lophoc where username_gia_su = ?";
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setString(1,usernameGS);
             ResultSet resultSet = statement.executeQuery();
@@ -128,18 +122,37 @@ public class LopHocDAO extends DBconnect{
 
     public List<LopHoc> getLopHocByGSAndLever(String usernameGS, int lever) throws SQLException {
         List<LopHoc> lopHocs = new ArrayList<>();
-
-        String query = "SELECT * FROM LopHoc where username_gia_su = ? and lever = ?";
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setString(1,usernameGS);
-            statement.setInt(2,lever);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
-                lopHocs.add(lopHoc);
+        if(lever == 1) {
+        	String query = "SELECT * FROM lophoc where username_gia_su = ? and khoi > 0 and khoi < 6";
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setString(1, usernameGS);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
+            }
+        }else if(lever == 2) {
+        	String query = "SELECT * FROM lophoc where username_gia_su = ? and khoi > 5 and khoi < 10";
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setString(1, usernameGS);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
+            }
+        }else if(lever == 3) {
+        	String query = "SELECT * FROM lophoc where username_gia_su = ? and khoi > 9 and khoi < 13";
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setString(1, usernameGS);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
             }
         }
-
         return lopHocs;
     }
 
@@ -147,25 +160,54 @@ public class LopHocDAO extends DBconnect{
     public List<LopHoc> getLopHocByLever(int lever, boolean isAdmin) throws SQLException {
         List<LopHoc> lopHocs = new ArrayList<>();
         String query;
-        if (isAdmin){
-            query = "SELECT * FROM LopHoc where lever = ?";
-        }else {
-            query = "SELECT * FROM LopHoc where lever = ? and accept = 1";
-        }
-        try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setInt(1,lever);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
-                lopHocs.add(lopHoc);
+        if(lever == 1) {
+        	if (isAdmin){
+                query = "SELECT * FROM lophoc where khoi > 0 and khoi < 6";
+            }else {
+                query = "SELECT * FROM lophoc where khoi > 0 and khoi < 6 and accept = 1";
+            }
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setInt(1,lever);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
+            }
+        }else if(lever == 2) {
+        	if (isAdmin){
+                query = "SELECT * FROM lophoc where khoi > 5 and khoi < 10";
+            }else {
+                query = "SELECT * FROM lophoc where khoi > 5 and khoi < 10 and accept = 1";
+            }
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setInt(1,lever);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
+            }
+        } else if(lever == 3) {
+        	if (isAdmin){
+                query = "SELECT * FROM lophoc where khoi > 9 and khoi < 13";
+            }else {
+                query = "SELECT * FROM lophoc where khoi > 9 and khoi < 13 and accept = 1";
+            }
+        	try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setInt(1,lever);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                    lopHocs.add(lopHoc);
+                }
             }
         }
-
         return lopHocs;
     }
 
     public int countLopHocByGiaSuUsername(String giaSuUsername) throws SQLException {
-        String query = "SELECT COUNT(*) FROM LopHoc WHERE username_gia_su = ?";
+        String query = "SELECT COUNT(*) FROM lophoc WHERE username_gia_su = ?";
 
         try (PreparedStatement statement = con.prepareStatement(query)) {
             statement.setString(1, giaSuUsername);
@@ -182,7 +224,7 @@ public class LopHocDAO extends DBconnect{
 
 
     private LopHoc mapResultSetToLopHoc(ResultSet resultSet) throws SQLException {
-        int id = resultSet.getInt("id");
+        String id = resultSet.getString("id");
         String usernameHocSinh = resultSet.getString("username_hoc_sinh");
         String usernameGiaSu = resultSet.getString("username_gia_su");
         String tenLopHoc = resultSet.getString("ten_lop_hoc");
