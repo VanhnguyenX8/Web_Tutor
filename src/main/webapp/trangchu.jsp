@@ -42,7 +42,7 @@ pageEncoding="UTF-8"%>
 		    Object value = session.getAttribute("acc");
 		    String position = (String) request.getAttribute("position");
 		  %>
-		  <% if ("admin".equals(position)) { %>
+		  <% if ("admin".equals(position) || "mod".equals(position)) { %>
 		  	<li class="thongtin-nguoidung">
               <a href="" class="avt items">
                 <div class="avt-box"></div>
@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
                     </a>
                   </li>
                   <li>
-                    <a href="HomeServlet?logout=true" class="link">
+                    <a href="Home?logout=true" class="link">
                       <span>Đăng xuất</span>
                     </a>
                   </li>
@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
                     </a>
                   </li>
                   <li>
-                    <a href="HomeServlet?logout=true" class="link">
+                    <a href="Home?logout=true" class="link">
                       <span>Đăng xuất</span>
                     </a>
                   </li>

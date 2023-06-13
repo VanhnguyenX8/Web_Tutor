@@ -88,7 +88,7 @@ public class SignUpServlet extends HttpServlet {
 			boolean isGiasu = false;
 	        boolean isHocsinh = false;
 	        if (position != null) {
-	            if (position != null && position.equals("giasu") && !position.isEmpty()) {
+	            if (position != null && position.equals("mod") && !position.isEmpty()) {
 	                isGiasu = true;
 	            } else {
 	                isHocsinh = true;
@@ -114,14 +114,14 @@ public class SignUpServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 				    session.setAttribute("acc", acc);
 					if(isGiasu) {
-						String role = "giasu";
+						String role = "mod";
 						sign.NewAccount(user, hashedPassword, role, salt);
-						sign.NewInfoGS(user);
-						response.sendRedirect("ThemTT.jsp");
-//						String jspPath = "/login.jsp";
+//						sign.NewInfoGS(user);
+//						response.sendRedirect("ThemTT.jsp");
+						String jspPath = "/login.jsp";
 //						String jspPath = "/ThemTT.jsp";
-//						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-//						rs.forward(request,response);
+						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						rs.forward(request,response);
 					}else if(isHocsinh) {
 						String role = "hocsinh";
 						sign.NewAccount(user, hashedPassword, role, salt);

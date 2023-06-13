@@ -15,7 +15,6 @@ public class UserHS {
     private String dia_chi;
     private String hinh_anh;
     private int so_du_tai_khoan;
-
     public UserHS() {
     }
 

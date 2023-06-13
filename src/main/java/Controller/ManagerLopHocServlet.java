@@ -83,11 +83,12 @@ public class ManagerLopHocServlet extends HttpServlet {
             int idLH = 0;
             if (id != null) {
                 idLH = Integer.parseInt(id);
-                lopHoc = new LopHoc(usernameHS, account.getUsername(), name, hour, dateFormat.parse(date), price, priceGS, content, img);
+                lopHoc = new LopHoc(usernameHS, account.getUsername(), name, hour, dateFormat.parse(date), price,
+                        priceGS, content, img);
             } else {
-                lopHoc = new LopHoc(account.getUsername(), name, hour, dateFormat.parse(date), price, priceGS, content, img, 0, lever);
+                lopHoc = new LopHoc(account.getUsername(), name, hour, dateFormat.parse(date), price, priceGS, content,
+                        img, 0, lever);
             }
-
 
             switch (action) {
                 case "create":
@@ -100,9 +101,8 @@ public class ManagerLopHocServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        resp.sendRedirect(req.getContextPath()+"/managerLopHoc");
+        resp.sendRedirect(req.getContextPath() + "/managerLopHoc");
     }
-
 
     public void showLopHoc(HttpServletRequest req, HttpServletResponse resp, TaiKhoan account) {
         try {
@@ -110,7 +110,7 @@ public class ManagerLopHocServlet extends HttpServlet {
             if (khoi == null) {
                 khoi = "1";
             }
-          
+
             req.setAttribute("acc", account);
             if (account.getRole().equals("mod")) {
                 req.setAttribute("lopHocs", lopHocService.getLopHocByLever(Integer.parseInt(khoi), true));
@@ -118,7 +118,8 @@ public class ManagerLopHocServlet extends HttpServlet {
                 dispatcher.forward(req, resp);
             } else {
                 if ("giasu".equals(account.getRole())) {
-                    req.setAttribute("lopHocs", lopHocService.getLopHocByGSAndLever(account.getUsername(), Integer.parseInt(khoi)));
+                    req.setAttribute("lopHocs",
+                            lopHocService.getLopHocByGSAndLever(account.getUsername(), Integer.parseInt(khoi)));
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/lopHoc/show.jsp");
                     dispatcher.forward(req, resp);
                 }
@@ -127,6 +128,5 @@ public class ManagerLopHocServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 
 }

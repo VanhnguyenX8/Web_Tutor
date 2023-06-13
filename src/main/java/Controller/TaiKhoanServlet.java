@@ -42,22 +42,22 @@ public class TaiKhoanServlet extends HttpServlet {
 	 *      response)
 	 */
 	private String hashPassword(String password, byte[] salt) throws NoSuchAlgorithmException {
-        String hashedPassword = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(salt);
-            byte[] bytes = md.digest(password.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            hashedPassword = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return hashedPassword;
-    }
-	
+		String hashedPassword = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			md.update(salt);
+			byte[] bytes = md.digest(password.getBytes());
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			hashedPassword = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return hashedPassword;
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -66,60 +66,58 @@ public class TaiKhoanServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		try {
 			TaiKhoanDao acc = new TaiKhoanDao();
-			//lấy salt từ csdl
+			// lấy salt từ csdl
 			byte[] encode = acc.getSaltFromDB(user);
-			if(encode != null) {
-				//mã hóa password dựa trên salt
+			if (encode != null) {
+				// mã hóa password dựa trên salt
 				String hashedPassword = hashPassword(pass, encode);
-				//lấy password đã mã hóa từ csdl để kiểm tra
+				// lấy password đã mã hóa từ csdl để kiểm tra
 				String password = acc.getPasswordFromDB(user);
 				String position = acc.getPositionFromDB(user);
-				//check tài khoản
+				// check tài khoản
 				TaiKhoan a = acc.checklogin(user, hashedPassword);
 				if (a == null) {
-				    String jspPath = "/login.jsp";
-				    request.setAttribute("mess", "Tài khoản không tồn tại");
-				    RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-				    rs.forward(request, response);
+					String jspPath = "/login.jsp";
+					request.setAttribute("mess", "Tài khoản không tồn tại");
+					RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+					rs.forward(request, response);
 				} else {
-				    HttpSession session = request.getSession();
-				    session.setAttribute("acc", a);
-				    if (position.equals("admin")) {
-				        // Phân quyền cho admin
-//				        String jspPath = "/Dashboard.jsp";
-				    	response.sendRedirect("Home");
-//				        String jspPath = "/Home";
-//				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-//				        rs.forward(request, response);
-				    } else if (position.equals("giasu")) {
-				        // Phân quyền cho gia sư
-				    	response.sendRedirect("Home");
-//				        String jspPath = "/Home";
-//				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-//				        rs.forward(request, response);
-				    } else if (position.equals("hocsinh")) {
-				        // Phân quyền cho học sinh
-				    	response.sendRedirect("Home");
-//				        String jspPath = "/Home";
-//				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-//				        rs.forward(request, response);
-				    } else if(position.equals("mod")) {
-				    	response.sendRedirect("Home");
-				    }
-				    else {
-				    	String jspPath = "/login.jsp";
-				    	request.setAttribute("mess", "Tài khoản không tồn tại");
-					    RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-					    rs.forward(request, response);
-				    }
+					HttpSession session = request.getSession();
+					session.setAttribute("acc", a);
+					if (position.equals("admin")) {
+						// Phân quyền cho admin
+						// String jspPath = "/Dashboard.jsp";
+						response.sendRedirect("Home");
+						// String jspPath = "/Home";
+						// RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						// rs.forward(request, response);
+					} else if (position.equals("giasu")) {
+						// Phân quyền cho gia sư
+						response.sendRedirect("Home");
+						// String jspPath = "/Home";
+						// RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						// rs.forward(request, response);
+					} else if (position.equals("hocsinh")) {
+						// Phân quyền cho học sinh
+						response.sendRedirect("Home");
+						// String jspPath = "/Home";
+						// RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						// rs.forward(request, response);
+					} else if (position.equals("mod")) {
+						response.sendRedirect("Home");
+					} else {
+						String jspPath = "/login.jsp";
+						request.setAttribute("mess", "Tài khoản không tồn tại");
+						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+						rs.forward(request, response);
+					}
 				}
-			}
-			else {
+			} else {
 				String jspPath = "/login.jsp";
 				RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-				rs.forward(request,response);
+				rs.forward(request, response);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub

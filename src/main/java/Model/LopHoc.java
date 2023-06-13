@@ -18,8 +18,9 @@ public class LopHoc {
     private String moTa;
     private String hinhAnh;
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc,
+            Date ngayHoc,
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
         this.usernameGiaSu = usernameGiaSu;
@@ -33,7 +34,7 @@ public class LopHoc {
     }
 
     public LopHoc(String id, String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
@@ -45,7 +46,8 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc, int hocPhi, int khoi, int accept, int phiGiaSu, String moTa, String hinhAnh) {
+    public LopHoc(String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc, int hocPhi, int khoi,
+            int accept, int phiGiaSu, String moTa, String hinhAnh) {
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
         this.gioHoc = gioHoc;
@@ -58,7 +60,8 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh ,  int accept, int khoi) {
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc,
+            Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh, int accept, int khoi) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
         this.usernameGiaSu = usernameGiaSu;
@@ -74,7 +77,7 @@ public class LopHoc {
     }
 
     public LopHoc(String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh,  int accept, int khoi) {
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh, int accept, int khoi) {
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
         this.gioHoc = gioHoc;
