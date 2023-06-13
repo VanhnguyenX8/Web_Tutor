@@ -20,7 +20,8 @@ public class DashboardStudentServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("actionHocSinh");
+    	resp.setCharacterEncoding("UTF-8");
+    	String action = req.getParameter("actionHocSinh");
         if (action != null) {
             if (action.equals("list_hocsinh")) {
                 DashboardStudentDAO hs = new DashboardStudentDAO();

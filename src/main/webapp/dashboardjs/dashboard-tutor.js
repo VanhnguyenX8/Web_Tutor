@@ -7,7 +7,18 @@ fetch("/Web_Tutor/giasu?actionGiaSu=list_giasu", requestOptions)
     .then(response => response.json())
     .then(result => getList(result))
     .catch(error => console.log('error', error));
-
+const image = result['image'];
+        const jobPosition = result['jobPosition'];
+        const name = result['name'];
+        localStorage.setItem('image',result['image'])
+        localStorage.setItem('jobPosition',result['jobPosition'])
+        localStorage.setItem('name',result['name'])
+        const imageTag = document.querySelector('.khoiben-anh');
+        const jobPositionTag = document.querySelector('#vitricongviec');
+        const nameTag = document.querySelector('#tenadmin')
+        imageTag.style.backgroundImage = 'url(' + image + ')';
+        jobPositionTag.innerText = jobPosition;
+        name.innerText = name;
 async function getList(result) {
     var table = document.querySelector(".sub_table");
 
@@ -103,7 +114,7 @@ function openModal(rowData) {
     document.getElementById("myModal").style.display = "block";
 
     // Gán thông tin vào các phần tử trong bảng modal
-    document.getElementById("image").innerHTML = '<img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/297788595_1587778878284000_55644767002180554_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=snbm7Rre2Z0AX9fm9pD&_nc_ht=scontent.fhan14-3.fna&oh=00_AfBMmooujS-kpnrp-z2UcV63pAPCE223UagCV40kVKucuA&oe=648C4D2C" alt="Hình ảnh người">';
+    document.getElementById("image").innerHTML = '<img src='+rowData['image']+' alt="Hình ảnh người">';
 }
 
 function closeModal() {

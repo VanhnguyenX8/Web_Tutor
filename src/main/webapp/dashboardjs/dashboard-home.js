@@ -10,6 +10,23 @@ var requestOptions = {
     headers: {"Content-Type": "application/json"},
     redirect: 'follow'
 };
+fetch("/Web_Tutor/home_dashboard?action=info_admin&username" + sessionStorage.getItem('username'), requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        const image = result['image'];
+        const jobPosition = result['jobPosition'];
+        const name = result['name'];
+        localStorage.setItem('image',result['image'])
+        localStorage.setItem('jobPosition',result['jobPosition'])
+        localStorage.setItem('name',result['name'])
+        const imageTag = document.querySelector('.khoiben-anh');
+        const jobPositionTag = document.querySelector('#vitricongviec');
+        const nameTag = document.querySelector('#tenadmin')
+        imageTag.style.backgroundImage = 'url(' + image + ')';
+        jobPositionTag.innerText = jobPosition;
+        name.innerText = name;
+    })
+    .catch(error => console.log('error', error));
 
 fetch("/Web_Tutor/home_dashboard?action=k", requestOptions)
     .then(response => response.json())

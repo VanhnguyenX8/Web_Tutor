@@ -18,6 +18,7 @@ import DAO.dashboard.DashboardClassDAO;
 import DAO.dashboard.DashboardFinanceDAO;
 import DAO.dashboard.DashboardStudentDAO;
 import DAO.dashboard.DashboardTutorDAO;
+import DAO.dashboard.DashboardHomeDAO;
 
 @WebServlet(urlPatterns = "/home_dashboard")
 
@@ -35,6 +36,7 @@ public class DashboardHomeServlet extends javax.servlet.http.HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+    	response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
 
         if (action != null) {
@@ -82,6 +84,18 @@ public class DashboardHomeServlet extends javax.servlet.http.HttpServlet {
                         e.printStackTrace();
                     }
                     break;
+                    
+                case "info_admin":
+                	try {
+                		String username = request.getParameter("username");
+                        if (username != null){
+                            DashboardHomeDAO home = new DashboardHomeDAO();
+                            response.setContentType("application/json");
+                            response.getWriter().write(home.getImageAdmin(username).toString());
+                            }
+                	}catch(JSONException e){
+                		e.printStackTrace();
+                	}
 
                 default:
                     DashboardTutorDAO gs = new DashboardTutorDAO();
