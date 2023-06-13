@@ -17,7 +17,12 @@ public class UserGS {
     private int so_du_tai_khoan;
     public UserGS() {
     }
-
+    //code cua Bien
+    public UserGS(String ten_gia_su, String sdt) {
+    	this.ten_gia_su = ten_gia_su;
+    	this.sdt = sdt;
+    }
+    //
     public UserGS(String id, String ten_gia_su, Date nam_sinh, String sdt, String email, String sotaikhoan, String username, String gioi_tinh, String dia_chi, int chua_thanh_toan, String hinh_anh, int so_du_tai_khoan) {
         this.id = id;
         this.ten_gia_su = ten_gia_su;
@@ -128,5 +133,4 @@ public class UserGS {
 	public void setSo_du_tai_khoan(int so_du_tai_khoan) {
 		this.so_du_tai_khoan = so_du_tai_khoan;
 	}
-    
 }
