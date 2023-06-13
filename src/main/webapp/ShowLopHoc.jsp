@@ -12,6 +12,7 @@
         <c:forEach var="lh" items="${lopHocs}">
             <div class="col 3 table_thpt_item" align="center">
                 <img src="${lh.hinhAnh}" alt="" width="200" height="160">
+                <div><a href="profileLH?id=${lh.id }">thong tin lop hoc</a></div>
                 <br>
                 <hr>
                 <button class="btn btn-success">${lh.tenLopHoc}</button>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="../css/edit.css">
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/edit.css">
 
 </head>
 <body>
