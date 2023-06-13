@@ -40,15 +40,15 @@ public class ManagerLopHocServlet extends HttpServlet {
                 break;
             case "delete":
                 lopHocService.deletelopHoc(idLH);
-                resp.sendRedirect("/managerLopHoc");
+                resp.sendRedirect("managerLopHoc");
                 return;
             case "accept":
                 lopHocService.acceptLopHoc(1, idLH);
-                resp.sendRedirect("/managerLopHoc");
+                resp.sendRedirect("managerLopHoc");
                 return;
             case "unAccept":
                 lopHocService.acceptLopHoc(0, idLH);
-                resp.sendRedirect("/managerLopHoc");
+                resp.sendRedirect("managerLopHoc");
                 return;
             default:
                 showLopHoc(req, resp, account);
@@ -80,9 +80,9 @@ public class ManagerLopHocServlet extends HttpServlet {
             String content = req.getParameter("content");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             LopHoc lopHoc;
-            int idLH = 0;
+            String idLH = "";
             if (id != null) {
-                idLH = Integer.parseInt(id);
+                idLH = id;
                 lopHoc = new LopHoc(usernameHS, account.getUsername(), name, hour, dateFormat.parse(date), price,
                         priceGS, content, img);
             } else {

@@ -4,7 +4,7 @@
 
         <head>
             <title>Title</title>
-            <link rel="stylesheet" href="../css/show.css">
+            <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/show.css">
 
         </head>
 
@@ -71,11 +71,11 @@
                                     <td>${lh.usernameGiaSu}</td>
                                     <c:if test="${acc.role == 'mod'}">
                                         <c:if test="${lh.accept == 1}">
-                                            <td><a href="/managerLopHoc?action=unAccept&id=${lh.id}" type="button"
+                                            <td><a href="managerLopHoc?action=unAccept&id=${lh.id}" type="button"
                                                     class="btn btn-success">Đã Accept</a></td>
                                         </c:if>
                                         <c:if test="${lh.accept == 0}">
-                                            <td><a href="/managerLopHoc?action=accept&id=${lh.id}" type="button"
+                                            <td><a href="managerLopHoc?action=accept&id=${lh.id}" type="button"
                                                     class="btn btn-warning">Chưa Accept</a></td>
                                         </c:if>
                                     </c:if>
@@ -89,7 +89,7 @@
                                         </c:if>
                                     </c:if>
 
-                                    <td><a href="/managerLopHoc?action=edit&id=${lh.id}" type="button"
+                                    <td><a href="managerLopHoc?action=edit&id=${lh.id}" type="button"
                                             class="btn btn-secondary">Edit</a></td>
                                     <td><a onclick="deleteLH(${lh.id})" type="button" class="btn btn-danger">Delete</a>
                                     </td>
@@ -113,7 +113,7 @@
             function deleteLH(idLH) {
                 let check = confirm('Xóa lớp học!')
                 if (check) {
-                    location.href = "/managerLopHoc?action=delete&id=" + idLH;
+                    location.href = "managerLopHoc?action=delete&id=" + idLH;
                 }
             }
 
