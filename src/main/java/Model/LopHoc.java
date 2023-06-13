@@ -1,187 +1,88 @@
 package Model;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LopHoc {
-    private String id;
-    private String usernameHocSinh;
-    private String usernameGiaSu;
-    private String tenLopHoc;
-    private String gioHoc;
-    private Date ngayHoc;
-    private int hocPhi;
-    private int phiGiaSu;
-    private String moTa;
-    private String hinhAnh;
-    private int accept;
-    private int lever;
+	private String id;
+	private String username_hoc_sinh;
+	private GiaSu giasu;
+	private String ten_lop_hoc;
+	private int gio_hoc;
+	private String ngay_hoc;
+	private int hoc_phi;
+	private int khoi;
+	public LopHoc() {
+		
+	}
+	
+	public String getId() {
+		return id;
+	}
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
-        this.id = id;
-        this.usernameHocSinh = usernameHocSinh;
-        this.usernameGiaSu = usernameGiaSu;
-        this.tenLopHoc = tenLopHoc;
-        this.gioHoc = gioHoc;
-        this.ngayHoc = ngayHoc;
-        this.hocPhi = hocPhi;
-        this.phiGiaSu = phiGiaSu;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public LopHoc(String id, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
-        this.id = id;
-        this.usernameGiaSu = usernameGiaSu;
-        this.tenLopHoc = tenLopHoc;
-        this.gioHoc = gioHoc;
-        this.ngayHoc = ngayHoc;
-        this.hocPhi = hocPhi;
-        this.phiGiaSu = phiGiaSu;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
-    }
+	public String getUsername_hoc_sinh() {
+		return username_hoc_sinh;
+	}
 
-    public LopHoc(String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int lever, int accept, int phiGiaSu, String moTa, String hinhAnh) {
-        this.usernameGiaSu = usernameGiaSu;
-        this.tenLopHoc = tenLopHoc;
-        this.gioHoc = gioHoc;
-        this.ngayHoc = ngayHoc;
-        this.hocPhi = hocPhi;
-        this.lever = lever;
-        this.accept = accept;
-        this.phiGiaSu = phiGiaSu;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
-    }
+	public void setUsername_hoc_sinh(String username_hoc_sinh) {
+		this.username_hoc_sinh = username_hoc_sinh;
+	}
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh ,  int accept, int lever) {
-        this.id = id;
-        this.usernameHocSinh = usernameHocSinh;
-        this.usernameGiaSu = usernameGiaSu;
-        this.tenLopHoc = tenLopHoc;
-        this.gioHoc = gioHoc;
-        this.ngayHoc = ngayHoc;
-        this.hocPhi = hocPhi;
-        this.lever = lever;
-        this.accept = accept;
-        this.phiGiaSu = phiGiaSu;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
-    }
 
-    public LopHoc(String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh,  int accept, int lever) {
-        this.usernameGiaSu = usernameGiaSu;
-        this.tenLopHoc = tenLopHoc;
-        this.gioHoc = gioHoc;
-        this.ngayHoc = ngayHoc;
-        this.hocPhi = hocPhi;
-        this.phiGiaSu = phiGiaSu;
-        this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
-        this.lever = lever;
-        this.accept = accept;
-    }
+	public String getTen_lop_hoc() {
+		return ten_lop_hoc;
+	}
 
-    // Getter và Setter cho các trường
+	public void setTen_lop_hoc(String ten_lop_hoc) {
+		this.ten_lop_hoc = ten_lop_hoc;
+	}
 
-    public int getLever() {
-        return lever;
-    }
+	public int getGio_hoc() {
+		return gio_hoc;
+	}
 
-    public void setLever(int lever) {
-        this.lever = lever;
-    }
+	public void setGio_hoc(int gio_hoc) {
+		this.gio_hoc = gio_hoc;
+	}
 
-    public int getAccept() {
-        return accept;
-    }
+	public String getNgay_hoc() {
+		return ngay_hoc;
+	}
 
-    public void setAccept(int accept) {
-        this.accept = accept;
-    }
+	public void setNgay_hoc(Date ngay_hoc) {
+		this.ngay_hoc = new SimpleDateFormat("dd-MM-yyyy").format(ngay_hoc);
+	}
 
-    public String getId() {
-        return id;
-    }
+	public int getHoc_phi() {
+		return hoc_phi;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setHoc_phi(int hoc_phi) {
+		this.hoc_phi = hoc_phi;
+	}
 
-    public String getUsernameHocSinh() {
-        return usernameHocSinh;
-    }
 
-    public void setUsernameHocSinh(String usernameHocSinh) {
-        this.usernameHocSinh = usernameHocSinh;
-    }
+	public GiaSu getGiasu() {
+		return giasu;
+	}
 
-    public String getUsernameGiaSu() {
-        return usernameGiaSu;
-    }
+	public void setGiasu(GiaSu giasu) {
+		this.giasu = giasu;
+	}
 
-    public void setUsernameGiaSu(String usernameGiaSu) {
-        this.usernameGiaSu = usernameGiaSu;
-    }
+	public int getKhoi() {
+		return khoi;
+	}
 
-    public String getTenLopHoc() {
-        return tenLopHoc;
-    }
-
-    public void setTenLopHoc(String tenLopHoc) {
-        this.tenLopHoc = tenLopHoc;
-    }
-
-    public String getGioHoc() {
-        return gioHoc;
-    }
-
-    public void setGioHoc(String gioHoc) {
-        this.gioHoc = gioHoc;
-    }
-
-    public Date getNgayHoc() {
-        return ngayHoc;
-    }
-
-    public void setNgayHoc(Date ngayHoc) {
-        this.ngayHoc = ngayHoc;
-    }
-
-    public int getHocPhi() {
-        return hocPhi;
-    }
-
-    public void setHocPhi(int hocPhi) {
-        this.hocPhi = hocPhi;
-    }
-
-    public int getPhiGiaSu() {
-        return phiGiaSu;
-    }
-
-    public void setPhiGiaSu(int phiGiaSu) {
-        this.phiGiaSu = phiGiaSu;
-    }
-
-    public String getMoTa() {
-        return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
-    }
-
-    public String getHinhAnh() {
-        return hinhAnh;
-    }
-
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
-    }
+	public void setKhoi(int khoi) {
+		this.khoi = khoi;
+	}
+	
+	public String toString() {
+		return this.id + "";
+	}
 }
