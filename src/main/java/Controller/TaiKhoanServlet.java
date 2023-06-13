@@ -103,7 +103,10 @@ public class TaiKhoanServlet extends HttpServlet {
 //				        String jspPath = "/Home";
 //				        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 //				        rs.forward(request, response);
-				    }else {
+				    } else if(position.equals("mod")) {
+				    	response.sendRedirect("Home");
+				    }
+				    else {
 				    	String jspPath = "/login.jsp";
 				    	request.setAttribute("mess", "Tài khoản không tồn tại");
 					    RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);

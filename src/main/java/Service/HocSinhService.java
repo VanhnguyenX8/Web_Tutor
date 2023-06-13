@@ -1,6 +1,8 @@
 package Service;
 
+import DAO.UserDAO;
 import DAO.UserHSDAO;
+import Model.UserGS;
 import Model.UserHS;
 
 import java.sql.Connection;
@@ -29,6 +31,8 @@ public class HocSinhService {
         }
         return null;
     }
+    
+    
 //
 //    public List<UserHS> getAllHocSinhs() {
 //        try {
