@@ -1,6 +1,8 @@
 package Model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import java.util.UUID;
 
 public class UserHS {
@@ -15,6 +17,10 @@ public class UserHS {
     private String dia_chi;
     private String hinh_anh;
     private int so_du_tai_khoan;
+    //Code cua Bien
+    private String nam_sinh_String;
+    //
+    
     public UserHS() {
     }
 
@@ -54,6 +60,9 @@ public class UserHS {
 
 	public void setNam_sinh(Date nam_sinh) {
 		this.nam_sinh = nam_sinh;
+		//code cua Bien
+		this.nam_sinh_String = new SimpleDateFormat("dd-MM-yyyy").format(this.nam_sinh);
+		//
 	}
 
 	public String getSdt() {
@@ -119,4 +128,10 @@ public class UserHS {
 	public void setSo_du_tai_khoan(int so_du_tai_khoan) {
 		this.so_du_tai_khoan = so_du_tai_khoan;
 	}
+	
+	//Code cua Bien
+	public String getNam_sinh_String() {
+		return nam_sinh_String;
+	}
+	//
 }

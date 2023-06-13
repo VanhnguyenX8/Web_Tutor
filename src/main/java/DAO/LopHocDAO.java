@@ -159,40 +159,77 @@ public class LopHocDAO extends DBconnect {
         return lopHocs;
     }
 
-    public List<LopHoc> getLopHocByKhoi(int khoibd, int khoikt, boolean isMod) throws SQLException {
-        List<LopHoc> lopHocs = new ArrayList<>();
-        PreparedStatement statement;
-        ResultSet resultSet;
-        String query;
-        if (isMod) {
-            query = "SELECT * FROM LopHoc where khoi > ? and khoi < ?";
-            statement = con.prepareStatement(query);
-            statement.setInt(1, khoibd);
-            statement.setInt(2, khoikt);
-        } else {
-            query = "SELECT * FROM LopHoc where khoi = ? and accept = 1";
-            statement = con.prepareStatement(query);
-            statement.setInt(1, khoibd);
-        }
-        resultSet = statement.executeQuery();
-        while (resultSet.next()) {
-            LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
-            lopHocs.add(lopHoc);
+    public List<LopHoc> getLopHocByKhoi(int khoi, boolean isMod) throws SQLException {
+    	List<LopHoc> lopHocs = new ArrayList<>();
+        
+        int min = 0;
+        int max = 0;
+
+        if (khoi == 1) {
+            min = 1;
+            max = 5;
         }
 
+        if (khoi == 2) {
+            min = 6;
+            max = 9;
+        }
+
+        if (khoi == 3) {
+            min = 10;
+            max = 12;
+        }
+
+        
+        String query;
+        if (isMod) {
+            query = "SELECT * FROM LopHoc where  khoi between ? and ?";
+        } else {
+            query = "SELECT * FROM LopHoc where accept = 1 and  khoi between ? and ?";
+        }
+        try (PreparedStatement statement = con.prepareStatement(query)) {
+        	statement.setInt(1, min);
+            statement.setInt(2, max);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                LopHoc lopHoc = mapResultSetToLopHoc(resultSet);
+                lopHocs.add(lopHoc);
+            }
+        }
         return lopHocs;
     }
 
     public List<LopHoc> getLopHocByLever(int khoi, boolean isMod) throws SQLException {
         List<LopHoc> lopHocs = new ArrayList<>();
+        
+        int min = 0;
+        int max = 0;
+
+        if (khoi == 1) {
+            min = 1;
+            max = 5;
+        }
+
+        if (khoi == 2) {
+            min = 6;
+            max = 9;
+        }
+
+        if (khoi == 3) {
+            min = 10;
+            max = 12;
+        }
+
+        
         String query;
         if (isMod) {
-            query = "SELECT * FROM LopHoc where lever = ?";
+            query = "SELECT * FROM LopHoc where  khoi between ? and ?";
         } else {
-            query = "SELECT * FROM LopHoc where lever = ? and accept = 1";
+            query = "SELECT * FROM LopHoc where  khoi between ? and ? and accept = 1";
         }
         try (PreparedStatement statement = con.prepareStatement(query)) {
-            statement.setInt(1, khoi);
+        	statement.setInt(1, min);
+            statement.setInt(2, max);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 LopHoc lopHoc = mapResultSetToLopHoc(resultSet);

@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/profileLH.css">
     <title>MASTER</title>
 </head>
 
@@ -54,7 +54,7 @@
     <div class="content">
         <a class="home-1-icon" href="/home">Trang chủ</a>
         <div>
-            <h1>${lopHoc.tenLopHoc}</h1>
+            <h1>${lopHoc.tenLopHoc} ${lopHoc.lever}</h1>
         </div>
         <div class="content-wr">
             <p>${lopHoc.moTa}</p>
@@ -91,7 +91,7 @@
                     <span> Người học : ${lopHoc.usernameHocSinh != null ? lopHoc.usernameHocSinh: 0} </span>
                 </div>
                 <div class="btn-display">
-                    <a class="backgroud-btn1" href="">Đăng ký ngay</a>
+                    <button id = "chuyenTrang">Đăng ký ngay</button>
                 </div>
                 <div class="course-info">
                     <p>Mục tiêu khoá học :</p>
@@ -203,6 +203,9 @@
                         </li>
                     </ul>
                 </div>
+                <p id = "uB" style="display: none;">${username}</p>
+				<p id = "liB" style="display: none;">${lopHoc.id}</p>
+				<p id = "llB" style="display: none;">${lopHoc.lever}</p>
                 <div class="footer-block">
                     <h3>TẢI ỨNG DỤNG HOCMAI</h3>
                     <a href=""><img class="footer-img-app" src="../assets/images/footer-google-app.png"></a>
@@ -228,6 +231,22 @@
         </div>
     </div>
 </div>
+
+<script>
+	var username = document.getElementById('uB').textContent;
+	var id_lop_hoc = document.getElementById('liB').textContent;
+	var tmp = document.getElementById('llB').textContent;
+	var tmp1 = "";
+	if(tmp <= 5) tmp1 = "dangKyTieuHoc.jsp";
+	else if(tmp > 5 && tmp <= 9) tmp1 = "dangKyTHCS.jsp";
+	else tmp1 = "dangKyTHPT.jsp";
+	var url = tmp1 + "?acc=" + encodeURIComponent(username) + 
+				"&id_lop_hoc=" + encodeURIComponent(id_lop_hoc);
+	document.getElementById('chuyenTrang').addEventListener('click', function() {
+		window.location.href = url;
+	});
+</script>
 </body>
+
 
 </html>

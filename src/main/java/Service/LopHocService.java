@@ -54,9 +54,9 @@ public class LopHocService {
         return null;
     }
 
-    public List<LopHoc> getLopHocByKhoi(int khoibd, int khoikt, boolean isMod) {
+    public List<LopHoc> getLopHocByKhoi(int khoi, boolean isMod) {
         try {
-            List<LopHoc> lopHocs = lopHocDAO.getLopHocByKhoi(khoibd, khoikt, isMod);
+            List<LopHoc> lopHocs = lopHocDAO.getLopHocByKhoi(khoi, isMod);
             return lopHocs;
         } catch (SQLException e) {
             System.out.println("Lỗi khi truy vấn danh sách lớp học: " + e.getMessage());

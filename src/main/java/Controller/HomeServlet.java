@@ -64,7 +64,7 @@ public class HomeServlet extends HttpServlet {
 	        }
 	        List<LopHoc> list3lv3 = new ArrayList<>();
 	        List<LopHoc> list4lv3 = new ArrayList<>();
-	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(9,13, true);
+	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(3, false);
 	        if (lopHoclv3 != null) {
 	        	for (int i = 0; i < lopHoclv3.size(); i++) {
 		            if (i < 3) {
@@ -78,7 +78,7 @@ public class HomeServlet extends HttpServlet {
 
 	        List<LopHoc> list3lv2 = new ArrayList<>();
 	        List<LopHoc> list4lv2 = new ArrayList<>();
-	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(5,10, true);
+	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(2, false);
 	        if (lopHoclv2 != null) {
 	        	for (int i = 0; i < lopHoclv2.size(); i++) {
 		            if (i < 3) {
@@ -91,7 +91,7 @@ public class HomeServlet extends HttpServlet {
 
 	        List<LopHoc> list3lv1 = new ArrayList<>();
 	        List<LopHoc> list4lv1 = new ArrayList<>();
-	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(0,6, true);
+	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(1, false);
 	        if (lopHoclv1 != null) {
 	        	for (int i = 0; i < lopHoclv1.size(); i++) {
 		            if (i < 3) {
@@ -120,7 +120,7 @@ public class HomeServlet extends HttpServlet {
 	        // Chuyển hướng về trang chủ không đăng nhập
 	        List<LopHoc> list3lv3 = new ArrayList<>();
 	        List<LopHoc> list4lv3 = new ArrayList<>();
-	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(9,13, true);
+	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(3, false);
 	        if (lopHoclv3 != null) {
 	        	for (int i = 0; i < lopHoclv3.size(); i++) {
 		            if (i < 3) {
@@ -134,7 +134,7 @@ public class HomeServlet extends HttpServlet {
 
 	        List<LopHoc> list3lv2 = new ArrayList<>();
 	        List<LopHoc> list4lv2 = new ArrayList<>();
-	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(5,10, true);
+	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(2, false);
 	        if (lopHoclv2 != null) {
 	        	for (int i = 0; i < lopHoclv2.size(); i++) {
 		            if (i < 3) {
@@ -147,7 +147,7 @@ public class HomeServlet extends HttpServlet {
 
 	        List<LopHoc> list3lv1 = new ArrayList<>();
 	        List<LopHoc> list4lv1 = new ArrayList<>();
-	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(0,6, true);
+	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(1, false);
 	        if (lopHoclv1 != null) {
 	        	for (int i = 0; i < lopHoclv1.size(); i++) {
 		            if (i < 3) {
