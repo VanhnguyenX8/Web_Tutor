@@ -1,11 +1,10 @@
 package Model;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LopHoc {
-    private String id;
+	private String id;
     private String usernameHocSinh;
     private String usernameGiaSu;
     private String tenLopHoc;
@@ -17,7 +16,14 @@ public class LopHoc {
     private int phiGiaSu;
     private String moTa;
     private String hinhAnh;
-
+    //code cua Bien
+    private String ngayHocString;
+    private UserGS giasu;
+    public LopHoc() {
+    	
+    }
+    //
+    
     public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc,
             Date ngayHoc,
             int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
@@ -154,6 +160,9 @@ public class LopHoc {
 
     public void setNgayHoc(Date ngayHoc) {
         this.ngayHoc = ngayHoc;
+        //code cua Bien
+      	this.ngayHocString = new SimpleDateFormat("dd-MM-yyyy").format(this.ngayHoc);
+      	//
     }
 
     public int getHocPhi() {
@@ -187,4 +196,22 @@ public class LopHoc {
     public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
+    //code cua Bien
+    public String getNgayHocString() {
+    	return this.ngayHocString;
+    }
+    public void setKhoi(int k) {
+    	this.khoi = k;
+    }
+    public int getKhoi() {
+    	return this.khoi;
+    }
+    public UserGS getGiasu() {
+		return giasu;
+	}
+
+	public void setGiasu(UserGS giasu) {
+		this.giasu = giasu;
+	}
+    //
 }
