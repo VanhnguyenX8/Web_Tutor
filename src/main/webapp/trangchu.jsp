@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ page import="Controller.HomeServlet" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,10 +12,10 @@ pageEncoding="UTF-8"%>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Trang chủ</title>
     <link rel="stylesheet" href="css/trangchu.css" />
+	<script type="text/javascript" src="/js/home.js"></script>
     <script
       src="https://kit.fontawesome.com/b7bb3a4b72.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- Phần đầu -->
@@ -274,7 +275,8 @@ pageEncoding="UTF-8"%>
 	                      height="400"></div>
 	        </div>
 	        	<c:forEach var="lh" items="${list3lv3}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -287,7 +289,8 @@ pageEncoding="UTF-8"%>
 		<div class="row">
 		    <c:forEach var="lh" items="${list4lv3}">
             <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -312,7 +315,8 @@ pageEncoding="UTF-8"%>
 	                      height="400"></div>
 	        </div>
 	        	<c:forEach var="lh" items="${list3lv2}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -325,7 +329,8 @@ pageEncoding="UTF-8"%>
 		<div class="row">
 		    <c:forEach var="lh" items="${list4lv2}">
             <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -349,7 +354,8 @@ pageEncoding="UTF-8"%>
 	                      height="400"></div>
 	        </div>
 	        	<c:forEach var="lh" items="${list3lv1}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -362,7 +368,8 @@ pageEncoding="UTF-8"%>
 		<div class="row">
 		    <c:forEach var="lh" items="${list4lv1}">
             <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLopHoc(${lh.id})">
+            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
+            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
                 <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
                 <p1>${lh.tenLopHoc}</p1>
@@ -480,5 +487,5 @@ pageEncoding="UTF-8"%>
 </div>
 
 </body>
-
 </html>
+

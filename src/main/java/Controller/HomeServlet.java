@@ -15,12 +15,15 @@ import java.util.List;
 import DAO.UserDAO;
 import DAO.UserHSDAO;
 import Service.GiaSuService;
+import Service.LopHocService;
+import Model.LopHoc;
 //import Service.LopHocService;
 import Model.UserGS;
 
 @WebServlet (urlPatterns = {"/Home"})
 public class HomeServlet extends HttpServlet {
 	GiaSuService giaSuService = new GiaSuService();
+    LopHocService lopHocService = new LopHocService();
 //    LopHocService lopHocService = new LopHocService();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // Kiểm tra xem người dùng đã đăng nhập hay chưa
@@ -59,49 +62,51 @@ public class HomeServlet extends HttpServlet {
 	                e.printStackTrace();
 	            }
 	        }
-//	        List<UserGS> list3lv3 = new ArrayList<>();
-//	        List<UserGS> list4lv3 = new ArrayList<>();
-//	        List<UserGS> giaSuslv3 = giaSuService.getGiaSusByLever(3);
-//	        for (int i = 0; i < giaSuslv3.size(); i++) {
-//	            giaSuslv3.get(i).countLH = lopHocService.countLopByGS(username);
-//	            if (i < 3) {
-//	                list3lv3.add(giaSuslv3.get(i));
-//	            } else if (i < 7) {
-//	                list4lv3.add(giaSuslv3.get(i));
-//	            }
-//	        }
-//
-//	        List<UserGS> list3lv2 = new ArrayList<>();
-//	        List<UserGS> list4lv2 = new ArrayList<>();
-//	        List<UserGS> giaSuslv2 = giaSuService.getGiaSusByLever(2);
-//	        for (int i = 0; i < giaSuslv2.size(); i++) {
-//	            giaSuslv2.get(i).countLH = lopHocService.countLopByGS(username);
-//
-//	            if (i < 3) {
-//	                list3lv2.add(giaSuslv2.get(i));
-//	            } else if (i < 7)
-//	                list4lv2.add(giaSuslv2.get(i));
-//	        }
-//
-//	        List<UserGS> list3lv1 = new ArrayList<>();
-//	        List<UserGS> list4lv1 = new ArrayList<>();
-//	        List<UserGS> giaSuslv1 = giaSuService.getGiaSusByLever(1);
-//	        if (giaSuslv1 != null) {
-//	            for (int i = 0; i < giaSuslv1.size(); i++) {
-//	                giaSuslv1.get(i).countLH = lopHocService.countLopByGS(username);
-//	
-//		            if (i < 3) {
-//		                list3lv1.add(giaSuslv1.get(i));
-//		            } else if (i < 7)
-//		                list4lv1.add(giaSuslv1.get(i));
-//	            }
-//	        }
-//	        request.setAttribute("list3lv3", list3lv3);
-//	        request.setAttribute("list4lv3", list4lv3);
-//	        request.setAttribute("list3lv2", list3lv2);
-//	        request.setAttribute("list4lv2", list4lv2);
-//	        request.setAttribute("list3lv1", list3lv1);
-//	        request.setAttribute("list4lv1", list4lv1);
+	        List<LopHoc> list3lv3 = new ArrayList<>();
+	        List<LopHoc> list4lv3 = new ArrayList<>();
+	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(9,13, true);
+	        if (lopHoclv3 != null) {
+	        	for (int i = 0; i < lopHoclv3.size(); i++) {
+		            if (i < 3) {
+		                list3lv3.add(lopHoclv3.get(i));
+		            } else if (i < 7) {
+		                list4lv3.add(lopHoclv3.get(i));
+		            }
+		        }
+	        }
+	        
+
+	        List<LopHoc> list3lv2 = new ArrayList<>();
+	        List<LopHoc> list4lv2 = new ArrayList<>();
+	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(5,10, true);
+	        if (lopHoclv2 != null) {
+	        	for (int i = 0; i < lopHoclv2.size(); i++) {
+		            if (i < 3) {
+		                list3lv2.add(lopHoclv2.get(i));
+		            } else if (i < 7)
+		                list4lv2.add(lopHoclv2.get(i));
+		        }
+	        }
+	        
+
+	        List<LopHoc> list3lv1 = new ArrayList<>();
+	        List<LopHoc> list4lv1 = new ArrayList<>();
+	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(0,6, true);
+	        if (lopHoclv1 != null) {
+	        	for (int i = 0; i < lopHoclv1.size(); i++) {
+		            if (i < 3) {
+		                list3lv1.add(lopHoclv1.get(i));
+		            } else if (i < 7)
+		                list4lv1.add(lopHoclv1.get(i));
+		        }
+	        }
+	        
+	        request.setAttribute("list3lv3", list3lv3);
+	        request.setAttribute("list4lv3", list4lv3);
+	        request.setAttribute("list3lv2", list3lv2);
+	        request.setAttribute("list4lv2", list4lv2);
+	        request.setAttribute("list3lv1", list3lv1);
+	        request.setAttribute("list4lv1", list4lv1);
 	        request.setAttribute("Name", Name);
 	        request.setAttribute("email", email);
 	        request.setAttribute("position", position);
@@ -113,6 +118,51 @@ public class HomeServlet extends HttpServlet {
 	        session.removeAttribute("acc");
 
 	        // Chuyển hướng về trang chủ không đăng nhập
+	        List<LopHoc> list3lv3 = new ArrayList<>();
+	        List<LopHoc> list4lv3 = new ArrayList<>();
+	        List<LopHoc> lopHoclv3 = lopHocService.getLopHocByKhoi(9,13, true);
+	        if (lopHoclv3 != null) {
+	        	for (int i = 0; i < lopHoclv3.size(); i++) {
+		            if (i < 3) {
+		                list3lv3.add(lopHoclv3.get(i));
+		            } else if (i < 7) {
+		                list4lv3.add(lopHoclv3.get(i));
+		            }
+		        }
+	        }
+	        
+
+	        List<LopHoc> list3lv2 = new ArrayList<>();
+	        List<LopHoc> list4lv2 = new ArrayList<>();
+	        List<LopHoc> lopHoclv2 = lopHocService.getLopHocByKhoi(5,10, true);
+	        if (lopHoclv2 != null) {
+	        	for (int i = 0; i < lopHoclv2.size(); i++) {
+		            if (i < 3) {
+		                list3lv2.add(lopHoclv2.get(i));
+		            } else if (i < 7)
+		                list4lv2.add(lopHoclv2.get(i));
+		        }
+	        }
+	        
+
+	        List<LopHoc> list3lv1 = new ArrayList<>();
+	        List<LopHoc> list4lv1 = new ArrayList<>();
+	        List<LopHoc> lopHoclv1 = lopHocService.getLopHocByKhoi(0,6, true);
+	        if (lopHoclv1 != null) {
+	        	for (int i = 0; i < lopHoclv1.size(); i++) {
+		            if (i < 3) {
+		                list3lv1.add(lopHoclv1.get(i));
+		            } else if (i < 7)
+		                list4lv1.add(lopHoclv1.get(i));
+		        }
+	        }
+	        
+	        request.setAttribute("list3lv3", list3lv3);
+	        request.setAttribute("list4lv3", list4lv3);
+	        request.setAttribute("list3lv2", list3lv2);
+	        request.setAttribute("list4lv2", list4lv2);
+	        request.setAttribute("list3lv1", list3lv1);
+	        request.setAttribute("list4lv1", list4lv1);
 	        String jspPath = "/Home.jsp";
 	        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 	        rs.forward(request, response);

@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class GiaSuService {
-    UserDAO giaSuDAO = new UserDAO();
+    private static final String GiaSuDAO = null;
+	UserDAO giaSuDAO = new UserDAO();
     public void insertGiaSu(UserGS giaSu) {
         giaSuDAO.saveGiaSu(giaSu);
 		System.out.println("Thêm thành công!");
@@ -27,43 +28,12 @@ public class GiaSuService {
         }
         return null;
     }
-//
-//    public List<UserGS> getAllGiaSus() {
-//        try {
-//            List<UserGS> giaSus = giaSuDAO.getAll();
-//            return giaSus;
-//        } catch (SQLException e) {
-//            System.out.println("Lỗi khi truy vấn danh sách : " + e.getMessage());
-//        }
-//        return null;
-//    }
-
-//    //Lấy ds GS theo lever thông qua đối tượng giaSuDAO
-//    public List<UserGS> getGiaSusByLever(int lever) {
-//        try {
-//            List<UserGS> giaSus = giaSuDAO.getAllByLever(lever);
-//            return giaSus;
-//        } catch (SQLException e) {
-//            System.out.println("Lỗi khi truy vấn danh sách : " + e.getMessage());
-//        }
-//        return null;
-//    }
-//
-//    public void updateGiaSu(UserGS GiaSu) {
-//        try {
-//            giaSuDAO.update(GiaSu);
-//            System.out.println("Cập nhật thông tin thành công!");
-//        } catch (SQLException e) {
-//            System.out.println("Lỗi khi cập nhật thông tin: " + e.getMessage());
-//        }
-//    }
-
-//    public void deleteGiaSu(String idGS) {
-//        try {
-//            giaSuDAO.(idGS);
-//            System.out.println("Xóa học sinh thành công!");
-//        } catch (SQLException e) {
-//            System.out.println("Lỗi khi xóa học sinh: " + e.getMessage());
-//        }
-//    }
+    
+    public int countHocSinhByGiaSuUsername(String username) {
+        try {
+            return giaSuDAO.countHocSinhByGiaSuUsername(username);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
 }

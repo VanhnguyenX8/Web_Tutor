@@ -9,17 +9,18 @@ public class LopHoc {
     private String usernameHocSinh;
     private String usernameGiaSu;
     private String tenLopHoc;
-    private String gioHoc;
+    private Integer gioHoc;
     private Date ngayHoc;
     private int hocPhi;
+    private int khoi;
+    private int accept;
     private int phiGiaSu;
     private String moTa;
     private String hinhAnh;
-    private int accept;
-    private int lever;
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc,
+            Date ngayHoc,
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
         this.usernameGiaSu = usernameGiaSu;
@@ -32,8 +33,8 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String id, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
+    public LopHoc(String id, String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc,
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh) {
         this.id = id;
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
@@ -45,20 +46,22 @@ public class LopHoc {
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int lever, int accept, int phiGiaSu, String moTa, String hinhAnh) {
+    public LopHoc(String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc, int hocPhi, int khoi,
+            int accept, int phiGiaSu, String moTa, String hinhAnh) {
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
         this.gioHoc = gioHoc;
         this.ngayHoc = ngayHoc;
         this.hocPhi = hocPhi;
-        this.lever = lever;
+        this.khoi = khoi;
         this.accept = accept;
         this.phiGiaSu = phiGiaSu;
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh ,  int accept, int lever) {
+    public LopHoc(String id, String usernameHocSinh, String usernameGiaSu, String tenLopHoc, Integer gioHoc,
+            Date ngayHoc, int hocPhi, int phiGiaSu, String moTa, String hinhAnh, int accept, int khoi) {
         this.id = id;
         this.usernameHocSinh = usernameHocSinh;
         this.usernameGiaSu = usernameGiaSu;
@@ -66,15 +69,15 @@ public class LopHoc {
         this.gioHoc = gioHoc;
         this.ngayHoc = ngayHoc;
         this.hocPhi = hocPhi;
-        this.lever = lever;
+        this.khoi = khoi;
         this.accept = accept;
         this.phiGiaSu = phiGiaSu;
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;
     }
 
-    public LopHoc(String usernameGiaSu, String tenLopHoc, String gioHoc, Date ngayHoc,
-                  int hocPhi, int phiGiaSu, String moTa, String hinhAnh,  int accept, int lever) {
+    public LopHoc(String usernameGiaSu, String tenLopHoc, Integer gioHoc, Date ngayHoc,
+            int hocPhi, int phiGiaSu, String moTa, String hinhAnh, int accept, int khoi) {
         this.usernameGiaSu = usernameGiaSu;
         this.tenLopHoc = tenLopHoc;
         this.gioHoc = gioHoc;
@@ -83,18 +86,18 @@ public class LopHoc {
         this.phiGiaSu = phiGiaSu;
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;
-        this.lever = lever;
+        this.khoi = khoi;
         this.accept = accept;
     }
 
     // Getter và Setter cho các trường
 
     public int getLever() {
-        return lever;
+        return khoi;
     }
 
-    public void setLever(int lever) {
-        this.lever = lever;
+    public void setLever(int khoi) {
+        this.khoi = khoi;
     }
 
     public int getAccept() {
@@ -137,11 +140,11 @@ public class LopHoc {
         this.tenLopHoc = tenLopHoc;
     }
 
-    public String getGioHoc() {
+    public Integer getGioHoc() {
         return gioHoc;
     }
 
-    public void setGioHoc(String gioHoc) {
+    public void setGioHoc(Integer gioHoc) {
         this.gioHoc = gioHoc;
     }
 

@@ -20,7 +20,7 @@ public class LopHocService {
 
     public LopHoc getlopHocById(String idLH) {
         try {
-            LopHoc lopHoc = lopHocDAO.getById(Integer.parseInt(idLH));
+            LopHoc lopHoc = lopHocDAO.getById(idLH);
             if (lopHoc != null) {
                 return lopHoc;
             } else {
@@ -44,7 +44,6 @@ public class LopHocService {
         return null;
     }
 
-
     public List<LopHoc> getAlllopHocs() {
         try {
             List<LopHoc> lopHocs = lopHocDAO.getAll();
@@ -54,27 +53,26 @@ public class LopHocService {
         }
         return null;
     }
-    
-    public List<LopHoc> getLopHocByLever(int lever, boolean isAdmin) {
+
+    public List<LopHoc> getLopHocByKhoi(int khoibd, int khoikt, boolean isMod) {
         try {
-            List<LopHoc> lopHocs = lopHocDAO.getLopHocByLever(lever, isAdmin);
+            List<LopHoc> lopHocs = lopHocDAO.getLopHocByKhoi(khoibd, khoikt, isMod);
             return lopHocs;
         } catch (SQLException e) {
             System.out.println("Lỗi khi truy vấn danh sách lớp học: " + e.getMessage());
         }
         return null;
     }
-    
-    public List<LopHoc> getLopHocByGSAndLever(String username,int lever) {
+
+    public List<LopHoc> getLopHocByGSAndLever(String username, int khoi) {
         try {
-            List<LopHoc> lopHocs = lopHocDAO.getLopHocByGSAndLever(username,lever);
+            List<LopHoc> lopHocs = lopHocDAO.getLopHocByGSAndLever(username, khoi);
             return lopHocs;
         } catch (SQLException e) {
             System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
         }
         return null;
     }
-
 
     public void updatelopHoc(LopHoc lopHoc) {
         try {
@@ -84,14 +82,14 @@ public class LopHocService {
             System.out.println("Lỗi khi cập nhật học sinh: " + e.getMessage());
         }
     }
-    public void acceptLopHoc(int accept, int lopHocId) {
+
+    public void acceptLopHoc(int accept, String lopHocId) {
         try {
-            lopHocDAO.acceptLopHoc(accept,lopHocId);
+            lopHocDAO.acceptLopHoc(accept, lopHocId);
         } catch (SQLException e) {
             System.out.println("Lỗi khi cập nhật : " + e.getMessage());
         }
     }
-
 
     public int countHocSinhInGS(String giaSuUsername) {
         try {
@@ -109,4 +107,15 @@ public class LopHocService {
             System.out.println("Lỗi khi xóa Lớp học: " + e.getMessage());
         }
     }
+
+    public List<LopHoc> getLopHocByLever(int khoi, boolean isMod) {
+        try {
+            List<LopHoc> lopHocs = lopHocDAO.getLopHocByLever(khoi, isMod);
+            return lopHocs;
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
+        }
+        return null;
+    }
+
 }
