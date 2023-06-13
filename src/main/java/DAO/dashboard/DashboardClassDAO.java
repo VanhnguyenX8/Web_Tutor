@@ -1,6 +1,7 @@
 package DAO.dashboard;
 
 import org.json.JSONArray;
+import Model.LopHoc;
 import org.json.JSONObject;
 
 import java.sql.*;
@@ -34,17 +35,21 @@ public class DashboardClassDAO {
             ResultSet rs =stmt.executeQuery("select * from lophoc");
             while (rs.next()){
                 JSONObject obj = new JSONObject();
-                obj.put("id",rs.getString("id"));
-                obj.put("usernameStudent",rs.getString("username_hoc_sinh"));
-                obj.put("usernameTutor",rs.getString("username_gia_su"));
-                obj.put("className",rs.getString("ten_lop_hoc"));
-                obj.put("classSchedule",rs.getString("gio_hoc"));
-                obj.put("classDay",rs.getString("ngay_hoc"));
-                obj.put("tuition",rs.getInt("hoc_phi"));
-                obj.put("tutorFee",rs.getInt("phi_gia_su"));
-                obj.put("description",rs.getString("mo_ta"));
-                obj.put("image",rs.getString("hinh_anh"));
-                obj.put("accept",rs.getInt("accept"));
+                LopHoc lopHoc = new LopHoc(rs.getString("id"),rs.getString("username_hoc_sinh"),rs.getString("username_gia_su"),rs.getString("ten_lop_hoc"),
+                		rs.getInt("gio_hoc"),rs.getDate("ngay_hoc"),rs.getInt("hoc_phi"),rs.getInt("phi_gia_su"),rs.getString("mo_ta")
+                		,rs.getString("hinh_anh"),rs.getInt("accept"),rs.getInt("khoi"));
+                obj.put("id",lopHoc.getId());
+                obj.put("usernameStudent",lopHoc.getUsernameHocSinh());
+                obj.put("usernameTutor",lopHoc.getUsernameGiaSu());
+                obj.put("className",lopHoc.getTenLopHoc());
+                obj.put("classSchedule",lopHoc.getGioHoc());
+                obj.put("classDay",lopHoc.getNgayHoc());
+                obj.put("tuition",lopHoc.getHocPhi());
+                obj.put("tutorFee",lopHoc.getPhiGiaSu());
+                obj.put("description",lopHoc.getMoTa());
+                obj.put("image",lopHoc.getHinhAnh());
+                obj.put("accept",lopHoc.getAccept());
+                obj.put("level", lopHoc.getLever());
                 listLopHoc.put(obj);
             }
 

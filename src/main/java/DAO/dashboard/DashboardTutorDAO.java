@@ -41,6 +41,7 @@ public class DashboardTutorDAO {
                 obj.put("dateOfBirth",rs.getString("nam_sinh"));
                 obj.put("name",rs.getString("ten_gia_su"));
                 obj.put("username",rs.getString("username"));
+                obj.put("image", rs.getString("hinh_anh"));
                 listGiaSu.put(obj);
             }
 

@@ -2,7 +2,7 @@ package DAO.dashboard;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+import Model.UserHS;
 import java.sql.*;
 
 public class DashboardStudentDAO {
@@ -31,6 +31,7 @@ public class DashboardStudentDAO {
             ResultSet rs =stmt.executeQuery("select * from hocsinh");
             while (rs.next()){
                 JSONObject obj = new JSONObject();
+                UserHS hocSinh = new UserHS();
                 obj.put("accountBalance",rs.getInt("so_du_tai_khoan"));
                 obj.put("bankNumber",rs.getString("so_tai_khoan"));
                 obj.put("address",rs.getString("dia_chi"));
@@ -40,6 +41,7 @@ public class DashboardStudentDAO {
                 obj.put("dateOfBirth",rs.getString("nam_sinh"));
                 obj.put("name",rs.getString("ten_hoc_sinh"));
                 obj.put("username",rs.getString("username"));
+                obj.put("image", rs.getString("hinh_anh"));
                 listHocSinh.put(obj);
             }
 

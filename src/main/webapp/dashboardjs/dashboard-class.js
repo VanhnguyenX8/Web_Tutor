@@ -7,7 +7,18 @@ fetch("/Web_Tutor/lophoc?actionLopHoc=list_lophoc", requestOptions)
     .then(response => response.json())
     .then(result => getList(result))
     .catch(error => console.log('error', error));
-    
+const image = result['image'];
+        const jobPosition = result['jobPosition'];
+        const name = result['name'];
+        localStorage.setItem('image',result['image'])
+        localStorage.setItem('jobPosition',result['jobPosition'])
+        localStorage.setItem('name',result['name'])
+        const imageTag = document.querySelector('.khoiben-anh');
+        const jobPositionTag = document.querySelector('#vitricongviec');
+        const nameTag = document.querySelector('#tenadmin')
+        imageTag.style.backgroundImage = 'url(' + image + ')';
+        jobPositionTag.innerText = jobPosition;
+        name.innerText = name;
 async function getList(result) {
     var table = document.querySelector(".sub_table");
 

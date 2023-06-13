@@ -25,8 +25,8 @@
         <div class="khoiben-user">
             <div class="khoiben-anh" style="background-image: url(/asset/564835.jpg);"></div>
             <div class="user">
-                <small>Software Developer</small>
-                <p>Tuan Anh</p>
+                <small id="vitricongviec"></small>
+                <p id="tenadmin"></p>
             </div>
         </div>
         <ul>

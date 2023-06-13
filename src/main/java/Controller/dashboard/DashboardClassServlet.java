@@ -23,7 +23,8 @@ public class DashboardClassServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("actionLopHoc");
+    	resp.setCharacterEncoding("UTF-8");
+    	String action = req.getParameter("actionLopHoc");
         if(action != null){
             if(action.equals("list_lophoc")){
                 DashboardClassDAO lh = new DashboardClassDAO();
