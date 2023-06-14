@@ -48,7 +48,11 @@ public class ProfileLHServlet extends HttpServlet {
 			int tongSoLuotThich = like.getLikeCount(idLH);
 			double danhgia = 0;
 	 danhgia = rating.calculateAverageRating(idLH);
-			System.out.println("tong danh gia" + danhgia);
+	 int totalRatings = rating.getTotalRatings(idLH);
+		int userRating = rating.getUserRating(tk.getUsername(), idLH);
+			
+			req.setAttribute("userRating", userRating);
+			req.setAttribute("totalRatings", totalRatings);
 			req.setAttribute("tongSoLuotThich", tongSoLuotThich);
 			req.setAttribute("averageRating", danhgia);
 		} catch (SQLException e1) {

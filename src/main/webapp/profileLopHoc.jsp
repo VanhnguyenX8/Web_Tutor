@@ -36,7 +36,8 @@
 
 				</div>
 				<div class="logo2">
-					<a><img src="../assets/images/logo.png"></a>
+					<a href="${ pageContext.request.contextPath }/Home"><img
+						src="img/logo.png"></a>
 				</div>
 				<div class="action">
 					<ul>
@@ -52,7 +53,8 @@
 			</div>
 		</div>
 		<div class="content">
-			<a class="home-1-icon" href="/home">Trang chủ</a>
+			<a class="home-1-icon"
+				href="${ pageContext.request.contextPath }/Home">Trang chủ</a>
 			<div>
 				<h1>${lopHoc.tenLopHoc}${lopHoc.lever}</h1>
 			</div>
@@ -65,51 +67,13 @@
 						<img src="${lopHoc.hinhAnh}">
 						<!-- Hien thi like va danh gia sao -->
 						<div style="width: 500px">
-							<style>
-.fix_ngang {
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
-	padding: 0;
-	margin-top: 10px;
-	margin-right: 100px;
-	justify-content: space-around;
-}
 
-.fix_ngang li {
-	margin-right: 10px;
-}
-.like-button {
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    color: white !important;
-    background-color: #2a70b8 !important;
-    padding: 5px
-}
-.no-like-button{
-cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    color: black !important;
-    background-color: #ffffff !important;
-    padding: 5px
-}
-select {
-    color: white !important;
-    background-color: #2a70b8 !important;
-}
-input[type="submit"] {
-    background-color: #2a70b8 !important;
-    color: white !important;
-    padding: 5px;
-    border-radius: 5px;
-}
-</style>
 							<%
 							boolean hasLiked = false;
 							double averageRating = (double) request.getAttribute("averageRating");
 							int tongSoLuotThich = (int) request.getAttribute("tongSoLuotThich");
+							int totalRatings = (int) request.getAttribute("totalRatings");
+							int userRating = (int) request.getAttribute("userRating");
 							if (request.getAttribute("hasLiked") != null) {
 								hasLiked = (Boolean) request.getAttribute("hasLiked");
 							}
@@ -138,23 +102,24 @@ input[type="submit"] {
 										lượt thích
 								</li>
 
-								<li><p2> <b>Đánh giá đối tượng</b></p2>
+								<li>
 
 									<form action="RatingServlet" method="post">
 
 										<label>Chọn số sao:</label> <select name="rating">
+											<option value="<%=userRating%>" selected><%=userRating%>
+												sao
+											</option>
 											<option value="1">1 sao</option>
 											<option value="2">2 sao</option>
 											<option value="3">3 sao</option>
 											<option value="4">4 sao</option>
 											<option value="5">5 sao</option>
-										</select> <br> <input type="submit" value="Đánh giá">
+										</select> <br> <input style="margin-top: 20px" type="submit"
+											value="Đánh giá">
 									</form>
 
-									<p>
-										Số sao:
-										<%=averageRating%>
-									<p></li>
+								</li>
 
 							</ul>
 
@@ -185,7 +150,7 @@ input[type="submit"] {
 					<h3 class="course-title" style="color: #2a70b8;">Học ngay chỉ
 						với</h3>
 					<div class="text-center">
-						<span>${lopHoc.hocPhi}</span> <span class="dong">$</span>
+						<span>${lopHoc.hocPhi}</span> <span class="dong">đ</span>
 					</div>
 					<div class="text-center">
 						<span> Người học : ${lopHoc.usernameHocSinh != null ? lopHoc.usernameHocSinh: 0}
@@ -214,6 +179,21 @@ input[type="submit"] {
 						<ul>
 							<li>Hạn đăng ký: 18/01/2030</li>
 							<li>Ngày bế giảng: ${lopHoc.ngayHoc}</li>
+						</ul>
+						<p>Thông tin đánh giá :</p>
+						<ul>
+							<li>Số sao trung bình:<%=averageRating%>
+							</li>
+							<li>Tổng <%=totalRatings%> đánh giá, <%
+							if (userRating == 0) {
+							%> bạn đã chưa giá <%
+							}
+							%> <%
+ if (userRating != 0) {
+ %> bạn đã đánh giá <%=userRating%> sao <%
+ }
+ %>
+							</li>
 						</ul>
 					</div>
 				</div>

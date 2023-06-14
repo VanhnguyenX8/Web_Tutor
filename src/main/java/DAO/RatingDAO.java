@@ -71,6 +71,43 @@ public class RatingDAO {
 		}
 		return averageRating;
 	}
+	public int getTotalRatings(String idlophoc) {
+	    int totalRatings = 0;
+	    try {
+	        String countQuery = "SELECT COUNT(*) AS total FROM danhgia WHERE idlophoc::text = ?";
+	        PreparedStatement countStatement = con.prepareStatement(countQuery);
+	        countStatement.setString(1, idlophoc);
+	        ResultSet resultSet = countStatement.executeQuery();
+
+	        if (resultSet.next()) {
+	            totalRatings = resultSet.getInt("total");
+	        }
+
+	        resultSet.close();
+	        countStatement.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return totalRatings;
+	}
+	 public int getUserRating(String username, String idlophoc) {
+	        int userRating = 0;
+	        String query = "SELECT rating FROM danhgia WHERE usernamebl = ? AND idlophoc::text = ?";
+	        try {
+	            PreparedStatement st = con.prepareStatement(query);
+	            st.setString(1, username);
+	            st.setString(2, idlophoc);
+	            ResultSet rs = st.executeQuery();
+	            if (rs.next()) {
+	                userRating = rs.getInt("rating");
+	            }
+	            rs.close();
+	            st.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return userRating;
+	    }
 
 	
 }
