@@ -329,122 +329,153 @@ pageEncoding="UTF-8"%>
       </div>
       <div style="height: 70px"></div>
       <!-- Trung học phổ thông -->
-	<div class="container">
-	    <h1 style="padding-left: 60px">Trung học phổ thông</h1>
-	    <hr>
-	    <br>
-	    <div class="row">
-	        <div colspan="6">
-	            <div><img class="images_thpt"
-	                      src="https://r73troypb4obj.vcdn.cloud/website02/uploads/images/62318bba1a1b854d4e90223a/danh-gia-truong-thpt-a-phu-ly-ha-nam-co-tot-khong.jpg"
-	                      alt=""
-	                      width="400"
-	                      height="400"></div>
-	        </div>
-	        	<c:forEach var="lh" items="${list3lv3}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+      <div id="thcs" class="main-thcs">
+        <div class="container">
+            <div class="tieude">
+                <div class="tieude-thcs">Trung Học Phổ Thông</div>
             </div>
-        </c:forEach>
-		    </div>
-	    <br>
-    	<br>
-		<div class="row">
-		    <c:forEach var="lh" items="${list4lv3}">
-            <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            <div class="noi-dung-1">
+                <div class="quangcao">
+                    <div class="quangcao-img"><a href=""><img src="img/banner.png" alt="lotrinhhoctot"></a></div>
+                </div>
+                <div class="lop-hoc-moi">
+                    <c:forEach var="lh" items="${list3lv3}">
+                    <div id="lop-hoc-1" class="lop-hoc">
+                        <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <table>
+                                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a>
+                                </p>
+                                <p1>${lh.tenLopHoc}</p1>
+                                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                            </table>
+                        </div>
+                    </div>
+                    </c:forEach>
+                </div>
             </div>
-        </c:forEach>
-
-		</div>
-	</div>
-    <!-- Trung học cơ sở -->
-	<div style="height: 60px;"></div>
-	<div class="container">
-	    <h1 style="padding-left: 60px">Trung học cơ sở</h1>
-	    <hr>
-	    <br>
-	    <div class="row">
-	        <div colspan="6">
-	            <div><img class="images_thpt"
-	                      src="https://r73troypb4obj.vcdn.cloud/website02/uploads/images/62318bba1a1b854d4e90223a/danh-gia-truong-thpt-a-phu-ly-ha-nam-co-tot-khong.jpg"
-	                      alt=""
-	                      width="400"
-	                      height="400"></div>
-	        </div>
-	        	<c:forEach var="lh" items="${list3lv2}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            <div class="noi-dung-2">
+                <div class="lop-hoc-hot">
+                    <c:forEach var="lh" items="${list4lv3}">
+                    <div id="lop-hoc-4" class="lop-hoc">
+                        <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <div class="thong-tin-lop-hoc">
+                                <table>
+                                    <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên:
+                                            ${lh.usernameGiaSu}</a>
+                                    </p>
+                                    <p1>${lh.tenLopHoc}</p1>
+                                    <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                    <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                </div>
             </div>
-        </c:forEach>
-		    </div>
-	    <br>
-    	<br>
-		<div class="row">
-		    <c:forEach var="lh" items="${list4lv2}">
-            <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+        </div>
+    </div>
+    <div id="thcs" class="main-thcs">
+        <div class="container">
+            <div class="tieude">
+                <div class="tieude-thcs">Trung Học Cơ Sở</div>
             </div>
-        </c:forEach>
-		</div>
-	</div>
-    <!-- tiểu học -->
-	<div style="height: 60px;"></div>
-	<div class="container">
-	    <h1 style="padding-left: 60px">Tiểu học</h1>
-	    <hr>
-	    <br>
-	    <div class="row">
-	        <div colspan="6">
-	            <div><img class="images_thpt"
-	                      src="https://r73troypb4obj.vcdn.cloud/website02/uploads/images/62318bba1a1b854d4e90223a/danh-gia-truong-thpt-a-phu-ly-ha-nam-co-tot-khong.jpg"
-	                      alt=""
-	                      width="400"
-	                      height="400"></div>
-	        </div>
-	        	<c:forEach var="lh" items="${list3lv1}">
-            <div class="col 2 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            <div class="noi-dung-1">
+                <div class="quangcao">
+                    <div class="quangcao-img"><a href=""><img src="img/banner.png" alt="lotrinhhoctot"></a></div>
+                </div>
+                <div class="lop-hoc-moi">
+                    <c:forEach var="lh" items="${list3lv2}">
+                    <div id="lop-hoc-1" class="lop-hoc">
+<img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <table>
+                                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a>
+                                </p>
+                                <p1>${lh.tenLopHoc}</p1>
+                                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                            </table>
+                        </div>
+                    </div>
+                    </c:forEach>
+                </div>
             </div>
-        </c:forEach>
-		    </div>
-	    <br>
-    	<br>
-		<div class="row">
-		    <c:forEach var="lh" items="${list4lv1}">
-            <c:set var="count" value="${5}" />
-            <div class="col 3 table_thpt_item" align="center" onclick="profileLH(${lh.id})">
-            <a href="profileLH?id=${lh.id }">thong tin lop hoc</a>
-                <img src="${lh.hinhAnh}" alt="" width="200" height="200">
-                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a></p>
-                <p1>${lh.tenLopHoc}</p1>
-                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+            <div class="noi-dung-2">
+                <div class="lop-hoc-hot">
+                    <c:forEach var="lh" items="${list4lv2}">
+                    <div id="lop-hoc-4" class="lop-hoc">
+                        <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <div class="thong-tin-lop-hoc">
+                                <table>
+                                    <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên:
+                                            ${lh.usernameGiaSu}</a>
+                                    </p>
+                                    <p1>${lh.tenLopHoc}</p1>
+                                    <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                    <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                </div>
             </div>
-        </c:forEach>
-		</div>
-	</div>
+        </div>
+    </div>
+    <div id="thcs" class="main-thcs">
+        <div class="container">
+            <div class="tieude">
+                <div class="tieude-thcs">Tiểu Học</div>
+            </div>
+            <div class="noi-dung-1">
+                <div class="quangcao">
+                    <div class="quangcao-img"><a href=""><img src="img/banner.png" alt="lotrinhhoctot"></a></div>
+                </div>
+                <div class="lop-hoc-moi">
+                    <c:forEach var="lh" items="${list3lv1}">
+                    <div id="lop-hoc-1" class="lop-hoc">
+                        <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <table>
+                                <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a>
+                                </p>
+                                <p1>${lh.tenLopHoc}</p1>
+                                <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                            </table>
+                        </div>
+</div>
+                    </c:forEach>
+                </div>
+            </div>
+            <div class="noi-dung-2">
+                <div class="lop-hoc-hot">
+                    <c:forEach var="lh" items="${list4lv1}">
+                    <div id="lop-hoc-4" class="lop-hoc">
+                        <img src="${lh.hinhAnh}" alt="" width="200" height="200">
+                        <div class="thong-tin-lop-hoc">
+                            <div class="thong-tin-lop-hoc">
+                                <table>
+                                    <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên:
+                                            ${lh.usernameGiaSu}</a>
+                                    </p>
+                                    <p1>${lh.tenLopHoc}</p1>
+                                    <p>${lh.ngayHoc} - ${lh.hocPhi}$</p>
+                                    <a href="profileLH?id=${lh.id }">thông tin lớp học</a>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer">
     <div class="wrapper-ft ">
         <div class="content-top">

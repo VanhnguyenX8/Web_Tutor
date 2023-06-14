@@ -23,7 +23,6 @@ import java.util.List;
 public class ProfileGSServlet extends HttpServlet {
     GiaSuService giaSuService = new GiaSuService();
     HocSinhService hocSinhService = new HocSinhService();
-//    LopHocService lopHocService = new LopHocService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	HttpSession session = req.getSession();
@@ -37,26 +36,21 @@ public class ProfileGSServlet extends HttpServlet {
     	// Xử lý dữ liệu và hiển thị trang thông tin
     	if (isLoggedIn && !isLogoutRequested) {
     	    String username = account.getUsername(); // Lấy username của người dùng
+    	    session.setAttribute("username", username);
     	    String position = account.getRole(); // Lấy vai trò của người dùng
+    	    session.setAttribute("position", position);
     	    if (position.equals("giasu")) {
     	    	UserGS giaSu = giaSuService.getGiaSuByUsername(username);
         	    if (giaSu != null && giaSu.getUsername() != null) {
-//        	        List<LopHoc> lopHocs = lopHocService.getlopHocByUsernameGS(giaSu.getUsername());
-
         	        req.setAttribute("giaSu", giaSu);
-//        	        req.setAttribute("lopHocs", lopHocs);
-        	        RequestDispatcher dispatcher = req.getRequestDispatcher("/profile.jsp");
+        	        RequestDispatcher dispatcher = req.getRequestDispatcher("/profileGiaSu.jsp");
         	        dispatcher.forward(req, resp);
         	    }
-//        	    else {
-//        	        // Xử lý khi không tìm thấy gia sư hoặc tài khoản
-//       	    	resp.sendRedirect("/Web_Tutor/addInfo.jsp");
-//        	    }
     	    }else if(position.equals("hocsinh")) {
     	    	UserHS hocSinh = hocSinhService.getHocSinhByUsername(username);
     	    	if(hocSinh != null && hocSinh.getUsername() != null) {
     	    		req.setAttribute("hocSinh", hocSinh);
-    	    		RequestDispatcher dispatcher = req.getRequestDispatcher("/profile.jsp");
+    	    		RequestDispatcher dispatcher = req.getRequestDispatcher("/profileGiaSu.jsp");
         	        dispatcher.forward(req, resp);
     	    	}
     	    }
