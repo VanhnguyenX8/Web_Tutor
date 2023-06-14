@@ -42,7 +42,7 @@ public class ProfileLHServlet extends HttpServlet {
         session.setAttribute("idLopHoc", idLH);
         req.setAttribute("lopHoc", lopHoc);
         try {
-			boolean hasLiked = like.hasLiked(idLH, "vanhnguyenx8");
+			boolean hasLiked = like.hasLiked(idLH, tk.getUsername());
 			System.out.println("bollen của người dăng nhập" + hasLiked);
 			req.setAttribute("hasLiked", hasLiked);
 			int tongSoLuotThich = like.getLikeCount(idLH);
@@ -58,7 +58,7 @@ public class ProfileLHServlet extends HttpServlet {
 try {
 			
 			CommentChiTietSP ccmt = new CommentChiTietSP();
-			List<BinhLuan> cmt = ccmt.getallcmt(idLH);
+			List<BinhLuan> cmt = ccmt.getallcmt(idLH,tk.getUsername());
 			req.setAttribute("datacmt", cmt);
 		} catch (Exception e) {
 			// TODO: handle exception
