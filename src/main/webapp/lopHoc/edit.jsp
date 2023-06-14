@@ -11,7 +11,8 @@
 <body>
 <div class="container emp-profile">
     <h1>Sửa Thông Tin Lớp Học</h1>
-    <form method="post">
+    
+    <form method="post" action="managerLopHoc">
         <input placeholder="id" name="id" value="${lopHoc.id}" hidden="hidden"><br>
         <input placeholder="Tên Lớp Học" name="name" type="name" value="${lopHoc.tenLopHoc}"><br>
         <input placeholder="usernameHS" name="usernameHS" value="${lopHoc.usernameHocSinh}" hidden="hidden"><br>

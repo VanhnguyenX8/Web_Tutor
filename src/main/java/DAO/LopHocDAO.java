@@ -49,6 +49,7 @@ public class LopHocDAO extends DBconnect {
             statement.setInt(4, lopHoc.getHocPhi());
             statement.setInt(5, lopHoc.getPhiGiaSu());
             statement.setString(6, lopHoc.getMoTa());
+            System.out.println(lopHoc.getMoTa());
             statement.setString(7, lopHoc.getHinhAnh());
             statement.setInt(8, lopHoc.getLever());
             statement.setString(9, lopHoc.getUsernameHocSinh());

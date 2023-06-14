@@ -21,6 +21,7 @@ public class ManagerLopHocServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	
         HttpSession session = req.getSession();
         TaiKhoan account = (TaiKhoan) session.getAttribute("acc");
         String action = req.getParameter("action");
@@ -35,6 +36,7 @@ public class ManagerLopHocServlet extends HttpServlet {
                 dispatcher = req.getRequestDispatcher("/lopHoc/create.jsp");
                 break;
             case "edit":
+            	System.out.println("vao eidt");
                 req.setAttribute("lopHoc", lopHocService.getlopHocById(idLH));
                 dispatcher = req.getRequestDispatcher("/lopHoc/edit.jsp");
                 break;
@@ -60,11 +62,13 @@ public class ManagerLopHocServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+    	req.setCharacterEncoding("UTF-8");
+    	try {
             HttpSession session = req.getSession();
             TaiKhoan account = (TaiKhoan) session.getAttribute("acc");
             String action = req.getParameter("action");
             RequestDispatcher dispatcher = null;
+            
             if (action == null) {
                 action = "";
             }

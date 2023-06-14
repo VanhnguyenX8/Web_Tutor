@@ -36,7 +36,7 @@
 
 				</div>
 				<div class="logo2">
-					<a><img src="../assets/images/logo.png"></a>
+					<a href="${ pageContext.request.contextPath }/Home"><img src="img/logo.png"></a>
 				</div>
 				<div class="action">
 					<ul>
@@ -52,7 +52,7 @@
 			</div>
 		</div>
 		<div class="content">
-			<a class="home-1-icon" href="/home">Trang chủ</a>
+			<a class="home-1-icon" href="${ pageContext.request.contextPath }/Home">Trang chủ</a>
 			<div>
 				<h1>${lopHoc.tenLopHoc}${lopHoc.lever}</h1>
 			</div>
@@ -65,7 +65,7 @@
 						<img src="${lopHoc.hinhAnh}">
 						<!-- Hien thi like va danh gia sao -->
 						<div style="width: 500px">
-							<style>
+<style>
 .fix_ngang {
 	display: flex;
 	flex-wrap: wrap;
@@ -185,7 +185,7 @@ input[type="submit"] {
 					<h3 class="course-title" style="color: #2a70b8;">Học ngay chỉ
 						với</h3>
 					<div class="text-center">
-						<span>${lopHoc.hocPhi}</span> <span class="dong">$</span>
+						<span>${lopHoc.hocPhi}</span> <span class="dong">đ</span>
 					</div>
 					<div class="text-center">
 						<span> Người học : ${lopHoc.usernameHocSinh != null ? lopHoc.usernameHocSinh: 0}
