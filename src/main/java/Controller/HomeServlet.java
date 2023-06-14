@@ -41,10 +41,6 @@ public class HomeServlet extends HttpServlet {
 	        String username = account.getUsername();
 	        //code moi, set session username của tài khoản đã đăng nhập
 	        session.setAttribute("username", username);
-	        String username1 = (String) session.getAttribute("username");
-	        //print username của tài khoản đã đăng nhập
-	    	System.out.println(username1);
-	        //
 	        UserDAO usergs = new UserDAO();
 	        UserHSDAO userhs = new UserHSDAO();
 	        String Name = null;
