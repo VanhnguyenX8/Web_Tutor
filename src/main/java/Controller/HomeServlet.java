@@ -39,6 +39,8 @@ public class HomeServlet extends HttpServlet {
 	    if (isLoggedIn && !isLogoutRequested) {
 	        // Người dùng đã đăng nhập, hiển thị trang chủ với thông tin người dùng
 	        String username = account.getUsername();
+	        //code moi, set session username của tài khoản đã đăng nhập
+	        session.setAttribute("username", username);
 	        UserDAO usergs = new UserDAO();
 	        UserHSDAO userhs = new UserHSDAO();
 	        String Name = null;
