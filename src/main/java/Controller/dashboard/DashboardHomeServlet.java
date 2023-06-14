@@ -73,12 +73,12 @@ public class DashboardHomeServlet extends javax.servlet.http.HttpServlet {
                         String endDate = request.getParameter("endDate");
                         if (startDate != null && endDate != null){
                             DashboardClassDAO lh = new DashboardClassDAO();
-                            JSONArray obj =  new JSONArray();
-                            obj.put(lh.soLopMoTheoNgay(startDate,endDate));
+//                            JSONArray obj =  new JSONArray();
+//                            obj.put();
                             response.setContentType("application/json");
 
                             // Ghi mảng JSON vào body của response
-                            response.getWriter().write(obj.toString());
+                            response.getWriter().write(lh.soLopMoTheoNgay(startDate,endDate).toString());
                         }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
