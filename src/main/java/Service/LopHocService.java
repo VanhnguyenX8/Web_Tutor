@@ -49,7 +49,7 @@ public class LopHocService {
             List<LopHoc> lopHocs = lopHocDAO.getAll();
             return lopHocs;
         } catch (SQLException e) {
-            System.out.println("Lỗi khi truy vấn danh sách học sinh: " + e.getMessage());
+            System.out.println("Lỗi khi truy vấn danh sách lớp học: " + e.getMessage());
         }
         return null;
     }
@@ -77,9 +77,9 @@ public class LopHocService {
     public void updatelopHoc(LopHoc lopHoc) {
         try {
             lopHocDAO.update(lopHoc);
-            System.out.println("Cập nhật học sinh thành công!");
+            System.out.println("Cập nhật lớp học thành công!");
         } catch (SQLException e) {
-            System.out.println("Lỗi khi cập nhật học sinh: " + e.getMessage());
+            System.out.println("Lỗi khi cập nhật lớp học: " + e.getMessage());
         }
     }
 
@@ -102,7 +102,7 @@ public class LopHocService {
 
     public void deletelopHoc(String idLH) {
         try {
-            lopHocDAO.delete(Integer.parseInt(idLH));
+            lopHocDAO.delete(idLH);
         } catch (SQLException e) {
             System.out.println("Lỗi khi xóa Lớp học: " + e.getMessage());
         }

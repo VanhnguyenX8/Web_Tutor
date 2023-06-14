@@ -200,7 +200,6 @@
             <div class="noi-dung-2">
                 <div class="lop-hoc-hot">
                     <c:forEach var="lh" items="${list4lv3}">
-                    <c:set var="count" value="${5}" />
                     <div id="lop-hoc-4" class="lop-hoc">
                         <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                         <div class="thong-tin-lop-hoc">
@@ -250,7 +249,6 @@
             <div class="noi-dung-2">
                 <div class="lop-hoc-hot">
                     <c:forEach var="lh" items="${list4lv2}">
-                    <c:set var="count" value="${5}" />
                     <div id="lop-hoc-4" class="lop-hoc">
                         <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                         <div class="thong-tin-lop-hoc">
@@ -300,7 +298,6 @@
             <div class="noi-dung-2">
                 <div class="lop-hoc-hot">
                     <c:forEach var="lh" items="${list4lv1}">
-                    <c:set var="count" value="${5}" />
                     <div id="lop-hoc-4" class="lop-hoc">
                         <img src="${lh.hinhAnh}" alt="" width="200" height="200">
                         <div class="thong-tin-lop-hoc">
