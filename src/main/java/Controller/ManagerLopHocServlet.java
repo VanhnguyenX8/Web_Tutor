@@ -60,6 +60,7 @@ public class ManagerLopHocServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	req.setCharacterEncoding("UTF-8");
         try {
             HttpSession session = req.getSession();
             TaiKhoan account = (TaiKhoan) session.getAttribute("acc");

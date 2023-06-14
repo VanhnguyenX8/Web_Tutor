@@ -236,7 +236,7 @@
                 <div class="lop-hoc-moi">
                     <c:forEach var="lh" items="${list3lv2}">
                     <div id="lop-hoc-1" class="lop-hoc">
-<img src="${lh.hinhAnh}" alt="" width="200" height="200">
+						<img src="${lh.hinhAnh}" alt="" width="200" height="200">
                         <div class="thong-tin-lop-hoc">
                             <table>
                                 <p><a href="profileGS?username=${lh.usernameGiaSu}">Giáo Viên: ${lh.usernameGiaSu}</a>
