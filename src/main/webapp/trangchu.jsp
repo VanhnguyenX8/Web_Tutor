@@ -178,6 +178,23 @@ pageEncoding="UTF-8"%>
             </li>			        
 			<% } %>
           </div>
+          
+          
+          <div  class="lop-hoc-ddk">
+       	  	<a href="lopHocDaDangKy.jsp?acc=<%=username%>">Lớp học đã đăng ký</a>
+       	  </div>
+	      <div class="gio-hang">
+	      	Khóa học của tôi
+	      	<div class="items">
+	      		<a href="dangKyTieuHoc.jsp?acc=<%=username%>">Tiểu học</a>
+	      		<br>
+	      		<a href="dangKyTHCS.jsp?acc=<%=username%>">THCS</a>
+	      		<br>
+	      		<a href="dangKyTHPT.jsp?acc=<%=username%>">THPT</a>
+	      	</div>
+		  </div>
+		  
+		  
         </div>
       </div>
       <div id="khoahoc-content">
@@ -187,147 +204,8 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
 
+
       <div class="container_border_banner">
-        <div class="stack container_border_cac_khoa_hoc">
-          <ul class="menu_khoa_hoc">
-            <p>Các khóa học</p>
-            <li class="has_submenu">
-              Đại học - Cao đẳng
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán Cao Cấp</li>
-                  <li>Lý cao cấp</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Khóa học bổ trợ
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Ngữ Văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Toán</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Bồi dưỡng học sinh giỏi
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Luyện thi đại học
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Vật lý</li>
-                  <li>Hóa học</li>
-                  <li>Sinh học</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Lớp 10 - Lớp 11 - Lớp 12
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Vật lý</li>
-                  <li>Hóa học</li>
-                  <li>Sinh học</li>
-                  <li>Lịch sử</li>
-                  <li>Địa lý</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Luyện thi vào 10
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Vật lý</li>
-                  <li>Hóa học</li>
-                  <li>Sinh học</li>
-                  <li>Lịch sử</li>
-                  <li>Địa lý</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Lớp 6 - Lớp 7 - Lớp 8 - Lớp 9
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Vật lý</li>
-                  <li>Hóa học</li>
-                  <li>Sinh học</li>
-                  <li>Lịch sử</li>
-                  <li>Địa lý</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Luyện thi vào 6
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Toán</li>
-                  <li>Ngữ văn</li>
-                  <li>Tiếng Anh</li>
-                  <li>Vật lý</li>
-                  <li>Hóa học</li>
-                  <li>Sinh học</li>
-                  <li>Lịch sử</li>
-                  <li>Địa lý</li>
-                </ul>
-              </div>
-            </li>
-            <li class="has_submenu">
-              Lớp 1 - Lớp 2 - Lớp 3 - Lớp 4 - Lớp 5
-              <div class="container_menu_child">
-                <ul class="menu_khoa_hoc_child">
-                  <li>Tiếng Viêt</li>
-                  <li>Toán</li>
-                  <li>Tiếng Anh</li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- phần các khóa học-->
-        <div
-          class="stack banner_top"
-          style="background-color: #b2b2b2; overflow: hidden"
-        >
-          <p style="text-align: center">
-            Ưu đã lên tới 35%! Cùng con lớp 4-10 chinh phục 9,10 Toán Văn tại
-            HOCMAI.VN
-          </p>
-        </div>
-        <div
-          class="stack banner_img"
-          style="background-color: #b2b2b2; overflow: hidden"
-        >
-          <img src="../assets/images/clone_banner.png" alt="" />
-        </div>
-        <div
-          class="stack banner_img_bottom"
-          style="background-color: #b2b2b2; overflow: hidden"
-        >
-          <img width="100%" src="../assets/images/banner_bottom.png" alt="" />
-        </div>
-      </div>
-      <div style="height: 70px"></div>
       <!-- Trung học phổ thông -->
       <div id="thcs" class="main-thcs">
         <div class="container">
