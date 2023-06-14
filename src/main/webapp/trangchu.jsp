@@ -127,7 +127,7 @@ pageEncoding="UTF-8"%>
                     </a>
                   </li>
                   <li>
-                    <a href="" class="link">
+                    <a href="/Web_Tutor/ChangePassword" class="link">
                       <span>Đổi mật khẩu</span>
                     </a>
                   </li>
@@ -164,7 +164,7 @@ pageEncoding="UTF-8"%>
                     </a>
                   </li>
                   <li>
-                    <a href="" class="link">
+                    <a href="/Web_Tutor/ChangePassword" class="link">
                       <span>Đổi mật khẩu</span>
                     </a>
                   </li>

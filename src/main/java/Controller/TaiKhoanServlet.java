@@ -78,7 +78,7 @@ public class TaiKhoanServlet extends HttpServlet {
 				TaiKhoan a = acc.checklogin(user, hashedPassword);
 				if (a == null) {
 					String jspPath = "/login.jsp";
-					request.setAttribute("mess", "Tài khoản không tồn tại");
+					request.setAttribute("mess", "Nhập sai tài khoản/mật khẩu");
 					RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 					rs.forward(request, response);
 				} else {
@@ -107,7 +107,7 @@ public class TaiKhoanServlet extends HttpServlet {
 						response.sendRedirect("Home");
 					} else {
 						String jspPath = "/login.jsp";
-						request.setAttribute("mess", "Tài khoản không tồn tại");
+						request.setAttribute("mess", "Nhập sai tài khoản/mật khẩu");
 						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 						rs.forward(request, response);
 					}
