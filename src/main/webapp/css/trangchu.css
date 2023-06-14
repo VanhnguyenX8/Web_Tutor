@@ -527,3 +527,36 @@ i {
 .thong-tin-lop-hoc a {
   text-decoration: none;
 }
+/* Bien */
+.lop-hoc-ddk{
+	display: inline;
+	position: relative;
+  	z-index: 9999;	
+  	left: 40%;
+  	color: white;
+}
+.lop-hoc-ddk a:visited{
+	color: white;
+}
+.gio-hang{
+	display: inline;
+  position: relative;
+  	z-index: 9999;
+  	left: 45%;
+  	color: white;
+  	padding: 20px
+}
+.gio-hang .items{
+	z-index: 9999;
+	display:none;
+	padding-left: 29%;
+}
+.gio-hang .items a:vísited{
+	color: white;
+}
+
+.gio-hang:hover .items {
+  display: block;
+  background-color: white;
+}
+/* end */
