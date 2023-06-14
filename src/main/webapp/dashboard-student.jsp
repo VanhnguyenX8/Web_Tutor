@@ -18,23 +18,24 @@
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   <title>Dashboard</title>
-  <script src="dashboardjs/dashboard-student.js"></script>
+  
 </head>
 
 <body>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <input type="checkbox" id="menu-toggle">
 <div class="khoiben">
   <div class="brand">
-    <span class="lab la-affiliatetheme">CA</span>
-    <h2>ArtStart</h2>
+    <span class="lab la-affiliatetheme">HTT</span>
+    <h2>Study</h2>
   </div>
   <div class="menu-khoiben">
     <div class="khoiben-user">
-      <div class="khoiben-anh" style="background-image: url(/src/main/webapp/anhthe1.png);"></div>
+      <div class="khoiben-anh" id="avartar-in-hocsinh"></div>
       <div class="user">
-        <small>Software Developer</small>
-        <p>Tuan Anh</p>
+                <small id="vitricongviec"></small>
+                <p id="tenadmin"></p>
       </div>
     </div>
     <ul>
@@ -126,7 +127,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
+<script src="dashboardjs/dashboard-student.js"></script>
 
 </body>
 

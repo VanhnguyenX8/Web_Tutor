@@ -1,9 +1,9 @@
-const image = localStorage.getItem('image', result['image']);
-const jobPosition = localStorage.getItem('jobPosition', result['jobPosition']);
-const name = localStorage.getItem('name', result['name']);
-const imageTag = document.querySelector('.khoiben-anh');
+const image = localStorage.getItem('image');
+const jobPosition = localStorage.getItem('jobPosition');
+const name = localStorage.getItem('name');
+const imageTag = document.querySelector('#avartar-in-hocsinh');
 const jobPositionTag = document.querySelector('#vitricongviec');
-const nameTag = document.querySelector('#tenadmin')
+const nameTag = document.querySelector('#tenadmin');
 imageTag.style.backgroundImage = 'url(' + image + ')';
 jobPositionTag.innerText = jobPosition;
 nameTag.innerText = name;
@@ -16,7 +16,6 @@ fetch("/Web_Tutor/hocsinh?actionHocSinh=list_hocsinh", requestOptions)
 	.then(response => response.json())
 	.then(result => getList(result))
 	.catch(error => console.log('error', error));
-
 async function getList(result) {
 	var table = document.querySelector(".sub_table");
 
@@ -79,7 +78,7 @@ function openModal(rowData) {
 	document.getElementById("myModal").style.display = "block";
 
 	// Gán thông tin vào các phần tử trong bảng modal
-	document.getElementById("image").innerHTML = `<img src="${rowData['image']}" alt="Hình ảnh người">`;
+	document.getElementById("image").innerHTML = `<img src="${rowData['image']}" alt="Hình ảnh người style="width: 100%;height: auto;">`;
 }
 
 function closeModal() {

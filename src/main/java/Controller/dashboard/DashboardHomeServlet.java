@@ -91,11 +91,14 @@ public class DashboardHomeServlet extends javax.servlet.http.HttpServlet {
                         if (username != null){
                             DashboardHomeDAO home = new DashboardHomeDAO();
                             response.setContentType("application/json");
-                            response.getWriter().write(home.getImageAdmin(username).toString());
+                            JSONObject obj = new JSONObject();
+                            obj = home.getImageAdmin(username);
+                            response.getWriter().write(obj.toString());
                             }
                 	}catch(JSONException e){
                 		e.printStackTrace();
                 	}
+                	break;
 
                 default:
                     DashboardTutorDAO gs = new DashboardTutorDAO();

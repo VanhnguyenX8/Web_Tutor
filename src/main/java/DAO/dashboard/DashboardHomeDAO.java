@@ -15,7 +15,7 @@ public class DashboardHomeDAO {
     	PreparedStatement pstmt = null;
     	JSONObject obj = new JSONObject();
     	String image = "";
-    	String sql = "Select job_position,image,name FROM hocsinh WHERE username = ?";
+    	String sql = "Select job_position,image,name FROM admin WHERE username = ?";
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, username);
@@ -25,7 +25,7 @@ public class DashboardHomeDAO {
             String jobPosition = rs.getString("job_position");
             String name = rs.getString("name");
             obj.put("image",image);
-            obj.put("job_position", jobPosition);
+            obj.put("jobPosition", jobPosition);
             obj.put("name",name);
         } catch (SQLException e) {
             e.printStackTrace();

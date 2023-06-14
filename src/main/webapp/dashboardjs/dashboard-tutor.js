@@ -1,6 +1,6 @@
-const image = localStorage.getItem('image', result['image']);
-const jobPosition = localStorage.getItem('jobPosition', result['jobPosition']);
-const name = localStorage.getItem('name', result['name']);
+const image = localStorage.getItem('image');
+const jobPosition = localStorage.getItem('jobPosition');
+const name = localStorage.getItem('name');
 const imageTag = document.querySelector('.khoiben-anh');
 const jobPositionTag = document.querySelector('#vitricongviec');
 const nameTag = document.querySelector('#tenadmin')
@@ -112,7 +112,7 @@ function openModal(rowData) {
     document.getElementById("myModal").style.display = "block";
 
     // Gán thông tin vào các phần tử trong bảng modal
-    document.getElementById("image").innerHTML = '<img src='+rowData['image']+' alt="Hình ảnh người">';
+    document.getElementById("image").innerHTML = `<img src="${rowData['image']}" alt="Hình ảnh người style="width: 100%;height: auto;">`;
 }
 
 function closeModal() {

@@ -18,16 +18,16 @@
 <input type="checkbox" id="menu-toggle">
 <div class="khoiben">
   <div class="brand">
-    <span class="lab la-affiliatetheme">CA</span>
-    <h2>ArtStart</h2>
+    <span class="lab la-affiliatetheme">HTT</span>
+    <h2>Study</h2>
   </div>
   <div class="menu-khoiben">
     <div class="khoiben-user">
       <div class="khoiben-anh"></div>
       <div class="user">
-        <small>Software Developer</small>
-        <p>Tuan Anh</p>
-      </div>
+                <small id="vitricongviec"></small>
+                <p id="tenadmin"></p>
+            </div>
     </div>
     <ul>
       <li class="dashboard">

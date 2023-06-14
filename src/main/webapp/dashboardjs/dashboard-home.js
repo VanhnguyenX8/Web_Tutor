@@ -10,7 +10,7 @@ var requestOptions = {
     headers: {"Content-Type": "application/json"},
     redirect: 'follow'
 };
-fetch("/Web_Tutor/home_dashboard?action=info_admin&username=" + sessionStorage.getItem('username'), requestOptions)
+fetch("/Web_Tutor/home_dashboard?action=info_admin&username=" + localStorage.getItem('username'), requestOptions)
     .then(response => response.json())
     .then(result => {
         const image = result['image'];
@@ -24,7 +24,7 @@ fetch("/Web_Tutor/home_dashboard?action=info_admin&username=" + sessionStorage.g
         const nameTag = document.querySelector('#tenadmin')
         imageTag.style.backgroundImage = 'url(' + image + ')';
         jobPositionTag.innerText = jobPosition;
-        name.innerText = name;
+        nameTag.innerText = name;
     })
     .catch(error => console.log('error', error));
 

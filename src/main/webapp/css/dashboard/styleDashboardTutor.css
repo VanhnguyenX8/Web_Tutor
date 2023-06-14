@@ -869,3 +869,9 @@ h6 {
     text-decoration: none;
     cursor: pointer;
 }
+#image{
+	width: 500px;
+    border-bottom: black 1px solid;
+    padding-top: 16px;
+    padding-bottom: 4px;
+}
