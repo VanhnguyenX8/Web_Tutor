@@ -37,12 +37,12 @@ pageEncoding="UTF-8"%>
 
           <img class="anhiconlogo" src="logo." alt="" />
           <div class="nguoidung">
-          //
           <%
 		    // Lấy thông tin từ session
 		    Object value = session.getAttribute("acc");
 		    String position = (String) request.getAttribute("position");
-		    String username = (String) request.getAttribute("username");
+		    String username = (String) session.getAttribute("username");
+		    
 		  %>
 		  <% if ("admin".equals(position)) { %>
 		  	<li class="thongtin-nguoidung">
@@ -58,9 +58,9 @@ pageEncoding="UTF-8"%>
                     </div>
                   </li>
                   <li>
-                    <button onclick="redirectDashboard.bind(null, <%= username %>>)()" ><a href="/Web_Tutor/home_dashboard" class="link">
+                    <button onclick="redirectDashboard.bind(null, '<%= username %>')()" >
                       <span>DashBoard</span>
-                    </a></button>
+                    </button>
                   </li>
                   <li>
                     <a href="Home?logout=true" class="link">
@@ -177,7 +177,6 @@ pageEncoding="UTF-8"%>
               </div>
             </li>			        
 			<% } %>
-			//
           </div>
         </div>
       </div>
@@ -555,8 +554,10 @@ pageEncoding="UTF-8"%>
 </div>
 <script>
 function redirectDashboard(username){
+	alert(username);
 	localStorage.setItem("username",username);
-}
+	location.replace("/Web_Tutor/home_dashboard")
+	}
 </script>
 </body>
 </html>
