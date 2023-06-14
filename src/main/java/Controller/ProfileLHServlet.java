@@ -46,9 +46,15 @@ public class ProfileLHServlet extends HttpServlet {
 			System.out.println("bollen của người dăng nhập" + hasLiked);
 			req.setAttribute("hasLiked", hasLiked);
 			int tongSoLuotThich = like.getLikeCount(idLH);
+			System.out.println("tongSoLuotThich" + tongSoLuotThich);
 			double danhgia = 0;
 	 danhgia = rating.calculateAverageRating(idLH);
 			System.out.println("tong danh gia" + danhgia);
+			int totalRatings = rating.getTotalRatings(idLH);
+			int userRating = rating.getUserRating(tk.getUsername(), idLH);
+			req.setAttribute("userRating", userRating);
+			req.setAttribute("totalRatings", totalRatings);
+			
 			req.setAttribute("tongSoLuotThich", tongSoLuotThich);
 			req.setAttribute("averageRating", danhgia);
 		} catch (SQLException e1) {

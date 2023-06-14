@@ -79,37 +79,44 @@
 .fix_ngang li {
 	margin-right: 10px;
 }
+
 .like-button {
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    color: white !important;
-    background-color: #2a70b8 !important;
-    padding: 5px
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border-radius: 5px;
+	color: white !important;
+	background-color: #2a70b8 !important;
+	padding: 5px
 }
-.no-like-button{
-cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px;
-    color: black !important;
-    background-color: #ffffff !important;
-    padding: 5px
+
+.no-like-button {
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border-radius: 5px;
+	color: black !important;
+	background-color: #ffffff !important;
+	padding: 5px
 }
+
 select {
-    color: white !important;
-    background-color: #2a70b8 !important;
+	color: white !important;
+	background-color: #2a70b8 !important;
 }
+
 input[type="submit"] {
-    background-color: #2a70b8 !important;
-    color: white !important;
-    padding: 5px;
-    border-radius: 5px;
+	background-color: #2a70b8 !important;
+	color: white !important;
+	padding: 5px;
+	border-radius: 5px;
 }
 </style>
 							<%
 							boolean hasLiked = false;
 							double averageRating = (double) request.getAttribute("averageRating");
 							int tongSoLuotThich = (int) request.getAttribute("tongSoLuotThich");
+
+							int totalRatings = (int) request.getAttribute("totalRatings");
+							int userRating = (int) request.getAttribute("userRating");
 							if (request.getAttribute("hasLiked") != null) {
 								hasLiked = (Boolean) request.getAttribute("hasLiked");
 							}
@@ -138,23 +145,25 @@ input[type="submit"] {
 										lượt thích
 								</li>
 
-								<li><p2> <b>Đánh giá đối tượng</b></p2>
+								<li>
 
 									<form action="RatingServlet" method="post">
 
 										<label>Chọn số sao:</label> <select name="rating">
+											<option value="<%=userRating%>" selected><%=userRating%>
+												sao
+											</option>
 											<option value="1">1 sao</option>
 											<option value="2">2 sao</option>
 											<option value="3">3 sao</option>
 											<option value="4">4 sao</option>
 											<option value="5">5 sao</option>
-										</select> <br> <input type="submit" value="Đánh giá">
+										</select> <br> <input style="margin-top: 20px" type="submit"
+											value="Đánh giá">
 									</form>
 
-									<p>
-										Số sao:
-										<%=averageRating%>
-									<p></li>
+								</li>
+
 
 							</ul>
 
@@ -214,6 +223,21 @@ input[type="submit"] {
 						<ul>
 							<li>Hạn đăng ký: 18/01/2030</li>
 							<li>Ngày bế giảng: ${lopHoc.ngayHoc}</li>
+						</ul>
+						<p>Thông tin đánh giá :</p>
+						<ul>
+							<li>Số sao trung bình:<%=averageRating%>
+							</li>
+							<li>Tổng <%=totalRatings%> đánh giá, <%
+							if (userRating == 0) {
+							%> bạn đã chưa giá <%
+							}
+							%> <%
+ if (userRating != 0) {
+ %> bạn đã đánh giá <%=userRating%> sao <%
+ }
+ %>
+							</li>
 						</ul>
 					</div>
 				</div>
