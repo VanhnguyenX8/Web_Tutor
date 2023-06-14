@@ -12,35 +12,25 @@
 <title>Trang chủ</title>
 <link rel="stylesheet" href="css/home.css">
 <script src="https://kit.fontawesome.com/b7bb3a4b72.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function showAll(lever) {
-            location.href = "/showAllLop?lever=" + lever;
-
-    }
-    function profileLopHoc(id) {
-        location.href = "/profileLH?id=" + id;
-
-    }
-</script>
 </head>
 <body>
-	<!-- Phần đầu -->
-	<div id="toanbotrang">
-		<div id="phandau">
-			<div class="baobocitemphandau">
-				<div class="menucackhoahoc">
-					<div class="vungkichhoatmenu">
-						<i class="fa-solid fa-bars"></i> <span class="motabieutuong"
-							style="padding-right: 5px; color: white;">Các khóa học</span>
-					</div>
-				</div>
-				<div id="timkiem">
-					<input type="text" class="input" placeholder="Tìm kiếm khóa học">
-					<button type="submit" class="nuttimkiem">
-						<i class="fa fa-search"></i>
-					</button>
+    <!-- Phần đầu -->
+    <div id="toanbotrang">
+        <div id="phandau">
+            <div class="baobocitemphandau">
+                <div class="menucackhoahoc">
+                    <div class="vungkichhoatmenu">
+                        <i class="fa-solid fa-bars"></i> <span class="motabieutuong"
+                            style="padding-right: 5px; color: white;">Các khóa học</span>
+                    </div>
+                </div>
+                <div id="timkiem">
+                    <input type="text" class="input" placeholder="Tìm kiếm khóa học">
+                    <button type="submit" class="nuttimkiem">
+                        <i class="fa fa-search"></i>
+                    </button>
 
-				</div>
+                </div>
 
 				<img class="anhiconlogo" src="logo." alt="">
 				<div class="thongtinnguoidung">
@@ -405,7 +395,6 @@
 	</div>
 
 </body>
-
 
 </html>
 

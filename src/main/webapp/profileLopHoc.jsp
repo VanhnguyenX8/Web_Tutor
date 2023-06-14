@@ -64,8 +64,48 @@
 					<div class="video">
 						<img src="${lopHoc.hinhAnh}">
 						<!-- Hien thi like va danh gia sao -->
-						<div style="width: 100px">
-						
+						<div style="width: 500px">
+							<style>
+.fix_ngang {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin-top: 10px;
+	margin-right: 100px;
+	justify-content: space-around;
+}
+
+.fix_ngang li {
+	margin-right: 10px;
+}
+.like-button {
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    color: white !important;
+    background-color: #2a70b8 !important;
+    padding: 5px
+}
+.no-like-button{
+cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    color: black !important;
+    background-color: #ffffff !important;
+    padding: 5px
+}
+select {
+    color: white !important;
+    background-color: #2a70b8 !important;
+}
+input[type="submit"] {
+    background-color: #2a70b8 !important;
+    color: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+</style>
 							<%
 							boolean hasLiked = false;
 							double averageRating = (double) request.getAttribute("averageRating");
@@ -75,60 +115,62 @@
 							}
 							session.setAttribute("hasLiked", hasLiked);
 							%>
-							
-							<%
-							if (hasLiked) {
-							%>
-							<form action="LikeServlet" method="post">
-								<input type="hidden" name="like" value="true">
-								<button class="like-button">Đã thích</button>
-							</form>
+							<ul class="fix_ngang">
+								<li>
+									<%
+									if (hasLiked) {
+									%>
+									<form action="LikeServlet" method="post">
+										<input type="hidden" name="like" value="true">
+										<button class="like-button">Đã thích</button>
+									</form> <%
+ } else {
+ %>
+									<form action="LikeServlet" method="post">
+										<input type="hidden" name="like" value="true">
+										<button class="no-like-button">Thích</button>
+									</form> <%
+ }
+ %>
+									<p>
 
-							<%
-							} else {
-							%>
-							<form action="LikeServlet" method="post">
-								<input type="hidden" name="like" value="true">
-								<button class="like-button">Thích</button>
-							</form>
-							<%
-							}
-							%>
-							<p>
-								Đã có
-								<%=tongSoLuotThich%>
-								lượt thích
-							</p>
-							 
-						</div>
-						<div>
-						<h1>Đánh giá đối tượng</h1>
-    
-    <form action="RatingServlet" method="post">
-       
-        <label>Chọn số sao:</label>
-        <select name="rating">
-            <option value="1">1 sao</option>
-            <option value="2">2 sao</option>
-            <option value="3">3 sao</option>
-            <option value="4">4 sao</option>
-            <option value="5">5 sao</option>
-        </select>
-        <br>
-        <input type="submit" value="Đánh giá">
-    </form>
-    
-    <p>Điểm trung bình: <%=averageRating %><p>
+										<%=tongSoLuotThich%>
+										lượt thích
+								</li>
+
+								<li><p2> <b>Đánh giá đối tượng</b></p2>
+
+									<form action="RatingServlet" method="post">
+
+										<label>Chọn số sao:</label> <select name="rating">
+											<option value="1">1 sao</option>
+											<option value="2">2 sao</option>
+											<option value="3">3 sao</option>
+											<option value="4">4 sao</option>
+											<option value="5">5 sao</option>
+										</select> <br> <input type="submit" value="Đánh giá">
+									</form>
+
+									<p>
+										Số sao:
+										<%=averageRating%>
+									<p></li>
+
+							</ul>
+
+
+
+
 						</div>
 						<script>
-        var likeButton = document.querySelector(".like-button");
-        var likeForm = document.getElementById("like-form");
+							var likeButton = document
+									.querySelector(".like-button");
+							var likeForm = document.getElementById("like-form");
 
-        likeButton.addEventListener("click", function() {
-            likeForm.submit();
-        });
-      
-    </script>
+							likeButton.addEventListener("click", function() {
+								likeForm.submit();
+							});
+						</script>
 					</div>
 					<div class="smenu">
 						<ul>
@@ -177,7 +219,7 @@
 				</div>
 			</div>
 		</div>
-		<%@include file="comment/coment.jsp" %>
+		<%@include file="comment/coment.jsp"%>
 		<div class="footer">
 			<div class="wrapper-ft ">
 				<div class="content-top">
@@ -202,8 +244,7 @@
 							<li><a href="">Ôn luyện</a></li>
 							<li><a href="">Diễn đàn HOCMAI</a></li>
 							<li><a href="">Speakup - Tiếng Anh 1 kèm 1 Online</a></li>
-							<li><a href="">ICANTECH - Đào tạo Công nghệ & Lập trình</a>
-							</li>
+							<li><a href="">ICANTECH - Đào tạo Công nghệ & Lập trình</a></li>
 						</ul>
 					</div>
 					<div class="footer-block">

@@ -446,81 +446,84 @@ i {
 .content-top {
   display: flex;
   border-bottom: 1px solid #d8d8d8;
-}.main-thcs {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+.main-thcs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    width: 1320px;
-    margin-top: 10px;
+  width: 1320px;
+  margin-top: 10px;
 }
 
 .tieude {
-    width: 200px;
+  width: 200px;
 }
 
 .tieude-thcs {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding-left: 15px;
-    border-left: 5px solid #3aba77;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  border-left: 5px solid #3aba77;
 }
 
 .noi-dung-1,
 .noi-dung-2 {
-    width: 100%;
-    float: left;
+  width: 100%;
+  float: left;
 }
 
 .quangcao {
-    width: 522px;
-    height: 324px;
-    float: left;
+  width: 522px;
+  height: 324px;
+  float: left;
 }
 
 .quangcao-img img {
-    margin-left: 5px;
-    margin-top: 5px;
-    width: 512px;
-    height: 320px;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 512px;
+  height: 320px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .lop-hoc {
-    width: 250px;
-    height: 324px;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    margin: 5px;
-    float: left;
-    cursor: pointer;
+  width: 250px;
+  height: 324px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin: 5px;
+  float: left;
+  cursor: pointer;
 }
 
 .lop-hoc img {
-    width: 250px;
-    border-radius: 5px;
-    height: 180px;
+  width: 250px;
+  border-radius: 5px;
+  height: 180px;
 }
 
 .lop-hoc i {
-    color: rgb(255, 230, 0);
+  color: rgb(255, 230, 0);
 }
 
 .lop-hoc:hover,
 .quangcao:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease-in-out;
+  transform: translateY(-5px);
+  transition: transform 0.3s ease-in-out;
 }
 
 .thong-tin-lop-hoc {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .thong-tin-lop-hoc a {
-    text-decoration: none;
+  text-decoration: none;
 }

@@ -71,7 +71,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv3.size(); i++) {
 		            if (i < 3) {
 		                list3lv3.add(lopHoclv3.get(i));
-		            } else if (i < 7) {
+		            } else if (i < 8) {
 		                list4lv3.add(lopHoclv3.get(i));
 		            }
 		        }
@@ -85,7 +85,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv2.size(); i++) {
 		            if (i < 3) {
 		                list3lv2.add(lopHoclv2.get(i));
-		            } else if (i < 7)
+		            } else if (i < 8)
 		                list4lv2.add(lopHoclv2.get(i));
 		        }
 	        }
@@ -98,7 +98,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv1.size(); i++) {
 		            if (i < 3) {
 		                list3lv1.add(lopHoclv1.get(i));
-		            } else if (i < 7)
+		            } else if (i < 8)
 		                list4lv1.add(lopHoclv1.get(i));
 		        }
 	        }
@@ -127,7 +127,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv3.size(); i++) {
 		            if (i < 3) {
 		                list3lv3.add(lopHoclv3.get(i));
-		            } else if (i < 7) {
+		            } else if (i < 8) {
 		                list4lv3.add(lopHoclv3.get(i));
 		            }
 		        }
@@ -141,7 +141,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv2.size(); i++) {
 		            if (i < 3) {
 		                list3lv2.add(lopHoclv2.get(i));
-		            } else if (i < 7)
+		            } else if (i < 8)
 		                list4lv2.add(lopHoclv2.get(i));
 		        }
 	        }
@@ -154,7 +154,7 @@ public class HomeServlet extends HttpServlet {
 	        	for (int i = 0; i < lopHoclv1.size(); i++) {
 		            if (i < 3) {
 		                list3lv1.add(lopHoclv1.get(i));
-		            } else if (i < 7)
+		            } else if (i < 8)
 		                list4lv1.add(lopHoclv1.get(i));
 		        }
 	        }
