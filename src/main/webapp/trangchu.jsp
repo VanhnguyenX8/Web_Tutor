@@ -328,6 +328,7 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
       <div style="height: 70px"></div>
+      <!-- Trung học phổ thông -->
       <div id="thcs" class="main-thcs">
         <div class="container">
             <div class="tieude">

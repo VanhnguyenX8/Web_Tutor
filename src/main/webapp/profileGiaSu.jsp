@@ -120,40 +120,42 @@
             font-weight: 600;
             color: #0062cc;
         }
+        .capnhatthongtin > a{
+        	text-decoration: none;
+        }
     </style>
 </head>
 <body>
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
+        <%
+        String username = (String) session.getAttribute("username");
+        String position = (String) session.getAttribute("position");
+        %>
+        <% if("giasu".equals(position)){
+        %>
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="${giaSu.img}" alt=""/>
+                    <img src="${giaSu.hinh_anh}" alt=""/>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        ${giaSu.tenGS}
+                        ${giaSu.ten_gia_su}
                     </h5>
-                    <h6>
-                        ${giaSu.getMonHoc().getTenMH()}
-                    </h6>
                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                aria-controls="home" aria-selected="true">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-2">
-                <a type="submit" class="btn btn-primary" name="btnAddMore" href="/Web_Tutor1/HomeServlet">Home</a>
+                <a type="submit" class="btn btn-primary" name="btnAddMore" href="/Web_Tutor/Home">Home</a>
             </div>
         </div>
         <div class="row">
@@ -169,123 +171,94 @@
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${giaSu.idGS}</p>
-                            </div>
+                            <div class="col-md-6"><label>User Id</label></div>
+                            <div class="col-md-6"><p>${giaSu.id}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${giaSu.tenGS}</p>
-                            </div>
+                            <div class="col-md-6"><label>Name</label></div>
+                            <div class="col-md-6"><p>${giaSu.ten_gia_su}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${giaSu.email}</p>
-                            </div>
+                            <div class="col-md-6"><label>Email</label></div>
+                            <div class="col-md-6"><p>${giaSu.email}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${giaSu.sdt}</p>
-                            </div>
+                            <div class="col-md-6"><label>Phone</label></div>
+                            <div class="col-md-6"><p>${giaSu.sdt}</p></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>${giaSu.monHoc.tenMH}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Experience</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Hourly Rate</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>10$/hr</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Total Projects</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>230</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>English Level</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Availability</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>6 months</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br/>
-                                <p>Your detail description</p>
-                            </div>
+                            <div class="col-md-6"><label>Bank</label></div>
+                            <div class="col-md-6"><p>${giaSu.so_du_tai_khoan}</p></div>
                         </div>
                     </div>
                 </div>
+                <button class="capnhatthongtin"><a href="/Web_Tutor/UpdateInfo">Cập Nhật Thông tin</a></button>
+            </div>
+            <% } %>
+            <% if("hocsinh".equals(position)){
+        	%>
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="${hocSinh.hinh_anh}" alt=""/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        ${hocSinh.ten_hoc_sinh}
+                    </h5>
+                    <p class="proile-rating"></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                               aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a type="submit" class="btn btn-primary" name="btnAddMore" href="/Web_Tutor/Home">Home</a>
             </div>
         </div>
-    </form>
-    <hr>
-    <div class="row">
-        <c:forEach var="lh" items="${lopHocs}">
-            <div class="col 3 table_thpt_item" align="center">
-                <img src="https://img6.thuthuatphanmem.vn/uploads/2022/02/13/hinh-anh-lop-hoc-dep-nhat_011959587.jpg"
-                     alt="" width="200" height="160">
-                <br>
-                <hr>
-                <button class="btn btn-success" onclick="dangky(${lh.idLH})">${lh.tenLH}</button>
-                <p>${lh.lichhoc} - ${lh.hocphi}$</p>
-                <p>${lh.mota}</p>
-                <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br/>
+                    <a href="">Web Developer</a><br/>
+                    <a href="">PHP, .Net</a><br/>
+                </div>
             </div>
-        </c:forEach>
-
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6"><label>User Id</label></div>
+                            <div class="col-md-6"><p>${hocSinh.id}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><label>Name</label></div>
+                            <div class="col-md-6"><p>${hocSinh.ten_hoc_sinh}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><label>Email</label></div>
+                            <div class="col-md-6"><p>${hocSinh.email}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><label>Phone</label></div>
+                            <div class="col-md-6"><p>${hocSinh.sdt}</p></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><label>Bank</label></div>
+                            <div class="col-md-6"><p>${hocSinh.so_du_tai_khoan}</p></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="capnhatthongtin"><a href="/Web_Tutor/UpdateInfo">Cập Nhật Thông tin</a></button>
+            </div>
+            <% } %>
+        </div>
+    </form>
     </div>
-</div>
-
 </body>
 </html>
-<script>
-    function dangky(idLH) {
-        let check = confirm('Đăng ký lớp học!')
-        if (check) {
-            location.href = "/dangKy?id=" + idLH;
-        }
-    }
-</script>
