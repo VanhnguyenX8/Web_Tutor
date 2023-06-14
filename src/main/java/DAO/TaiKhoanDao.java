@@ -110,4 +110,16 @@ public class TaiKhoanDao{
 		}
 		return null;
 	}
+	public void updatePassword(String username, String password) {
+		try {
+			String query = "UPDATE account set password = ? where username = ?";
+			PreparedStatement statement = con.prepareStatement(query);
+			statement.setString(1, password);
+			statement.setString(2, username);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 }
