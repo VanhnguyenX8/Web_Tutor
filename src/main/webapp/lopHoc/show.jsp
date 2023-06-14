@@ -1,15 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
         <html>
 
         <head>
+        	<meta charset="UTF-8">
             <title>Title</title>
             <link rel="stylesheet" href="${ pageContext.request.contextPath }/css/show.css">
-
         </head>
 
         <body>
             <div class="container emp-profile">
+            <div class="trangchu"><a href="${ pageContext.request.contextPath }/Home">Trang Chủ</a></div>
 
                 <c:if test="${acc.role == 'giasu'}">
                     <h1>Lớp học của tôi</h1>
@@ -21,7 +23,6 @@
                 <c:if test="${acc.role == 'mod'}">
                     <h1>Quản lý lớp học</h1>
                 </c:if>
-
                 <br>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
@@ -72,26 +73,26 @@
                                     <c:if test="${acc.role == 'mod'}">
                                         <c:if test="${lh.accept == 1}">
                                             <td><a href="managerLopHoc?action=unAccept&id=${lh.id}" type="button"
-                                                    class="btn btn-success">Đã Accept</a></td>
+                                                    class="btn btn-success">Accept</a></td>
                                         </c:if>
                                         <c:if test="${lh.accept == 0}">
                                             <td><a href="managerLopHoc?action=accept&id=${lh.id}" type="button"
-                                                    class="btn btn-warning">Chưa Accept</a></td>
+                                                    class="btn btn-warning">Accept</a></td>
                                         </c:if>
                                     </c:if>
 
                                     <c:if test="${acc.role == 'giasu'}">
                                         <c:if test="${lh.accept == 1}">
-                                            <td><a href="#" type="button" class="btn btn-success">Đã Accept</a></td>
+                                            <td><a href="#" type="button" class="btn btn-success">Accept</a></td>
                                         </c:if>
                                         <c:if test="${lh.accept == 0}">
-                                            <td><a href="#" type="button" class="btn btn-warning">Chưa Accept</a></td>
+                                            <td><a href="#" type="button" class="btn btn-warning">Accept</a></td>
                                         </c:if>
                                     </c:if>
 
                                     <td><a href="managerLopHoc?action=edit&id=${lh.id}" type="button"
                                             class="btn btn-secondary">Edit</a></td>
-                                    <td><a onclick="deleteLH(${lh.id})" type="button" class="btn btn-danger">Delete</a>
+                                    <td><a href="managerLopHoc?action=delete&id=${lh.id}" type="button" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -101,23 +102,15 @@
                     <br>
                 </div>
             </div>
-
-
-
             </div>
-
-        </body>
-
-        </html>
-        <script>
+            <script>
             function deleteLH(idLH) {
                 let check = confirm('Xóa lớp học!')
                 if (check) {
                     location.href = "managerLopHoc?action=delete&id=" + idLH;
                 }
-            }
-
-            document.addEventListener("DOMContentLoaded", function () {
+            }   
+              document.addEventListener("DOMContentLoaded", function () {
                 // Lấy giá trị của tham số 'lever' từ URL
                 const urlParams = new URLSearchParams(window.location.search);
                 let leverParam = urlParams.get('lever');
@@ -141,3 +134,5 @@
             });
 
         </script>
+        </body>
+        </html>

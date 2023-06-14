@@ -2,11 +2,10 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,23 +22,23 @@ import Model.UserGS;
 import Model.UserHS;
 
 /**
- * Servlet implementation class AddInfoServlet
+ * Servlet implementation class UpdateInfoServlet
  */
-@WebServlet(urlPatterns = "/AddInfo")
-public class AddInfoServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/UpdateInfo"})
+public class UpdateInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO giaSuDAO;   
 	private UserHSDAO hocSinhDAO;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddInfoServlet() {
+    public UpdateInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
         giaSuDAO = new UserDAO();
         hocSinhDAO = new UserHSDAO();
     }
-
     private List<String> validateInputs(String ten, String gioiTinh, Date ngaySinh, String diaChi, String soDienThoai, String email, String stk) {
         List<String> errorMessages = new ArrayList<>();
 
@@ -55,15 +54,16 @@ public class AddInfoServlet extends HttpServlet {
 
         return errorMessages;
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ThemTT.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/UpdateInfo.jsp");
 	    dispatcher.forward(request, response);
+		
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -75,6 +75,7 @@ public class AddInfoServlet extends HttpServlet {
 	    boolean isLoggedIn = (account != null);
 	    if(isLoggedIn) {
 	    	TaiKhoanDao taiKhoanDao = new TaiKhoanDao();
+	    	
 	    	String ten = request.getParameter("name");
         	if (ten == null) {
         	    ten = "";
@@ -118,9 +119,8 @@ public class AddInfoServlet extends HttpServlet {
 
 	    	if (position.equals("giasu")) {
 	    	    // Kiểm tra thông tin đầu vào
-	    	    List<String> errorMessages = validateInputs(ten, gioiTinh, ngaySinhSQL, diaChi, soDienThoai, email, stk);
-	    	    boolean isFirstTime = true;
-	    	    request.getSession().setAttribute("isFirstTime", isFirstTime);
+	    		List<String> errorMessages = validateInputs(ten, gioiTinh, ngaySinhSQL, diaChi, soDienThoai, email, stk);
+	    	    
 	    	    if (errorMessages.isEmpty()) {
 	    	        // Tạo một đối tượng GiaSu từ thông tin đã lấy
 	    	        UserGS userGS = new UserGS();
@@ -138,22 +138,19 @@ public class AddInfoServlet extends HttpServlet {
 	    	        response.sendRedirect("Home");
 	    	    } else {
 	    	        // Trường thông tin không hợp lệ, xử lý lỗi tại đây
-	    	        request.setAttribute("errorMessages", errorMessages);
-	    	        request.setAttribute("ten", isFirstTime ? "" : ten);
-	    	        request.setAttribute("gioiTinh", isFirstTime ? "" : gioiTinh);
-	    	        request.setAttribute("ngaySinh", isFirstTime ? "" : ngaySinhString);
-	    	        request.setAttribute("diaChi", isFirstTime ? "" : diaChi);
-	    	        request.setAttribute("soDienThoai", isFirstTime ? "" : soDienThoai);
-	    	        request.setAttribute("email", isFirstTime ? "" : email);
-	    	        request.setAttribute("stk", isFirstTime ? "" : stk);
+	    	        request.setAttribute("ten", ten);
+	    	        request.setAttribute("gioiTinh", gioiTinh);
+	    	        request.setAttribute("ngaySinh", ngaySinhString);
+	    	        request.setAttribute("diaChi", diaChi);
+	    	        request.setAttribute("soDienThoai", soDienThoai);
+	    	        request.setAttribute("email", email);
+	    	        request.setAttribute("stk", stk);
 	    	        request.setAttribute("username", username);
 	    	        request.getRequestDispatcher("/ThemTT.jsp").forward(request, response);
 	    	    }
 	    	} else if (position.equals("hocsinh")) {
 	    	    // Kiểm tra thông tin đầu vào
 	    	    List<String> errorMessages = validateInputs(ten, gioiTinh, ngaySinhSQL, diaChi, soDienThoai, email, stk);
-	    	    boolean isFirstTime = true;
-	    	    request.getSession().setAttribute("isFirstTime", isFirstTime);
 	    	    if (errorMessages.isEmpty()) {
 	    	        // Tạo một đối tượng HocSinh từ thông tin đã lấy
 	    	        UserHS userHS = new UserHS();
@@ -172,13 +169,13 @@ public class AddInfoServlet extends HttpServlet {
 	    	    } else {
 	    	        // Trường thông tin không hợp lệ, xử lý lỗi tại đây
 	    	        request.setAttribute("errorMessages", errorMessages);
-	    	        request.setAttribute("ten", isFirstTime ? "" : ten);
-	    	        request.setAttribute("gioiTinh", isFirstTime ? "" : gioiTinh);
-	    	        request.setAttribute("ngaySinh", isFirstTime ? "" : ngaySinhString);
-	    	        request.setAttribute("diaChi", isFirstTime ? "" : diaChi);
-	    	        request.setAttribute("soDienThoai", isFirstTime ? "" : soDienThoai);
-	    	        request.setAttribute("email", isFirstTime ? "" : email);
-	    	        request.setAttribute("stk", isFirstTime ? "" : stk);
+	    	        request.setAttribute("ten", ten);
+	    	        request.setAttribute("gioiTinh", gioiTinh);
+	    	        request.setAttribute("ngaySinh", ngaySinhString);
+	    	        request.setAttribute("diaChi", diaChi);
+	    	        request.setAttribute("soDienThoai", soDienThoai);
+	    	        request.setAttribute("email", email);
+	    	        request.setAttribute("stk", stk);
 	    	        request.setAttribute("username", username);
 	    	        request.getRequestDispatcher("/ThemTT.jsp").forward(request, response);
 	    	    }

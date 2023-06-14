@@ -13,7 +13,7 @@ public class SignUpDao {
 	public DBconnect db = new DBconnect();
 	Connection con = db.DBconnect();
 	public TaiKhoan checkAccount(String user) {
-		String query = "select (username, password, role, encode) from account where username = ? ";
+		String query = "select username, password, role, encode from account where username = ? ";
 		try {
 			if(con!=null) {
 				PreparedStatement ps = con.prepareStatement(query);
