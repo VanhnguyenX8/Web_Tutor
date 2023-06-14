@@ -79,6 +79,32 @@
 .fix_ngang li {
 	margin-right: 10px;
 }
+.like-button {
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    color: white !important;
+    background-color: #2a70b8 !important;
+    padding: 5px
+}
+.no-like-button{
+cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    color: black !important;
+    background-color: #ffffff !important;
+    padding: 5px
+}
+select {
+    color: white !important;
+    background-color: #2a70b8 !important;
+}
+input[type="submit"] {
+    background-color: #2a70b8 !important;
+    color: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
 </style>
 							<%
 							boolean hasLiked = false;
@@ -102,7 +128,7 @@
  %>
 									<form action="LikeServlet" method="post">
 										<input type="hidden" name="like" value="true">
-										<button class="like-button">Thích</button>
+										<button class="no-like-button">Thích</button>
 									</form> <%
  }
  %>
