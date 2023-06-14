@@ -354,4 +354,72 @@ a.backgroud-btn1 {
 	cursor: pointer;
 	margin: 20px 0 0 50px;
 }
+.btn1,
+.btn2 {
+    height: 25px;
+    width: 100px;
+}
 
+.btn-display {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.block-course {
+    height: 600px;
+}
+
+.fix_ngang {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin-top: 10px;
+	margin-right: 100px;
+	justify-content: space-around;
+}
+
+.fix_ngang li {
+	margin-right: 10px;
+}
+
+.like-button {
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border-radius: 5px;
+	color: white !important;
+	background-color: #2a70b8 !important;
+	padding: 5px
+}
+
+.no-like-button {
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border-radius: 5px;
+	color: black !important;
+	background-color: #ffffff !important;
+	padding: 5px
+}
+
+select {
+	color: white !important;
+	background-color: #2a70b8 !important;
+}
+
+input[type="submit"] {
+	background-color: #2a70b8 !important;
+	color: white !important;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#chuyenTrang {
+    height: 40px;
+    width: 150px;
+    background: #f68b20;
+    border-radius: 5px;
+    color: #ffffff;
+}
