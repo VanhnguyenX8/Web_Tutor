@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.CamXucDAO;
+import Model.TaiKhoan;
 
 /**
  * Servlet implementation class LikeServlet
@@ -41,6 +42,7 @@ public class LikeServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String idlophoc = (String) session.getAttribute("idLopHoc");
+		TaiKhoan tk = (TaiKhoan)session.getAttribute("acc");
 		boolean hasLiked =  (Boolean) session.getAttribute("hasLiked");
 		System.out.println("lay bollen khi bam post" + hasLiked);
 		try {
@@ -55,12 +57,12 @@ public class LikeServlet extends HttpServlet {
         	   if (hasLiked) {
                    // Người dùng đã like, xóa lượt like
         		   System.out.println("da vao ham haslike");
-        		   like.removeLike(idlophoc, "vanhnguyenx8");
+        		   like.removeLike(idlophoc, tk.getUsername());
         		   
                	
                } else {
                    // Người dùng chưa like, thêm lượt like mới
-            	   like.addLike(idlophoc, "vanhnguyenx8");
+            	   like.addLike(idlophoc, tk.getUsername());
                }	
            }
 		} catch (Exception e) {

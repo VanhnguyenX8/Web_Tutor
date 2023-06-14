@@ -16,7 +16,7 @@ public class CommentChiTietSP{
 	Connection con = db.DBconnect();
 	public List<BinhLuan> getallcmt(String idsanpham) {
 		List<BinhLuan> list = new ArrayList<>();
-		String sql = "SELECT * FROM binhluan where idlophoc::text = ?";
+		String sql = "SELECT * FROM binhluan where idlophoc::text = ? ORDER BY create_at DESC";
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1,idsanpham);
@@ -31,13 +31,13 @@ public class CommentChiTietSP{
 		return list;
 		
 	}
-	public void ThemCMT(String cid, String cmt) throws ParseException {
-		String query = "insert into BinhLuan(idlophoc,usernamebl,chat) values (?,?,?);";
+	public void ThemCMT(String cid, String cmt,String username) throws ParseException {
+		String query = "insert into BinhLuan(idlophoc,usernamebl,chat,create_at) values (?,?,?, CURRENT_TIMESTAMP)";
 		try {
 			
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setObject(1, UUID.fromString(cid));
-			ps.setString(2, "vanhnguyenx8");
+			ps.setString(2, username);
 			ps.setString(3, cmt);
 			ps.executeUpdate();
 			// k can dung result vi khi usertao tai khoan se k co du lieu tra ve

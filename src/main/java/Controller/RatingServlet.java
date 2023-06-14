@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.RatingDAO;
+import Model.TaiKhoan;
 
 /**
  * Servlet implementation class RatingServlet
@@ -38,13 +39,14 @@ public class RatingServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		  String userId = "vanhnguyenx8"; // Lấy userId từ phiên đăng nhập hoặc thông tin người dùng hiện tại
+	
 		  HttpSession session = request.getSession();
+		  TaiKhoan tk = (TaiKhoan)session.getAttribute("acc");
 			String idlophoc = (String) session.getAttribute("idLopHoc");
 	        String rating = request.getParameter("rating");
 	        
 	        RatingDAO ratingDAO = new RatingDAO();
-	        ratingDAO.Rating(userId, idlophoc, rating);
+	        ratingDAO.Rating(tk.getUsername(), idlophoc, rating);
 	        
 	        response.sendRedirect("profileLH?id=" + idlophoc);
 	}

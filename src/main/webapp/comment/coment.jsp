@@ -24,6 +24,7 @@ List<BinhLuan> listcmt = (List<BinhLuan>) request.getAttribute("datacmt");
         margin-bottom: 10px;
         box-sizing: border-box;
         background-color: #f5f5f5;
+        border-radius: 10px;
     }
     
     .comment-content {
@@ -79,7 +80,7 @@ List<BinhLuan> listcmt = (List<BinhLuan>) request.getAttribute("datacmt");
         <!-- Hiển thị danh sách bình luận -->
         <% for (BinhLuan cmt : listcmt) { %>
             <div class="comment">
-                <span class="comment-content"><%=cmt.getChat()%></span>
+                <span class="comment-content"><%=cmt.getUsernamebl()%>: <p style="color: black !important"><%=cmt.getChat()%><p></span>
             </div>
         <% } %>
     </div>
