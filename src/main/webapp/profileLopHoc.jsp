@@ -62,7 +62,39 @@
         <div class="content-mid">
             <div>
                 <div class="video">
+                	<%
+
+
+ 
+    
+       boolean hasLiked = false;
+      
+        %>
+
                     <img src="${lopHoc.hinhAnh}">
+                    <div style="width: 200px">
+<% if (hasLiked) { %>
+     <form action="LikeServlet" method="post">
+        <input type="hidden" name="like" value="true">
+        <button class="like-button" >Đã thích</button>
+    </form>
+    
+<% } else { %>
+    <form action="LikeServlet" method="post">
+        <input type="hidden" name="like" value="true">
+        <button class="like-button" >Thích</button>
+    </form>
+<% } %>
+	<p>Đã có <%=10 %> lượt thích</p>
+    <script>
+        var likeButton = document.querySelector(".like-button");
+        var likeForm = document.getElementById("like-form");
+
+        likeButton.addEventListener("click", function() {
+            likeForm.submit();
+        });
+    </script>
+</div>
                 </div>
                 <div class="smenu">
                     <ul>

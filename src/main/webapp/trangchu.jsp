@@ -37,13 +37,69 @@ pageEncoding="UTF-8"%>
 
           <img class="anhiconlogo" src="logo." alt="" />
           <div class="nguoidung">
+          //
           <%
 		    // Lấy thông tin từ session
 		    Object value = session.getAttribute("acc");
 		    String position = (String) request.getAttribute("position");
+		    String username = (String) request.getAttribute("username");
 		  %>
-		  <% if ("admin".equals(position) || "mod".equals(position)) { %>
+		  <% if ("admin".equals(position)) { %>
 		  	<li class="thongtin-nguoidung">
+              <a href="" class="avt items">
+                <div class="avt-box"></div>
+              </a>
+              <div class="danhsach sub">
+                <ul class="danhsachcon">
+                  <li class="taikhoan">
+                    <div class="avatar"></div>
+                    <div class="thongtin">
+                      <p class="ten">Admin</p>
+                    </div>
+                  </li>
+                  <li>
+                    <button onclick="redirectDashboard.bind(null, <%= username %>>)()" ><a href="/Web_Tutor/home_dashboard" class="link">
+                      <span>DashBoard</span>
+                    </a></button>
+                  </li>
+                  <li>
+                    <a href="Home?logout=true" class="link">
+                      <span>Đăng xuất</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+		  <%} %>
+		  <% if ("mod".equals(position)) { %>
+		  	<li class="thongtin-nguoidung">
+              <a href="" class="avt items">
+                <div class="avt-box"></div>
+              </a>
+              <div class="danhsach sub">
+                <ul class="danhsachcon">
+                  <li class="taikhoan">
+                    <div class="avatar"></div>
+                    <div class="thongtin">
+                      <p class="ten">Mod</p>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="/Web_Tutor/managerLopHoc" class="link">
+                      <span>Quản lý lớp học</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="Home?logout=true" class="link">
+                      <span>Đăng xuất</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+		  <%} %>
+		  <% if (position.equals("giasu")) { %>
+			<li class="thongtin-nguoidung">
               <a href="" class="avt items">
                 <div class="avt-box"></div>
               </a>
@@ -56,12 +112,23 @@ pageEncoding="UTF-8"%>
     					String Name = (String) request.getAttribute("Name");
                     	String email = (String) request.getAttribute("email");
 					%>
-                      <p class="ten">Admin</p>
+                      <p class="ten"><%= Name %></p>
+                      <p class="email"><%= email %></p>
                     </div>
                   </li>
                   <li>
-                    <a href="#" class="link">
-                      <span>DashBoard</span>
+                    <a href="/Web_Tutor/profileGS" class="link">
+                      <span>Thông tin cá nhân</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/Web_Tutor/managerLopHoc" class="link">
+                      <span>Quản lý lớp học</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="" class="link">
+                      <span>Đổi mật khẩu</span>
                     </a>
                   </li>
                   <li>
@@ -71,9 +138,9 @@ pageEncoding="UTF-8"%>
                   </li>
                 </ul>
               </div>
-            </li>
-		  <%} %>
-          <% if (position.equals("hocsinh") || "giasu".equals(position)) { %>
+            </li>			        
+			<% } %>
+          <% if (position.equals("hocsinh")) { %>
 			<li class="thongtin-nguoidung">
               <a href="" class="avt items">
                 <div class="avt-box"></div>
@@ -110,6 +177,7 @@ pageEncoding="UTF-8"%>
               </div>
             </li>			        
 			<% } %>
+			//
           </div>
         </div>
       </div>
@@ -485,7 +553,11 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
 </div>
-
+<script>
+function redirectDashboard(username){
+	localStorage.setItem("username",username);
+}
+</script>
 </body>
 </html>
 

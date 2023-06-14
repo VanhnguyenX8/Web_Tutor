@@ -24,14 +24,14 @@ public class UserHSDAO {
 	    String Name = null;
 	    try {
 	        // Chuẩn bị câu truy vấn
-	        String query = "SELECT tenHS FROM hocsinh WHERE username = ?";
+	        String query = "SELECT ten_hoc_sinh FROM hocsinh WHERE username = ?";
 	        statement = con.prepareStatement(query);
 	        statement.setString(1, username);
 	        // Thực thi câu truy vấn
 	        resultSet = statement.executeQuery();
 	        // Xử lý kết quả truy vấn
 	        if (resultSet.next()) {
-	            Name = resultSet.getString("tenHS");
+	            Name = resultSet.getString("ten_hoc_sinh");
 	        }
 	        return Name;
 	    } catch (SQLException e) {

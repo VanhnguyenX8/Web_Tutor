@@ -56,47 +56,92 @@ public class SignUpServlet extends HttpServlet {
 	    random.nextBytes(salt);
 	    return salt;
 	}
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    private boolean validateInputs(HttpServletRequest request, String username, String password, String repassword) {
+        boolean isValid = true;
+
+        if (username.isEmpty()) {
+            request.setAttribute("usernameError", "Tên người dùng không được bỏ trống");
+            isValid = false;
+        }
+
+        if (password.isEmpty()) {
+            request.setAttribute("passwordError", "Mật khẩu không được bỏ trống");
+            isValid = false;
+        }
+
+        if (repassword.isEmpty()) {
+            request.setAttribute("repasswordError", "Vui lòng nhập lại mật khẩu");
+            isValid = false;
+        }
+
+        if (password.length() < 8) {
+            request.setAttribute("passwordError", "Mật khẩu phải có ít nhất 8 kí tự");
+            isValid = false;
+        }
+
+        if (!Character.isUpperCase(password.charAt(0))) {
+            request.setAttribute("passwordError", "Mật khẩu phải bắt đầu bằng chữ hoa");
+            isValid = false;
+        }
+
+        if (!password.matches(".*[\\W_].*")) {
+            request.setAttribute("passwordError", "Mật khẩu phải chứa ít nhất một kí tự đặc biệt");
+            isValid = false;
+        }
+
+
+        return isValid;
+    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		String mess = request.getParameter("mess");
-//        if (mess.equals("rePass")){
-//            mess = "Nhập Lại Mật Khẩu Sai!";
-//            request.setAttribute("mess", mess);
-//        } else if (mess.equals("username")){
-//            mess = "UserName đã có người sử dụng!";
-//            request.setAttribute("mess", mess);
-//        }
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/signup.jsp");
-//        dispatcher.forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html;charset=UTF-8");
+		//
+		request.setCharacterEncoding("UTF-8");
+		//
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
 		String repass = request.getParameter("repass");
 		String position = request.getParameter("position");
+		if (!validateInputs(request, user, pass, repass)) {
+	        String jspPath = "/signup.jsp";
+	        RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+	        rs.forward(request, response);
+	        return;
+	    }
 		try {
 			//tạp salt mới
 			byte[] salt = generateSalt();
 			//mã hóa mật khẩu
 			String hashedPassword = hashPassword(pass, salt);
+			
 			boolean isGiasu = false;
-	        boolean isHocsinh = false;
-	        if (position != null) {
-	            if (position != null && position.equals("mod") && !position.isEmpty()) {
-	                isGiasu = true;
-	            } else {
-	                isHocsinh = true;
-	            }
-	        }
+			boolean isHocsinh = false;
+
+			if (position != null) {
+			    if (position.equals("giasu") && !position.isEmpty()) {
+			        isGiasu = true;
+			    } else if (position.equals("hocsinh") && !position.isEmpty()) {
+			        isHocsinh = true;
+			    }
+			}
+			String newPosition = request.getParameter("position");
+			if (newPosition != null) {
+			    if (newPosition.equals("giasu") && !newPosition.isEmpty()) {
+			        isGiasu = true;
+			        isHocsinh = false; // Bỏ chọn thẻ học sinh nếu đã được chọn trước đó
+			    } else if (newPosition.equals("hocsinh") && !newPosition.isEmpty()) {
+			        isHocsinh = true;
+			        isGiasu = false; // Bỏ chọn thẻ gia sư nếu đã được chọn trước đó
+			    }
+			}
+			
 			if(!pass.equals(repass)) {
 				String jspPath = "/signup.jsp";
-				request.setAttribute("mess", "Mật khẩu không trùng khớp");
+				request.setAttribute("repasswordError", "Mật khẩu không trùng khớp");
 				RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 				rs.forward(request,response);
 			}else {
@@ -105,7 +150,7 @@ public class SignUpServlet extends HttpServlet {
 				if(a != null) {
 					//duoc sign up
 					String jspPath = "/signup.jsp";
-					request.setAttribute("mess", "Tài khoản đã tồn tại");
+					request.setAttribute("usernameError", "Tài khoản đã tồn tại");
 					RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 					rs.forward(request,response);
 				} else {
@@ -114,19 +159,18 @@ public class SignUpServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 				    session.setAttribute("acc", acc);
 					if(isGiasu) {
-						String role = "mod";
+						String role = "giasu";
 						sign.NewAccount(user, hashedPassword, role, salt);
-//						sign.NewInfoGS(user);
-//						response.sendRedirect("ThemTT.jsp");
-						String jspPath = "/login.jsp";
-//						String jspPath = "/ThemTT.jsp";
-						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
-						rs.forward(request,response);
+						sign.NewInfoGS(user);
+						response.sendRedirect("AddInfo");
+//						String jspPath = "/login.jsp";
+//						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
+//						rs.forward(request,response);
 					}else if(isHocsinh) {
 						String role = "hocsinh";
 						sign.NewAccount(user, hashedPassword, role, salt);
 						sign.NewInfoHS(user);
-						response.sendRedirect("ThemTT.jsp");
+						response.sendRedirect("AddInfo");
 //						String jspPath = "/login.jsp";
 //						RequestDispatcher rs = getServletContext().getRequestDispatcher(jspPath);
 //						rs.forward(request,response);
