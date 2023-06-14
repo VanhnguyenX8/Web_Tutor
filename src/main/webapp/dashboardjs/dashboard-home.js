@@ -229,9 +229,13 @@ function filterDate() {
             const soLopMo = [];
             result.forEach(item => {
                 for (const date in item) {
+					
                     dates.push(date);
-                    hocSinhDangKi.push(item[date].hocSinhDangKi);
-                    soLopMo.push(item[date].soLopMo);
+                    
+                    const key = Object.keys(item[date]);
+					const value = Object.values(item[date]);
+					hocSinhDangKi.push(parseInt(value[0]));
+                    soLopMo.push(parseInt(key[0]));
                 }
             });
             if (myChart2) {

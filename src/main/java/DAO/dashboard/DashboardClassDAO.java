@@ -5,7 +5,9 @@ import Model.LopHoc;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DashboardClassDAO {
@@ -82,8 +84,8 @@ public class DashboardClassDAO {
         }
     }
 
-    public Map<String, Map<Integer, Integer>> soLopMoTheoNgay(String ngayBatDau, String ngayKetThuc) {
-        Map<String, Map<Integer, Integer>> dangKiLopHoc = new HashMap<>();
+    public List soLopMoTheoNgay(String ngayBatDau, String ngayKetThuc) {
+        List dangKiLopHoc = new ArrayList<>();
         Statement stmt = null;
         try {
             stmt = con.createStatement();
@@ -92,12 +94,13 @@ public class DashboardClassDAO {
                     " " +
                     "group" +
                     " by " +
-                    "ngay_hoc");
+                    "ngay_hoc ORDER BY ngay_hoc ASC");
             while (rs.next()) {
                 Map<Integer, Integer> map = new HashMap<>();
-                
+                JSONObject obj =new JSONObject();
                 map.put(rs.getInt("solopmo"), Integer.valueOf(rs.getString("hocsinhdangki")));
-                dangKiLopHoc.put(rs.getString("ngay_hoc"), map);
+                obj.put(rs.getString("ngay_hoc"), map);
+                dangKiLopHoc.add(obj);
             }
 
         } catch (SQLException e) {
