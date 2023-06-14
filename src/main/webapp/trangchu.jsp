@@ -585,7 +585,6 @@ pageEncoding="UTF-8"%>
 </div>
 <script>
 function redirectDashboard(username){
-	alert(username);
 	localStorage.setItem("username",username);
 	location.replace("/Web_Tutor/home_dashboard")
 	}
