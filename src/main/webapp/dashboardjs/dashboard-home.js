@@ -10,7 +10,7 @@ var requestOptions = {
     headers: {"Content-Type": "application/json"},
     redirect: 'follow'
 };
-fetch("/Web_Tutor/home_dashboard?action=info_admin&username" + sessionStorage.getItem('username'), requestOptions)
+fetch("/Web_Tutor/home_dashboard?action=info_admin&username=" + sessionStorage.getItem('username'), requestOptions)
     .then(response => response.json())
     .then(result => {
         const image = result['image'];
