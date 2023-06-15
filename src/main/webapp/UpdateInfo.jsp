@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="form-group">
                 <label for="bankAccount">Số tài khoản:</label>
-                <input type="text" id="bankAccount" name="bankAccount" value="${giaSu.so_tai_khoan}" required>
+                <input type="text" id="bankAccount" name="bankAccount" value="${giaSu.sotaikhoan}" required>
             </div>
             <button type="submit">Cập nhật</button>
             <% } %>

@@ -205,7 +205,7 @@ pageEncoding="UTF-8"%>
       </div>
 
 
-      <div class="container_border_banner">
+   
       <!-- Trung học phổ thông -->
       <div id="thcs" class="main-thcs">
         <div class="container">
